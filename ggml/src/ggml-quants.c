@@ -657,6 +657,137 @@ static inline __m128i packNibbles( __m256i bytes ) {
 }
 #endif  //__loongarch_asx
 
+// 新实现的，使用了block
+void quantize_row_i8_s(const float * x, void * y, int64_t n) {
+    static const int siz = I8_SIZE;
+    assert(n % siz == 0);
+
+    const int nb = n / siz;
+    block_i8 *dst = (block_i8 *) y;
+
+    const double eps = 1e-5;
+    for (int i = 0; i < nb; i++) {
+        double max = eps;
+        for (int j = 0; j < siz; j++) {
+            max = MAX(max, (double) x[i * siz + j]);
+        }
+
+        const double s  = max / 127;
+        const double is = 1e0 / MAX(s, eps);
+
+        dst[i].scale = GGML_FP32_TO_FP16((float) s);
+
+        for (int j = 0; j < siz; j++){
+            float v = round((double) x[i * siz + j] * is);
+            if (v >  127) v =  127;
+            if (v < -128) v = -128;
+            dst[i].data[j] = (int8_t)v;
+            //printf("%d %f %f\n", (int)dst[i].data[j], v * (float)s, x[i * siz + j]);
+            //fflush(stdout);
+        }
+    }
+}
+
+// BitNet
+size_t quantize_i2_s(const float * restrict src, void * restrict dst, int64_t nrow, int64_t n_per_row, const float * quant_weights) {
+    // 2 bits per weight
+    UNUSED(quant_weights);
+
+    size_t row_size = ggml_row_size(GGML_TYPE_I2_S, n_per_row);
+
+    int n = nrow * n_per_row;
+
+    const double eps = 1e-6;
+
+    // FILE *outfile = fopen("/home/cipherxzc/Projects/tensor", "w");
+    // assert(outfile != NULL);
+    // fprintf(outfile, "Start!\n");
+
+    uint8_t* i2_weight = (uint8_t*)dst;
+    for (int i = 0; i * 4 < n; i++) {
+        i2_weight[i] = 0;
+        for (int j = 0; j < 4; j++){
+            uint8_t tmp = 0;
+            double v = src[i * 4 + j];
+            if (fabs(v) > eps) {
+                tmp = v > 0.? 1 : 3;
+            }
+            i2_weight[i] |= tmp << (j * 2);
+            // fprintf(outfile, "%d %.0f ", (int)tmp, v);
+        }
+        // fprintf(outfile, "%d\n", (int)i2_weight[i]);
+        // fflush(outfile);
+    }
+
+    // fclose(outfile);
+    // exit(0);
+
+    return nrow * row_size;
+}
+
+// BitNet
+void ggml_vec_dot_i2_i8_s(int n, float * restrict s, size_t bs, const void * restrict vx, size_t bx, const void * restrict vy, size_t by, int nrc) {
+    UNUSED(bs);
+    UNUSED(bx);
+    UNUSED(by);
+    UNUSED(nrc);
+    
+    const uint8_t  * restrict x = vx; // int2
+    const block_i8 * restrict y = vy; // int8
+
+    static const int siz = I8_SIZE;
+    assert(n % siz == 0);
+
+    const int nb = n / siz;
+    float sumf = 0;
+
+    for (int i = 0; i < nb; i++) { // 第i个 block_i8
+        int sumb = 0;
+
+        for (int j = 0; j < siz; j += 4){ // 4位一组，遍历整个 block
+            // int tmp = x[(i * siz + j) >> 2];
+            // for (int k = 0; k < 4; k++){
+            //     int8_t v = (tmp >> (k * 2)) & 3;
+            //     if (v == 3){
+            //         v = -1;
+            //     }
+            //     sumb += (int) (y[i].data[j + k] * v);
+            // }
+            
+            const int8_t *weight = (const int8_t *)(i2s_i8s + x[(i * siz + j) >> 2]); // 查表
+            // 循环展开加速
+            sumb += (int) (y[i].data[j + 0] * weight[3]);
+            sumb += (int) (y[i].data[j + 1] * weight[2]);
+            sumb += (int) (y[i].data[j + 2] * weight[1]);
+            sumb += (int) (y[i].data[j + 3] * weight[0]);
+        }
+
+        sumf += (float) sumb * GGML_FP16_TO_FP32(y[i].scale);
+    }
+
+    // FILE *outfile = fopen("/home/cipherxzc/Projects/tensor", "a");
+    // assert(outfile != NULL);
+
+    // for (int i = 0; i * 4 < n; i++){
+    //     int tmp = x[i];
+    //     for (int j = 0; j < 4; j++){
+    //         int v = (tmp >> (j * 2)) & 3;
+    //         fprintf(outfile, "%d ", v);
+    //     }
+    // }
+    // fprintf(outfile, "\n");
+    // for (int i = 0; i < nb; i++){
+    //     for (int j = 0; j < siz; j++){
+    //         fprintf(outfile, "%.6f ", (float)y[i].data[j] * GGML_FP16_TO_FP32(y[i].scale));
+    //     }
+    // }
+    // fprintf(outfile, "\n%f\n", sumf);
+
+    // fclose(outfile);
+
+    *s = sumf;
+}
+
 // reference implementation for deterministic creation of model files
 void quantize_row_q4_0_ref(const float * restrict x, block_q4_0 * restrict y, int64_t k) {
     static const int qk = QK4_0;
@@ -14859,6 +14990,7 @@ bool ggml_validate_row_data(enum ggml_type type, const void * data, size_t nbyte
         case GGML_TYPE_I16:
         case GGML_TYPE_I32:
         case GGML_TYPE_I64:
+        case GGML_TYPE_I2_S:
             // nothing to validate
             break;
         default:

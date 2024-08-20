@@ -1027,6 +1027,23 @@ static const ggml_type_traits_t type_traits[GGML_TYPE_COUNT] = {
         .ncols                    = 8,
         .gemv                     = ggml_gemv_q4_0_8x8_q8_0,
         .gemm                     = ggml_gemm_q4_0_8x8_q8_0,
+    },
+    // BitNet
+    [GGML_TYPE_I2_S] = {
+        .type_name                = "i2_s",
+        .blck_size                = 4,
+        .type_size                = sizeof(uint8_t),
+        .is_quantized             = true,
+        .vec_dot                  = (ggml_vec_dot_t) ggml_vec_dot_i2_i8_s,
+        .vec_dot_type             = GGML_TYPE_I8_S,
+        .nrows                    = 1,
+    },
+    [GGML_TYPE_I8_S] = {
+        .type_name                = "i8_s",
+        .blck_size                = I8_SIZE,
+        .type_size                = sizeof(block_i8),
+        .is_quantized             = true,
+        .from_float               = quantize_row_i8_s,
     }
 };
 
@@ -3196,6 +3213,9 @@ GGML_CALL size_t ggml_nbytes(const struct ggml_tensor * tensor) {
             nbytes += (tensor->ne[i] - 1)*tensor->nb[i];
         }
     }
+    // if (tensor->type == GGML_TYPE_I2_S){
+    //     nbytes = nbytes / 4 + 32;
+    // }
 
     return nbytes;
 }
@@ -3725,7 +3745,7 @@ static struct ggml_tensor * ggml_new_tensor_impl(
         size_t                view_offs) {
 
     GGML_ASSERT(type >= 0 && type < GGML_TYPE_COUNT);
-    GGML_ASSERT(n_dims >= 1 && n_dims <= GGML_MAX_DIMS);
+    //GGML_ASSERT(n_dims >= 1 && n_dims <= GGML_MAX_DIMS);
 
     // find the base tensor and absolute offset
     if (view_src != NULL && view_src->view_src != NULL) {
@@ -12256,11 +12276,7 @@ static void ggml_compute_forward_mul_mat_one_chunk(
                     (src1_cont || src1->type != vec_dot_type
                         ? (i11 + i12 * ne11 + i13 * ne12 * ne11) * row_size
                         : (i11 * nb11 + i12 * nb12 + i13 * nb13));
-                float * dst_col = (float*)((char*)dst->data + (i1 * nb1 + i2 * nb2 + i3 * nb3));
-
-                //for (int64_t ir0 = iir0; ir0 < iir0 + blck_0 && ir0 < ir0_end; ++ir0) {
-                //    vec_dot(ne00, &dst_col[ir0], src0_row + ir0*nb01, src1_col);
-                //}
+                float * dst_col = (float*)((char*)dst->data + (i1 * nb1 + i2 * nb2 + i3 * nb3)); // 存结果
 
                 for (int64_t ir0 = iir0; ir0 < iir0 + blck_0 && ir0 < ir0_end; ir0 += num_rows_per_vec_dot) {
                     vec_dot(ne00, &tmp[ir0 - iir0], (num_rows_per_vec_dot > 1 ? 16 : 0), src0_row + ir0 * nb01, (num_rows_per_vec_dot > 1 ? nb01 : 0), src1_col, (num_rows_per_vec_dot > 1 ? src1_col_stride : 0), num_rows_per_vec_dot);
@@ -12280,6 +12296,30 @@ static void ggml_compute_forward_mul_mat(
 
     const struct ggml_tensor * src0 = dst->src[0];
     const struct ggml_tensor * src1 = dst->src[1];
+
+    // FILE *outfile = fopen("/home/cipherxzc/Projects/tensor", "w");
+    // Assert(outfile != NULL);
+
+    // fprintf(outfile, "src0: %s %d %d\n", ggml_type_name(src0->type), (int) src0->ne[1], (int) src0->ne[0]);
+    // fprintf(outfile, "src1: %s %d %d\n", ggml_type_name(src1->type), (int) src1->ne[1], (int) src1->ne[0]);
+    // for (int i = 0; i < src0->ne[1]; i++){
+    //     if (src0->type == GGML_TYPE_I2_S){
+    //         uint8_t* tmp = ((uint8_t*) src0->data) + src0->ne[0] / 4 * i;
+    //         for (int j = 0; j * 4 < src0->ne[0]; j++){
+    //             uint8_t x = tmp[j];
+    //             for (int k = 0; k < 4; k++){
+    //                 fprintf(outfile, "%d ", (x >> (k * 2)) & 3);
+    //             }
+    //         }
+    //     }else{
+    //         ggml_fp16_t* tmp = (ggml_fp16_t*) (src0->data) + src0->ne[0] * i;
+    //         for (int j = 0; j < src0->ne[0]; j++){
+    //             fprintf(outfile, "%d ", (int) GGML_FP16_TO_FP32(tmp[j]));
+    //         }
+    //     }
+    //     fprintf(outfile, "\n");
+    // }
+    // fclose(outfile);
 
     GGML_TENSOR_BINARY_OP_LOCALS
 
@@ -12342,10 +12382,10 @@ static void ggml_compute_forward_mul_mat(
 UseGgmlGemm1:;
 #endif
 
-    if (src1->type != vec_dot_type) {
+    if (src1->type != vec_dot_type) { // 将量化后的 data 存至 params->wdata 中
         char * wdata = params->wdata;
 
-        const size_t nbw1 = ggml_row_size(vec_dot_type, ne10);
+        const size_t nbw1 = ggml_row_size(vec_dot_type, ne10); // 相比 nb11 没有 padding
         const size_t nbw2 = nbw1*ne11;
         const size_t nbw3 = nbw2*ne12;
 
@@ -12363,10 +12403,11 @@ UseGgmlGemm1:;
                     }
                     i11_processed = ne11 - ne11 % 4;
                 }
+
                 for (int64_t i11 = i11_processed + ith; i11 < ne11; i11 += nth) {
                     from_float((float *)((char *) src1->data + i13*nb13 + i12*nb12 + i11*nb11),
-                           (void *)               (wdata + i13*nbw3 + i12*nbw2 + i11*nbw1),
-                           ne10);
+                            (void *)               (wdata + i13*nbw3 + i12*nbw2 + i11*nbw1),
+                            ne10);
                 }
             }
         }
@@ -20684,6 +20725,9 @@ size_t ggml_quantize_chunk(
                 result = n * elemsize;
                 memcpy((uint8_t *)dst + start * elemsize, src + start, result);
             } break;
+        // BitNet
+        case GGML_TYPE_I2_S:    
+            result = quantize_i2_s(src + start, (char *) dst + start_row * row_size, nrows, n_per_row, imatrix); break;
         default:
             assert(false);
     }

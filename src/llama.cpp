@@ -67,6 +67,7 @@
     #define LU8(x) u8##x
 #endif
 
+#include <iostream>
 #include <algorithm>
 #include <array>
 #include <cassert>
@@ -7712,6 +7713,7 @@ static bool llm_load_tensors(
 // Returns 0 on success, -1 on error, and -2 on cancellation via llama_progress_callback
 static int llama_model_load(const std::string & fname, llama_model & model, llama_model_params & params) {
     try {
+
         llama_model_loader ml(fname, params.use_mmap, params.check_tensors, params.kv_overrides);
 
         model.hparams.vocab_only = params.vocab_only;
@@ -15811,6 +15813,9 @@ static void llama_model_quantize_internal(const std::string & fname_inp, const s
         case LLAMA_FTYPE_MOSTLY_Q4_0_4_4: default_type = GGML_TYPE_Q4_0_4_4; break;
         case LLAMA_FTYPE_MOSTLY_Q4_0_4_8: default_type = GGML_TYPE_Q4_0_4_8; break;
         case LLAMA_FTYPE_MOSTLY_Q4_0_8_8: default_type = GGML_TYPE_Q4_0_8_8; break;
+        // BitNet
+        case LLAMA_FTYPE_MOSTLY_I2_S:    default_type = GGML_TYPE_I2_S; break;
+        
 
         default: throw std::runtime_error(format("invalid output file type %d\n", ftype));
     }
@@ -16066,6 +16071,10 @@ static void llama_model_quantize_internal(const std::string & fname_inp, const s
             // in then there's nothing to do.
             quantize = tensor->type != new_type;
         }
+
+        // std::ofstream outfile(outpath, std::ios::app);
+        // outfile << name << ' ' << (quantize ? "quantize" : "not quantize") << '\n';
+        // outfile.close();
 
         if (!quantize) {
             new_type = tensor->type;
