@@ -658,6 +658,8 @@ static inline __m128i packNibbles( __m256i bytes ) {
 }
 #endif  //__loongarch_asx
 
+// #define BITNET_AVX2
+
 // 新实现的，使用了block
 void quantize_row_i8_s(const float * x, void * y, int64_t n) {
     static const int siz = I8_SIZE;
@@ -681,7 +683,11 @@ void quantize_row_i8_s(const float * x, void * y, int64_t n) {
         for (int j = 0; j < siz; j++){
             float v = round((double) x[i * siz + j] * is);
             if (v >  127) v =  127;
+#ifdef BITNET_AVX2
             if (v < -127) v = -127;
+#else
+            if (v < -128) v = -128;
+#endif
             dst[i].data[j] = (int8_t)v;
             // printf("%d %f %f\n", (int)dst[i].data[j], v * (float)s, x[i * siz + j]);
             // fflush(stdout);
@@ -726,6 +732,7 @@ size_t quantize_i2_s(const float * restrict src, void * restrict dst, int64_t nr
     return nrow * row_size;
 }
 
+#ifdef BITNET_AVX2
 // 打印 __m256i 向量中的 int8_t 值
 void print_m256i_epi8(__m256i vec) {
     int8_t values[32];
@@ -773,6 +780,7 @@ int calc_m256(__m256 vec) {
     }
     return (int) res;
 }
+#endif
 
 static inline __m256 bitnet_mul(const __m256i x, const __m256i y) {
     const __m256i ax = _mm256_sign_epi8(x, x);
@@ -791,7 +799,6 @@ static inline __m256 bitnet_mul(const __m256i x, const __m256i y) {
     return _mm256_cvtepi32_ps(summed_pairs);
 }
 
-#define BITNET_AVX2
 // BitNet
 void ggml_vec_dot_i2_i8_s(int n, float * restrict s, size_t bs, const void * restrict vx, size_t bx, const void * restrict vy, size_t by, int nrc) {
     UNUSED(bs);
@@ -858,7 +865,6 @@ void ggml_vec_dot_i2_i8_s(int n, float * restrict s, size_t bs, const void * res
 
     sumf = hsum_float_8(acc);
 #else
-    float sumf2 = 0;
     for (int i = 0; i < nb; i++) { // 第i个 block_i8
         int sumb = 0;
 
@@ -871,7 +877,7 @@ void ggml_vec_dot_i2_i8_s(int n, float * restrict s, size_t bs, const void * res
             sumb += (int) (y[i].data[j + 3] * weight[3]);
         }
 
-        sumf2 += (float) sumb * GGML_FP16_TO_FP32(y[i].scale);
+        sumf += (float) sumb * GGML_FP16_TO_FP32(y[i].scale);
     }
 #endif
 
