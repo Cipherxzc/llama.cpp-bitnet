@@ -11,6 +11,7 @@
 #include <float.h>
 #include <stdlib.h> // for qsort
 #include <stdio.h>  // for GGML_ASSERT
+#include <immintrin.h>
 
 #define GROUP_MAX_EPS 1e-15f
 #define GROUP_MAX_EPS_IQ3_XXS 1e-8f
@@ -680,10 +681,10 @@ void quantize_row_i8_s(const float * x, void * y, int64_t n) {
         for (int j = 0; j < siz; j++){
             float v = round((double) x[i * siz + j] * is);
             if (v >  127) v =  127;
-            if (v < -128) v = -128;
+            if (v < -127) v = -127;
             dst[i].data[j] = (int8_t)v;
-            //printf("%d %f %f\n", (int)dst[i].data[j], v * (float)s, x[i * siz + j]);
-            //fflush(stdout);
+            // printf("%d %f %f\n", (int)dst[i].data[j], v * (float)s, x[i * siz + j]);
+            // fflush(stdout);
         }
     }
 }
@@ -725,6 +726,72 @@ size_t quantize_i2_s(const float * restrict src, void * restrict dst, int64_t nr
     return nrow * row_size;
 }
 
+// 打印 __m256i 向量中的 int8_t 值
+void print_m256i_epi8(__m256i vec) {
+    int8_t values[32];
+
+    _mm256_store_si256(values, vec);
+
+    for (int i = 0; i < 32; ++i) {
+        printf("%4d ", values[i]);
+    }
+    printf("\n");
+}
+
+// 打印 __m256i 向量中的 int16_t 值
+void print_m256i_epi16(__m256i vec) {
+    int16_t values[16];
+
+    _mm256_store_si256(values, vec);
+
+    for (int i = 0; i < 16; ++i) {
+        printf("%9d ", values[i]);
+    }
+    printf("\n");
+}
+
+// 打印 __m256i 向量中的 int32_t 值
+void print_m256i_epi32(__m256i vec) {
+    int32_t values[8];
+
+    _mm256_store_si256(values, vec);
+
+    for (int i = 0; i < 8; ++i) {
+        printf("%19d ", values[i]);
+    }
+    printf("\n");
+}
+
+// 计算 __m256 向量中 8 个 32 位浮点数的和，并将结果转换为 int
+int calc_m256(__m256 vec) {
+    float values[8];
+    _mm256_storeu_ps(values, vec);
+
+    float res = 0;
+    for (int i = 0; i < 8; ++i) {
+        res += values[i];
+    }
+    return (int) res;
+}
+
+static inline __m256 bitnet_mul(const __m256i x, const __m256i y) {
+    const __m256i ax = _mm256_sign_epi8(x, x);
+    const __m256i sy = _mm256_sign_epi8(y, x);
+
+    const __m256i dot = _mm256_maddubs_epi16(ax, sy);
+    
+    const __m256i ones = _mm256_set1_epi16(1);
+    const __m256i summed_pairs = _mm256_madd_epi16(ones, dot);
+
+    // print_m256i_epi8(ax);
+    // print_m256i_epi8(sy);
+    // print_m256i_epi16(dot);
+    // print_m256i_epi32(summed_pairs);
+
+    return _mm256_cvtepi32_ps(summed_pairs);
+}
+
+#define BITNET_AVX2
 // BitNet
 void ggml_vec_dot_i2_i8_s(int n, float * restrict s, size_t bs, const void * restrict vx, size_t bx, const void * restrict vy, size_t by, int nrc) {
     UNUSED(bs);
@@ -741,49 +808,99 @@ void ggml_vec_dot_i2_i8_s(int n, float * restrict s, size_t bs, const void * res
     const int nb = n / siz;
     float sumf = 0;
 
+#ifdef BITNET_AVX2
+    __m256 acc = _mm256_setzero_ps();
+    for (int i = 0; i < nb; i++) { // 第i个 block_i8
+        const __m256 sc = _mm256_set1_ps(GGML_FP16_TO_FP32(y[i].scale)); // scale 复制8份
+
+        const __m256i qx = _mm256_set_epi32( // 查表
+            i2s_i8s [ x[i * 8 + 7] ],
+            i2s_i8s [ x[i * 8 + 6] ],
+            i2s_i8s [ x[i * 8 + 5] ],
+            i2s_i8s [ x[i * 8 + 4] ],
+            i2s_i8s [ x[i * 8 + 3] ],
+            i2s_i8s [ x[i * 8 + 2] ],
+            i2s_i8s [ x[i * 8 + 1] ],
+            i2s_i8s [ x[i * 8 + 0] ]
+        );
+        const __m256i qy = _mm256_loadu_si256((const __m256i *) y[i].data);
+
+        const __m256 q = bitnet_mul(qx, qy);
+
+        acc = _mm256_fmadd_ps(sc, q, acc); // 乘上 scale 并累加
+
+        // print_m256i_epi8(qy);
+        // for (int j = 0; j < siz; j++){
+        //     printf("%4d ", y[i].data[j]);
+        // }
+        // printf("\n");
+
+        // int sumb = 0;
+        // for (int j = 0; j < siz; j += 4){ // 4位一组，遍历整个 block
+        //     const int8_t *weight = (const int8_t *)(i2s_i8s + x[(i * siz + j) >> 2]); // 查表
+        //     int sum = 0;
+        //     for (int k = 0; k < 4; k++){
+        //         sum += (int) (y[i].data[j + k] * weight[k]);
+        //         printf("%4d ", y[i].data[j + k] * weight[k]);
+        //     }
+        //     sumb += sum;
+        //     //printf("%19d ", sum);
+        // }
+        // printf("\n");
+        // if (calc_m256(q) != sumb){
+        //     printf("=========================!!!!!!!!!!=======================\n");
+        // }else{
+            
+        //     printf("==========================================================\n");
+        // }
+        // printf("%d %d\n", calc_m256(q), sumb);
+    }
+
+    sumf = hsum_float_8(acc);
+#else
+    float sumf2 = 0;
     for (int i = 0; i < nb; i++) { // 第i个 block_i8
         int sumb = 0;
 
         for (int j = 0; j < siz; j += 4){ // 4位一组，遍历整个 block
-            // int tmp = x[(i * siz + j) >> 2];
-            // for (int k = 0; k < 4; k++){
-            //     int8_t v = (tmp >> (k * 2)) & 3;
-            //     if (v == 3){
-            //         v = -1;
-            //     }
-            //     sumb += (int) (y[i].data[j + k] * v);
-            // }
-            
             const int8_t *weight = (const int8_t *)(i2s_i8s + x[(i * siz + j) >> 2]); // 查表
             // 循环展开加速
-            sumb += (int) (y[i].data[j + 0] * weight[3]);
-            sumb += (int) (y[i].data[j + 1] * weight[2]);
-            sumb += (int) (y[i].data[j + 2] * weight[1]);
-            sumb += (int) (y[i].data[j + 3] * weight[0]);
+            sumb += (int) (y[i].data[j + 0] * weight[0]);
+            sumb += (int) (y[i].data[j + 1] * weight[1]);
+            sumb += (int) (y[i].data[j + 2] * weight[2]);
+            sumb += (int) (y[i].data[j + 3] * weight[3]);
         }
 
-        sumf += (float) sumb * GGML_FP16_TO_FP32(y[i].scale);
+        sumf2 += (float) sumb * GGML_FP16_TO_FP32(y[i].scale);
     }
+#endif
 
-    // FILE *outfile = fopen("/home/cipherxzc/Projects/tensor", "a");
-    // assert(outfile != NULL);
+    // printf("%f %f\n", sumf, sumf2);
 
-    // for (int i = 0; i * 4 < n; i++){
-    //     int tmp = x[i];
-    //     for (int j = 0; j < 4; j++){
-    //         int v = (tmp >> (j * 2)) & 3;
-    //         fprintf(outfile, "%d ", v);
-    //     }
-    // }
-    // fprintf(outfile, "\n");
-    // for (int i = 0; i < nb; i++){
-    //     for (int j = 0; j < siz; j++){
-    //         fprintf(outfile, "%.6f ", (float)y[i].data[j] * GGML_FP16_TO_FP32(y[i].scale));
-    //     }
-    // }
-    // fprintf(outfile, "\n%f\n", sumf);
+    *s = sumf;
+}
 
-    // fclose(outfile);
+void ggml_vec_dot_i2_f32_s(int n, float * restrict s, size_t bs, const void * restrict vx, size_t bx, const void * restrict vy, size_t by, int nrc) {
+    UNUSED(bs);
+    UNUSED(bx);
+    UNUSED(by);
+    UNUSED(nrc);
+    
+    const uint8_t  * restrict x = vx; // int2
+    const float    * restrict y = vy; // int8
+
+    assert(n % 4 == 0);
+
+    float sumf = 0;
+
+    for (int i = 0; i < n; i += 4){
+        const int8_t *weight = (const int8_t *)(i2s_i8s + x[i >> 2]); // 查表
+        // 循环展开加速
+        sumf += y[i + 0] * (float) weight[3];
+        sumf += y[i + 1] * (float) weight[2];
+        sumf += y[i + 2] * (float) weight[1];
+        sumf += y[i + 3] * (float) weight[0];
+    }
 
     *s = sumf;
 }

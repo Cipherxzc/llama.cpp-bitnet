@@ -4278,6 +4278,7 @@ struct llama_model_loader {
         }
 #endif
 
+        // std::ofstream outfile("/home/cipherxzc/Projects/tensor");
         for (struct ggml_tensor * cur = ggml_get_first_tensor(ctx); cur != NULL; cur = ggml_get_next_tensor(ctx, cur)) {
             const auto * weight = get_weight(ggml_get_name(cur));
             if (weight == nullptr) {
@@ -4368,7 +4369,15 @@ struct llama_model_loader {
             }
 
             size_done += n_size;
+
+            // outfile << cur->name << ' ';
+            // for (int i = 0; i < 4; i++){
+            //     outfile << cur->ne[i] << ' ';
+            // }
+            // outfile << '\n';
         }
+
+        // outfile.close();
 
 #if defined(GGML_USE_CUDA)
         // free temporary resources used for async cuda uploads

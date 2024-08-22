@@ -1036,6 +1036,8 @@ static const ggml_type_traits_t type_traits[GGML_TYPE_COUNT] = {
         .is_quantized             = true,
         .vec_dot                  = (ggml_vec_dot_t) ggml_vec_dot_i2_i8_s,
         .vec_dot_type             = GGML_TYPE_I8_S,
+        // .vec_dot                  = (ggml_vec_dot_t) ggml_vec_dot_i2_f32_s,
+        // .vec_dot_type             = GGML_TYPE_F32,
         .nrows                    = 1,
     },
     [GGML_TYPE_I8_S] = {
@@ -12297,30 +12299,6 @@ static void ggml_compute_forward_mul_mat(
     const struct ggml_tensor * src0 = dst->src[0];
     const struct ggml_tensor * src1 = dst->src[1];
 
-    // FILE *outfile = fopen("/home/cipherxzc/Projects/tensor", "w");
-    // Assert(outfile != NULL);
-
-    // fprintf(outfile, "src0: %s %d %d\n", ggml_type_name(src0->type), (int) src0->ne[1], (int) src0->ne[0]);
-    // fprintf(outfile, "src1: %s %d %d\n", ggml_type_name(src1->type), (int) src1->ne[1], (int) src1->ne[0]);
-    // for (int i = 0; i < src0->ne[1]; i++){
-    //     if (src0->type == GGML_TYPE_I2_S){
-    //         uint8_t* tmp = ((uint8_t*) src0->data) + src0->ne[0] / 4 * i;
-    //         for (int j = 0; j * 4 < src0->ne[0]; j++){
-    //             uint8_t x = tmp[j];
-    //             for (int k = 0; k < 4; k++){
-    //                 fprintf(outfile, "%d ", (x >> (k * 2)) & 3);
-    //             }
-    //         }
-    //     }else{
-    //         ggml_fp16_t* tmp = (ggml_fp16_t*) (src0->data) + src0->ne[0] * i;
-    //         for (int j = 0; j < src0->ne[0]; j++){
-    //             fprintf(outfile, "%d ", (int) GGML_FP16_TO_FP32(tmp[j]));
-    //         }
-    //     }
-    //     fprintf(outfile, "\n");
-    // }
-    // fclose(outfile);
-
     GGML_TENSOR_BINARY_OP_LOCALS
 
     const int ith = params->ith;
@@ -12504,6 +12482,7 @@ UseGgmlGemm2:;
                  (const char *) src0->data + src0_start * nb01, (const char *) src1_wdata + (src1_col_stride * iter), 1,
                  src0_end - src0_start);
         }
+
         return;
     }
 
@@ -12528,6 +12507,28 @@ UseGgmlGemm2:;
 
         current_chunk = atomic_fetch_add(&params->shared->current_chunk, 1);
     }
+
+    // FILE *outfile = fopen("/home/cipherxzc/Projects/tensor", "w");
+    // assert(outfile != NULL);
+    // fprintf(outfile, "Case #1: %s\n", dst->name);
+    // fprintf(outfile, "src0: %s %s %d %d\n", src0->name, ggml_type_name(src0->type), (int) src0->ne[1], (int) src0->ne[0]);
+    // fprintf(outfile, "src1: %s %s %d %d\n", src1->name, ggml_type_name(src1->type), (int) src1->ne[1], (int) src1->ne[0]);
+    // // fprintf(outfile, "dst: %s %s %d %d\n", dst->name, ggml_type_name(dst->type), (int) dst->ne[1], (int) dst->ne[0]);
+    // fprintf(outfile, "dst: %s %s ", dst->name, ggml_type_name(dst->type));
+    // for (int i = 0; i < 4; i++){
+    //     fprintf(outfile, "%d ", dst->ne[i]);
+    // }
+    // fprintf(outfile, "\n");
+    // float *tmp = (float *)dst->data;
+    // for (int i = 0; i < dst->ne[1]; i++){
+    //     for (int j = 0; j < dst->ne[0]; j++){
+    //         fprintf(outfile, "%f ", tmp[i * dst->ne[0] + j]);
+    //     }
+    //     fprintf(outfile, "\n");
+    // }
+
+    // fclose(outfile);
+    // exit(0);
 }
 
 // ggml_compute_forward_mul_mat_id
@@ -16764,8 +16765,48 @@ static void ggml_compute_forward_cross_entropy_loss_back(
 
 /////////////////////////////////
 
+const char pre[] = "l_out-";
+
 static void ggml_compute_forward(struct ggml_compute_params * params, struct ggml_tensor * tensor) {
     GGML_ASSERT(params);
+
+    // FILE *outfile = fopen("/home/cipherxzc/Projects/tensor", "a");
+    // assert(outfile != NULL);
+    
+    // int flag = 1;
+    // for (int i = 0; i < 6; i++){
+    //     if (tensor->name[i] != pre[i]){
+    //         flag = 0;
+    //     }
+    // }
+
+    // static int ok = 0;
+    // if (flag){
+    //     if (tensor->name[6] == '0'){
+    //         if (!ok){
+    //             ok = 1;
+    //         }else{
+    //             fclose(outfile);
+    //             exit(0);
+    //         }
+    //     }
+
+    //     fprintf(outfile, "%s %s ", tensor->name, ggml_type_name(tensor->type));
+    //     for (int i = 0; i < 4; i++){
+    //         fprintf(outfile, "%d ", tensor->ne[i]);
+    //     }
+    //     fprintf(outfile, "\n");
+
+    //     float *data = (float *)tensor->data;
+    //     for (int i = 0; i < tensor->ne[1]; i++){
+    //         for (int j = 0; j < tensor->ne[0]; j++){
+    //             fprintf(outfile, "%.3f ", data[i * tensor->ne[0] + j]);
+    //         }
+    //         fprintf(outfile, "\n");
+    //     }
+    // }
+
+    // fclose(outfile);
 
     if (tensor->op == GGML_OP_NONE || ggml_is_empty(tensor)) {
         return;

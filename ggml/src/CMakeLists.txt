@@ -256,7 +256,7 @@ endif()
 if (GGML_LLAMAFILE)
     message(STATUS "Using llamafile")
 
-    add_compile_definitions(GGML_USE_LLAMAFILE)
+    # add_compile_definitions(GGML_USE_LLAMAFILE)
 
     set(GGML_HEADERS_LLAMAFILE llamafile/sgemm.h)
     set(GGML_SOURCES_LLAMAFILE llamafile/sgemm.cpp)
