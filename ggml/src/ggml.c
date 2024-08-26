@@ -1034,9 +1034,11 @@ static const ggml_type_traits_t type_traits[GGML_TYPE_COUNT] = {
         .blck_size                = 4,
         .type_size                = sizeof(uint8_t),
         .is_quantized             = true,
-        .vec_dot                  = (ggml_vec_dot_t) ggml_vec_dot_i2_i8_s,
-        .vec_dot_type             = GGML_TYPE_I8_S,
-        // .vec_dot                  = (ggml_vec_dot_t) ggml_vec_dot_i2_f32_s,
+        // .vec_dot                  = (ggml_vec_dot_t) ggml_vec_dot_i2_i8_s,
+        // .vec_dot_type             = GGML_TYPE_I8_S,
+        .vec_dot                  = (ggml_vec_dot_t) ggml_vec_dot_i2_i8_ss,
+        .vec_dot_type             = GGML_TYPE_I8_SS,
+        // .vec_dot                  = (ggml_vec_dot_t) ggml_vec_dot_i2_f32,
         // .vec_dot_type             = GGML_TYPE_F32,
         .nrows                    = 1,
     },
@@ -1046,6 +1048,13 @@ static const ggml_type_traits_t type_traits[GGML_TYPE_COUNT] = {
         .type_size                = sizeof(block_i8),
         .is_quantized             = true,
         .from_float               = quantize_row_i8_s,
+    },
+    [GGML_TYPE_I8_SS] = { // row_size需特判
+        .type_name                = "i8_ss",
+        .blck_size                = 1,
+        .type_size                = sizeof(int8_t),
+        .is_quantized             = true,
+        .from_float               = quantize_row_i8_ss,
     }
 };
 
@@ -3235,6 +3244,9 @@ GGML_CALL size_t ggml_type_size(enum ggml_type type) {
 }
 
 GGML_CALL size_t ggml_row_size(enum ggml_type type, int64_t ne) {
+    if (type == GGML_TYPE_I8_SS){
+        return sizeof(int8_t) * ne + sizeof(float);
+    }
     assert(ne % ggml_blck_size(type) == 0);
     return ggml_type_size(type)*ne/ggml_blck_size(type);
 }
@@ -12292,12 +12304,35 @@ static void ggml_compute_forward_mul_mat_one_chunk(
     }
 }
 
+inline void print_tensor(FILE *outfile, const char *name, const struct ggml_tensor *tensor){
+    fprintf(outfile, "%s: %s %s ", name, tensor->name, ggml_type_name(tensor->type));
+    for (int i = 0; i < 4; i++){
+        fprintf(outfile, "%d ", tensor->ne[i]);
+    }
+    fprintf(outfile, "\n");
+}
+
 static void ggml_compute_forward_mul_mat(
         const struct ggml_compute_params * params,
               struct ggml_tensor * dst) {
 
     const struct ggml_tensor * src0 = dst->src[0];
     const struct ggml_tensor * src1 = dst->src[1];
+
+    // FILE *outfile = fopen("/home/cipherxzc/Projects/tensor", "a");
+    // assert(outfile != NULL);
+    // print_tensor(outfile, "src0", src0);
+    // print_tensor(outfile, "src1", src1);
+    // print_tensor(outfile, "dst", dst);
+    // fclose(outfile);
+
+    // float *tmp = (float *)dst->data;
+    // for (int i = 0; i < dst->ne[1]; i++){
+    //     for (int j = 0; j < dst->ne[0]; j++){
+    //         fprintf(outfile, "%f ", tmp[i * dst->ne[0] + j]);
+    //     }
+    //     fprintf(outfile, "\n");
+    // }
 
     GGML_TENSOR_BINARY_OP_LOCALS
 
@@ -12507,28 +12542,6 @@ UseGgmlGemm2:;
 
         current_chunk = atomic_fetch_add(&params->shared->current_chunk, 1);
     }
-
-    // FILE *outfile = fopen("/home/cipherxzc/Projects/tensor", "w");
-    // assert(outfile != NULL);
-    // fprintf(outfile, "Case #1: %s\n", dst->name);
-    // fprintf(outfile, "src0: %s %s %d %d\n", src0->name, ggml_type_name(src0->type), (int) src0->ne[1], (int) src0->ne[0]);
-    // fprintf(outfile, "src1: %s %s %d %d\n", src1->name, ggml_type_name(src1->type), (int) src1->ne[1], (int) src1->ne[0]);
-    // // fprintf(outfile, "dst: %s %s %d %d\n", dst->name, ggml_type_name(dst->type), (int) dst->ne[1], (int) dst->ne[0]);
-    // fprintf(outfile, "dst: %s %s ", dst->name, ggml_type_name(dst->type));
-    // for (int i = 0; i < 4; i++){
-    //     fprintf(outfile, "%d ", dst->ne[i]);
-    // }
-    // fprintf(outfile, "\n");
-    // float *tmp = (float *)dst->data;
-    // for (int i = 0; i < dst->ne[1]; i++){
-    //     for (int j = 0; j < dst->ne[0]; j++){
-    //         fprintf(outfile, "%f ", tmp[i * dst->ne[0] + j]);
-    //     }
-    //     fprintf(outfile, "\n");
-    // }
-
-    // fclose(outfile);
-    // exit(0);
 }
 
 // ggml_compute_forward_mul_mat_id

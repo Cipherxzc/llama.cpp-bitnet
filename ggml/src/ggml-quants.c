@@ -658,9 +658,70 @@ static inline __m128i packNibbles( __m256i bytes ) {
 }
 #endif  //__loongarch_asx
 
-// #define BITNET_AVX2
+#define BITNET_AVX2
 
-// 新实现的，使用了block
+#ifdef BITNET_AVX2
+// 打印 __m256i 向量中的 int8_t 值
+void print_m256i_epi8(__m256i vec) {
+    int8_t values[32];
+
+    _mm256_store_si256(values, vec);
+
+    for (int i = 0; i < 32; ++i) {
+        printf("%4d ", values[i]);
+    }
+    printf("\n");
+}
+
+// 打印 __m256i 向量中的 int16_t 值
+void print_m256i_epi16(__m256i vec) {
+    int16_t values[16];
+
+    _mm256_store_si256(values, vec);
+
+    for (int i = 0; i < 16; ++i) {
+        printf("%9d ", values[i]);
+    }
+    printf("\n");
+}
+
+// 打印 __m256i 向量中的 int32_t 值
+void print_m256i_epi32(__m256i vec) {
+    int32_t values[8];
+
+    _mm256_store_si256(values, vec);
+
+    for (int i = 0; i < 8; ++i) {
+        printf("%3d ", values[i]);
+    }
+    printf("\n");
+}
+
+// 打印 __m256 向量中的 float 值
+void print_m256_ps(__m256 vec) {
+    float values[8];
+
+    _mm256_storeu_ps(values, vec);
+
+    for (int i = 0; i < 8; ++i) {
+        printf("%.2f ", values[i]);
+    }
+    printf("\n");
+}
+
+// 计算 __m256 向量中 8 个 32 位浮点数的和，并将结果转换为 int
+int calc_m256(__m256 vec) {
+    float values[8];
+    _mm256_storeu_ps(values, vec);
+
+    float res = 0;
+    for (int i = 0; i < 8; ++i) {
+        res += values[i];
+    }
+    return (int) res;
+}
+#endif
+
 void quantize_row_i8_s(const float * x, void * y, int64_t n) {
     static const int siz = I8_SIZE;
     assert(n % siz == 0);
@@ -689,10 +750,34 @@ void quantize_row_i8_s(const float * x, void * y, int64_t n) {
             if (v < -128) v = -128;
 #endif
             dst[i].data[j] = (int8_t)v;
-            // printf("%d %f %f\n", (int)dst[i].data[j], v * (float)s, x[i * siz + j]);
-            // fflush(stdout);
         }
     }
+}
+
+void quantize_row_i8_ss(const float * x, void * y, int64_t n) {
+    int8_t *dst = (int8_t *) y;
+
+    const double eps = 1e-5;
+    double max = eps;
+    for (int i = 0; i < n; i++){
+        max = MAX(max, (double) x[i]);
+    }
+    const double s  = max / 127;
+    const double is = 1e0 / MAX(s, eps);
+
+    for (int i = 0; i < n; i++){
+        float v = round((double) x[i] * is);
+        if (v >  127) v =  127;
+#ifdef BITNET_AVX2
+        if (v < -127) v = -127;
+#else
+        if (v < -128) v = -128;
+#endif
+        dst[i] = (int8_t)v;
+    }
+
+    float *scale = (float *) (dst + n);
+    *scale = (float) s;
 }
 
 // BitNet
@@ -732,57 +817,7 @@ size_t quantize_i2_s(const float * restrict src, void * restrict dst, int64_t nr
     return nrow * row_size;
 }
 
-#ifdef BITNET_AVX2
-// 打印 __m256i 向量中的 int8_t 值
-void print_m256i_epi8(__m256i vec) {
-    int8_t values[32];
-
-    _mm256_store_si256(values, vec);
-
-    for (int i = 0; i < 32; ++i) {
-        printf("%4d ", values[i]);
-    }
-    printf("\n");
-}
-
-// 打印 __m256i 向量中的 int16_t 值
-void print_m256i_epi16(__m256i vec) {
-    int16_t values[16];
-
-    _mm256_store_si256(values, vec);
-
-    for (int i = 0; i < 16; ++i) {
-        printf("%9d ", values[i]);
-    }
-    printf("\n");
-}
-
-// 打印 __m256i 向量中的 int32_t 值
-void print_m256i_epi32(__m256i vec) {
-    int32_t values[8];
-
-    _mm256_store_si256(values, vec);
-
-    for (int i = 0; i < 8; ++i) {
-        printf("%19d ", values[i]);
-    }
-    printf("\n");
-}
-
-// 计算 __m256 向量中 8 个 32 位浮点数的和，并将结果转换为 int
-int calc_m256(__m256 vec) {
-    float values[8];
-    _mm256_storeu_ps(values, vec);
-
-    float res = 0;
-    for (int i = 0; i < 8; ++i) {
-        res += values[i];
-    }
-    return (int) res;
-}
-#endif
-
-static inline __m256 bitnet_mul(const __m256i x, const __m256i y) {
+static inline __m256i bitnet_mul(const __m256i x, const __m256i y) {
     const __m256i ax = _mm256_sign_epi8(x, x);
     const __m256i sy = _mm256_sign_epi8(y, x);
 
@@ -796,10 +831,9 @@ static inline __m256 bitnet_mul(const __m256i x, const __m256i y) {
     // print_m256i_epi16(dot);
     // print_m256i_epi32(summed_pairs);
 
-    return _mm256_cvtepi32_ps(summed_pairs);
+    return summed_pairs;
 }
 
-// BitNet
 void ggml_vec_dot_i2_i8_s(int n, float * restrict s, size_t bs, const void * restrict vx, size_t bx, const void * restrict vy, size_t by, int nrc) {
     UNUSED(bs);
     UNUSED(bx);
@@ -832,7 +866,7 @@ void ggml_vec_dot_i2_i8_s(int n, float * restrict s, size_t bs, const void * res
         );
         const __m256i qy = _mm256_loadu_si256((const __m256i *) y[i].data);
 
-        const __m256 q = bitnet_mul(qx, qy);
+        const __m256 q = _mm256_cvtepi32_ps(bitnet_mul(qx, qy));
 
         acc = _mm256_fmadd_ps(sc, q, acc); // 乘上 scale 并累加
 
@@ -881,32 +915,165 @@ void ggml_vec_dot_i2_i8_s(int n, float * restrict s, size_t bs, const void * res
     }
 #endif
 
-    // printf("%f %f\n", sumf, sumf2);
+    *s = sumf;
+}
+
+void ggml_vec_dot_i2_i8_ss(int n, float * restrict s, size_t bs, const void * restrict vx, size_t bx, const void * restrict vy, size_t by, int nrc) {
+    UNUSED(bs);
+    UNUSED(bx);
+    UNUSED(by);
+    UNUSED(nrc);
+    
+    const uint8_t * restrict x = vx; // int2
+    const int8_t  * restrict y = vy; // int8
+
+    assert(n % 32 == 0);
+
+    float sumf = 0;
+
+#ifdef BITNET_AVX2
+    __m256i acc = _mm256_setzero_si256();
+    for (int i = 0; i <= n; i += 32) { // 第i个 block_i8
+        const __m256i qx = _mm256_set_epi32( // 查表
+            i2s_i8s [ x[i / 4 + 7] ],
+            i2s_i8s [ x[i / 4 + 6] ],
+            i2s_i8s [ x[i / 4 + 5] ],
+            i2s_i8s [ x[i / 4 + 4] ],
+            i2s_i8s [ x[i / 4 + 3] ],
+            i2s_i8s [ x[i / 4 + 2] ],
+            i2s_i8s [ x[i / 4 + 1] ],
+            i2s_i8s [ x[i / 4 + 0] ]
+        );
+        const __m256i qy = _mm256_loadu_si256((const __m256i *)(y + i));
+
+        const __m256i q = bitnet_mul(qx, qy);
+
+        acc = _mm256_add_epi32(acc, q);
+    }
+
+    sumf = hsum_float_8(_mm256_cvtepi32_ps(acc));
+#else
+    for (int i = 0; i < n; i += 4) {
+        const int8_t *weight = (const int8_t *)(i2s_i8s + x[i >> 2]); // 查表
+
+        sumf += (int) (y[i + 0] * weight[0]);
+        sumf += (int) (y[i + 1] * weight[1]);
+        sumf += (int) (y[i + 2] * weight[2]);
+        sumf += (int) (y[i + 3] * weight[3]);
+    }
+#endif
+
+    const float *sc = (const float *) (y + n);
+    float scale = *sc;
+    sumf *= scale;
 
     *s = sumf;
 }
 
-void ggml_vec_dot_i2_f32_s(int n, float * restrict s, size_t bs, const void * restrict vx, size_t bx, const void * restrict vy, size_t by, int nrc) {
+void ggml_vec_dot_i2_f32_2(int n, float * restrict s, size_t bs, const void * restrict vx, size_t bx, const void * restrict vy, size_t by, int nrc) {
     UNUSED(bs);
     UNUSED(bx);
     UNUSED(by);
     UNUSED(nrc);
     
     const uint8_t  * restrict x = vx; // int2
-    const float    * restrict y = vy; // int8
+    const float    * restrict y = vy; // f32
 
     assert(n % 4 == 0);
+    
+    const double eps = 1e-5;
+    double max = eps;
+    for (int i = 0; i < n; i++){
+        max = MAX(max, (double) y[i]);
+    }
+    const double sc  = max / 127;
+    const double isc = 1e0 / MAX(sc, eps);
 
     float sumf = 0;
 
     for (int i = 0; i < n; i += 4){
         const int8_t *weight = (const int8_t *)(i2s_i8s + x[i >> 2]); // 查表
-        // 循环展开加速
-        sumf += y[i + 0] * (float) weight[3];
-        sumf += y[i + 1] * (float) weight[2];
-        sumf += y[i + 2] * (float) weight[1];
-        sumf += y[i + 3] * (float) weight[0];
+        
+        for (int j = 0; j < 4; j++){
+            float v = round((double) y[i + j] * isc);
+            if (v >  127) v =  127;
+            if (v < -128) v = -128;
+            v *= sc;
+
+            sumf += v * (float)weight[j];
+        }
     }
+
+    *s = sumf;
+}
+
+void ggml_vec_dot_i2_f32(int n, float * restrict s, size_t bs, const void * restrict vx, size_t bx, const void * restrict vy, size_t by, int nrc) {
+    UNUSED(bs);
+    UNUSED(bx);
+    UNUSED(by);
+    UNUSED(nrc);
+    
+    const uint8_t  * restrict x = vx; // int2
+    const float    * restrict y = vy; // f32
+
+    assert(n % 8 == 0);
+
+    float sumf = 0;
+
+#ifdef BITNET_AVX2
+    __m256 acc = _mm256_setzero_ps();
+    for (int i = 0; i < n / 8; i++){
+        const int8_t *weight0 = (const int8_t *)(i2s_i8s + x[i << 1]); // 查表
+        const int8_t *weight1 = (const int8_t *)(i2s_i8s + x[i << 1 | 1]);
+
+        const __m256 qx = _mm256_set_ps(
+            (float) weight1[3],
+            (float) weight1[2],
+            (float) weight1[1],
+            (float) weight1[0],
+            (float) weight0[3],
+            (float) weight0[2],
+            (float) weight0[1],
+            (float) weight0[0]
+        );
+        const __m256 qy = _mm256_loadu_ps((const __m256 *) (y + i * 8));
+
+        acc = _mm256_fmadd_ps(qx, qy, acc);
+        
+        // print_m256i_epi32(_mm256_set_epi32(
+        //     (int) weight1[3],
+        //     (int) weight1[2],
+        //     (int) weight1[1],
+        //     (int) weight1[0],
+        //     (int) weight0[3],
+        //     (int) weight0[2],
+        //     (int) weight0[1],
+        //     (int) weight0[0]
+        // ));
+        // for (int j = 0; j < 4; j++){
+        //     printf("%3d ", weight0[j]);
+        // }
+        // for (int j = 0; j < 4; j++){
+        //     printf("%3d ", weight1[j]);
+        // }
+        // print_m256_ps(qy);
+        // for (int j = 0; j < 8; j++){
+        //     printf("%.2f ", y[i * 8 + j]);
+        // }
+        // printf("\n");
+    }
+
+    sumf = hsum_float_8(acc);
+#else
+    for (int i = 0; i < n; i += 4){
+        const int8_t *weight = (const int8_t *)(i2s_i8s + x[i >> 2]); // 查表
+        // 循环展开加速
+        sumf += y[i + 0] * (float) weight[0];
+        sumf += y[i + 1] * (float) weight[1];
+        sumf += y[i + 2] * (float) weight[2];
+        sumf += y[i + 3] * (float) weight[3];
+    }
+#endif
 
     *s = sumf;
 }
