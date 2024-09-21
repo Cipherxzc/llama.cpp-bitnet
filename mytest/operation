@@ -1,0 +1,6024 @@
+inp_embd GET_ROWS
+norm-0 RMS_NORM
+attn_norm-0 MUL
+node_3 MUL_MAT
+Qcur-0 MUL
+Qcur-0 (reshaped) RESHAPE
+Qcur-0 ROPE
+node_7 MUL_MAT
+Kcur-0 MUL
+Kcur-0 (reshaped) RESHAPE
+Kcur-0 ROPE
+node_11 MUL_MAT
+Vcur-0 MUL
+k_cache_view-0 VIEW
+k_cache_view-0 (copy of Kcur-0) CPY
+Vcur-0 (transposed) TRANSPOSE
+v_cache_view-0 VIEW
+v_cache_view-0 (copy of Vcur-0 (transposed)) CPY
+v-0 VIEW
+k-0 VIEW
+q-0 PERMUTE
+kq-0 MUL_MAT
+kq_soft_max_ext-0 SOFT_MAX
+kqv-0 MUL_MAT
+kqv_merged-0 PERMUTE
+kqv_out-0 CONT
+norm-0 RMS_NORM
+attn_sub_norm-0 MUL
+node_28 MUL_MAT
+attn_o_out-0 MUL
+ffn_inp-0 ADD
+norm-0 RMS_NORM
+ffn_norm-0 MUL
+ffn_gate-0 MUL_MAT
+ffn_gate_s-0 MUL
+ffn_silu-0 UNARY
+ffn_up-0 MUL_MAT
+ffn_up_s-0 MUL
+ffn_sub_out-0 MUL
+norm-0 RMS_NORM
+ffn_sub_norm-0 MUL
+node_41 MUL_MAT
+ffn_down-0 MUL
+l_out-0 ADD
+norm-1 RMS_NORM
+attn_norm-1 MUL
+node_46 MUL_MAT
+Qcur-1 MUL
+Qcur-1 (reshaped) RESHAPE
+Qcur-1 ROPE
+node_50 MUL_MAT
+Kcur-1 MUL
+Kcur-1 (reshaped) RESHAPE
+Kcur-1 ROPE
+node_54 MUL_MAT
+Vcur-1 MUL
+k_cache_view-1 VIEW
+k_cache_view-1 (copy of Kcur-1) CPY
+Vcur-1 (transposed) TRANSPOSE
+v_cache_view-1 VIEW
+v_cache_view-1 (copy of Vcur-1 (transposed)) CPY
+v-1 VIEW
+k-1 VIEW
+q-1 PERMUTE
+kq-1 MUL_MAT
+kq_soft_max_ext-1 SOFT_MAX
+kqv-1 MUL_MAT
+kqv_merged-1 PERMUTE
+kqv_out-1 CONT
+norm-1 RMS_NORM
+attn_sub_norm-1 MUL
+node_71 MUL_MAT
+attn_o_out-1 MUL
+ffn_inp-1 ADD
+norm-1 RMS_NORM
+ffn_norm-1 MUL
+ffn_gate-1 MUL_MAT
+ffn_gate_s-1 MUL
+ffn_silu-1 UNARY
+ffn_up-1 MUL_MAT
+ffn_up_s-1 MUL
+ffn_sub_out-1 MUL
+norm-1 RMS_NORM
+ffn_sub_norm-1 MUL
+node_84 MUL_MAT
+ffn_down-1 MUL
+l_out-1 ADD
+norm-2 RMS_NORM
+attn_norm-2 MUL
+node_89 MUL_MAT
+Qcur-2 MUL
+Qcur-2 (reshaped) RESHAPE
+Qcur-2 ROPE
+node_93 MUL_MAT
+Kcur-2 MUL
+Kcur-2 (reshaped) RESHAPE
+Kcur-2 ROPE
+node_97 MUL_MAT
+Vcur-2 MUL
+k_cache_view-2 VIEW
+k_cache_view-2 (copy of Kcur-2) CPY
+Vcur-2 (transposed) TRANSPOSE
+v_cache_view-2 VIEW
+v_cache_view-2 (copy of Vcur-2 (transposed)) CPY
+v-2 VIEW
+k-2 VIEW
+q-2 PERMUTE
+kq-2 MUL_MAT
+kq_soft_max_ext-2 SOFT_MAX
+kqv-2 MUL_MAT
+kqv_merged-2 PERMUTE
+kqv_out-2 CONT
+norm-2 RMS_NORM
+attn_sub_norm-2 MUL
+node_114 MUL_MAT
+attn_o_out-2 MUL
+ffn_inp-2 ADD
+norm-2 RMS_NORM
+ffn_norm-2 MUL
+ffn_gate-2 MUL_MAT
+ffn_gate_s-2 MUL
+ffn_silu-2 UNARY
+ffn_up-2 MUL_MAT
+ffn_up_s-2 MUL
+ffn_sub_out-2 MUL
+norm-2 RMS_NORM
+ffn_sub_norm-2 MUL
+node_127 MUL_MAT
+ffn_down-2 MUL
+l_out-2 ADD
+norm-3 RMS_NORM
+attn_norm-3 MUL
+node_132 MUL_MAT
+Qcur-3 MUL
+Qcur-3 (reshaped) RESHAPE
+Qcur-3 ROPE
+node_136 MUL_MAT
+Kcur-3 MUL
+Kcur-3 (reshaped) RESHAPE
+Kcur-3 ROPE
+node_140 MUL_MAT
+Vcur-3 MUL
+k_cache_view-3 VIEW
+k_cache_view-3 (copy of Kcur-3) CPY
+Vcur-3 (transposed) TRANSPOSE
+v_cache_view-3 VIEW
+v_cache_view-3 (copy of Vcur-3 (transposed)) CPY
+v-3 VIEW
+k-3 VIEW
+q-3 PERMUTE
+kq-3 MUL_MAT
+kq_soft_max_ext-3 SOFT_MAX
+kqv-3 MUL_MAT
+kqv_merged-3 PERMUTE
+kqv_out-3 CONT
+norm-3 RMS_NORM
+attn_sub_norm-3 MUL
+node_157 MUL_MAT
+attn_o_out-3 MUL
+ffn_inp-3 ADD
+norm-3 RMS_NORM
+ffn_norm-3 MUL
+ffn_gate-3 MUL_MAT
+ffn_gate_s-3 MUL
+ffn_silu-3 UNARY
+ffn_up-3 MUL_MAT
+ffn_up_s-3 MUL
+ffn_sub_out-3 MUL
+norm-3 RMS_NORM
+ffn_sub_norm-3 MUL
+node_170 MUL_MAT
+ffn_down-3 MUL
+l_out-3 ADD
+norm-4 RMS_NORM
+attn_norm-4 MUL
+node_175 MUL_MAT
+Qcur-4 MUL
+Qcur-4 (reshaped) RESHAPE
+Qcur-4 ROPE
+node_179 MUL_MAT
+Kcur-4 MUL
+Kcur-4 (reshaped) RESHAPE
+Kcur-4 ROPE
+node_183 MUL_MAT
+Vcur-4 MUL
+k_cache_view-4 VIEW
+k_cache_view-4 (copy of Kcur-4) CPY
+Vcur-4 (transposed) TRANSPOSE
+v_cache_view-4 VIEW
+v_cache_view-4 (copy of Vcur-4 (transposed)) CPY
+v-4 VIEW
+k-4 VIEW
+q-4 PERMUTE
+kq-4 MUL_MAT
+kq_soft_max_ext-4 SOFT_MAX
+kqv-4 MUL_MAT
+kqv_merged-4 PERMUTE
+kqv_out-4 CONT
+norm-4 RMS_NORM
+attn_sub_norm-4 MUL
+node_200 MUL_MAT
+attn_o_out-4 MUL
+ffn_inp-4 ADD
+norm-4 RMS_NORM
+ffn_norm-4 MUL
+ffn_gate-4 MUL_MAT
+ffn_gate_s-4 MUL
+ffn_silu-4 UNARY
+ffn_up-4 MUL_MAT
+ffn_up_s-4 MUL
+ffn_sub_out-4 MUL
+norm-4 RMS_NORM
+ffn_sub_norm-4 MUL
+node_213 MUL_MAT
+ffn_down-4 MUL
+l_out-4 ADD
+norm-5 RMS_NORM
+attn_norm-5 MUL
+node_218 MUL_MAT
+Qcur-5 MUL
+Qcur-5 (reshaped) RESHAPE
+Qcur-5 ROPE
+node_222 MUL_MAT
+Kcur-5 MUL
+Kcur-5 (reshaped) RESHAPE
+Kcur-5 ROPE
+node_226 MUL_MAT
+Vcur-5 MUL
+k_cache_view-5 VIEW
+k_cache_view-5 (copy of Kcur-5) CPY
+Vcur-5 (transposed) TRANSPOSE
+v_cache_view-5 VIEW
+v_cache_view-5 (copy of Vcur-5 (transposed)) CPY
+v-5 VIEW
+k-5 VIEW
+q-5 PERMUTE
+kq-5 MUL_MAT
+kq_soft_max_ext-5 SOFT_MAX
+kqv-5 MUL_MAT
+kqv_merged-5 PERMUTE
+kqv_out-5 CONT
+norm-5 RMS_NORM
+attn_sub_norm-5 MUL
+node_243 MUL_MAT
+attn_o_out-5 MUL
+ffn_inp-5 ADD
+norm-5 RMS_NORM
+ffn_norm-5 MUL
+ffn_gate-5 MUL_MAT
+ffn_gate_s-5 MUL
+ffn_silu-5 UNARY
+ffn_up-5 MUL_MAT
+ffn_up_s-5 MUL
+ffn_sub_out-5 MUL
+norm-5 RMS_NORM
+ffn_sub_norm-5 MUL
+node_256 MUL_MAT
+ffn_down-5 MUL
+l_out-5 ADD
+norm-6 RMS_NORM
+attn_norm-6 MUL
+node_261 MUL_MAT
+Qcur-6 MUL
+Qcur-6 (reshaped) RESHAPE
+Qcur-6 ROPE
+node_265 MUL_MAT
+Kcur-6 MUL
+Kcur-6 (reshaped) RESHAPE
+Kcur-6 ROPE
+node_269 MUL_MAT
+Vcur-6 MUL
+k_cache_view-6 VIEW
+k_cache_view-6 (copy of Kcur-6) CPY
+Vcur-6 (transposed) TRANSPOSE
+v_cache_view-6 VIEW
+v_cache_view-6 (copy of Vcur-6 (transposed)) CPY
+v-6 VIEW
+k-6 VIEW
+q-6 PERMUTE
+kq-6 MUL_MAT
+kq_soft_max_ext-6 SOFT_MAX
+kqv-6 MUL_MAT
+kqv_merged-6 PERMUTE
+kqv_out-6 CONT
+norm-6 RMS_NORM
+attn_sub_norm-6 MUL
+node_286 MUL_MAT
+attn_o_out-6 MUL
+ffn_inp-6 ADD
+norm-6 RMS_NORM
+ffn_norm-6 MUL
+ffn_gate-6 MUL_MAT
+ffn_gate_s-6 MUL
+ffn_silu-6 UNARY
+ffn_up-6 MUL_MAT
+ffn_up_s-6 MUL
+ffn_sub_out-6 MUL
+norm-6 RMS_NORM
+ffn_sub_norm-6 MUL
+node_299 MUL_MAT
+ffn_down-6 MUL
+l_out-6 ADD
+norm-7 RMS_NORM
+attn_norm-7 MUL
+node_304 MUL_MAT
+Qcur-7 MUL
+Qcur-7 (reshaped) RESHAPE
+Qcur-7 ROPE
+node_308 MUL_MAT
+Kcur-7 MUL
+Kcur-7 (reshaped) RESHAPE
+Kcur-7 ROPE
+node_312 MUL_MAT
+Vcur-7 MUL
+k_cache_view-7 VIEW
+k_cache_view-7 (copy of Kcur-7) CPY
+Vcur-7 (transposed) TRANSPOSE
+v_cache_view-7 VIEW
+v_cache_view-7 (copy of Vcur-7 (transposed)) CPY
+v-7 VIEW
+k-7 VIEW
+q-7 PERMUTE
+kq-7 MUL_MAT
+kq_soft_max_ext-7 SOFT_MAX
+kqv-7 MUL_MAT
+kqv_merged-7 PERMUTE
+kqv_out-7 CONT
+norm-7 RMS_NORM
+attn_sub_norm-7 MUL
+node_329 MUL_MAT
+attn_o_out-7 MUL
+ffn_inp-7 ADD
+norm-7 RMS_NORM
+ffn_norm-7 MUL
+ffn_gate-7 MUL_MAT
+ffn_gate_s-7 MUL
+ffn_silu-7 UNARY
+ffn_up-7 MUL_MAT
+ffn_up_s-7 MUL
+ffn_sub_out-7 MUL
+norm-7 RMS_NORM
+ffn_sub_norm-7 MUL
+node_342 MUL_MAT
+ffn_down-7 MUL
+l_out-7 ADD
+norm-8 RMS_NORM
+attn_norm-8 MUL
+node_347 MUL_MAT
+Qcur-8 MUL
+Qcur-8 (reshaped) RESHAPE
+Qcur-8 ROPE
+node_351 MUL_MAT
+Kcur-8 MUL
+Kcur-8 (reshaped) RESHAPE
+Kcur-8 ROPE
+node_355 MUL_MAT
+Vcur-8 MUL
+k_cache_view-8 VIEW
+k_cache_view-8 (copy of Kcur-8) CPY
+Vcur-8 (transposed) TRANSPOSE
+v_cache_view-8 VIEW
+v_cache_view-8 (copy of Vcur-8 (transposed)) CPY
+v-8 VIEW
+k-8 VIEW
+q-8 PERMUTE
+kq-8 MUL_MAT
+kq_soft_max_ext-8 SOFT_MAX
+kqv-8 MUL_MAT
+kqv_merged-8 PERMUTE
+kqv_out-8 CONT
+norm-8 RMS_NORM
+attn_sub_norm-8 MUL
+node_372 MUL_MAT
+attn_o_out-8 MUL
+ffn_inp-8 ADD
+norm-8 RMS_NORM
+ffn_norm-8 MUL
+ffn_gate-8 MUL_MAT
+ffn_gate_s-8 MUL
+ffn_silu-8 UNARY
+ffn_up-8 MUL_MAT
+ffn_up_s-8 MUL
+ffn_sub_out-8 MUL
+norm-8 RMS_NORM
+ffn_sub_norm-8 MUL
+node_385 MUL_MAT
+ffn_down-8 MUL
+l_out-8 ADD
+norm-9 RMS_NORM
+attn_norm-9 MUL
+node_390 MUL_MAT
+Qcur-9 MUL
+Qcur-9 (reshaped) RESHAPE
+Qcur-9 ROPE
+node_394 MUL_MAT
+Kcur-9 MUL
+Kcur-9 (reshaped) RESHAPE
+Kcur-9 ROPE
+node_398 MUL_MAT
+Vcur-9 MUL
+k_cache_view-9 VIEW
+k_cache_view-9 (copy of Kcur-9) CPY
+Vcur-9 (transposed) TRANSPOSE
+v_cache_view-9 VIEW
+v_cache_view-9 (copy of Vcur-9 (transposed)) CPY
+v-9 VIEW
+k-9 VIEW
+q-9 PERMUTE
+kq-9 MUL_MAT
+kq_soft_max_ext-9 SOFT_MAX
+kqv-9 MUL_MAT
+kqv_merged-9 PERMUTE
+kqv_out-9 CONT
+norm-9 RMS_NORM
+attn_sub_norm-9 MUL
+node_415 MUL_MAT
+attn_o_out-9 MUL
+ffn_inp-9 ADD
+norm-9 RMS_NORM
+ffn_norm-9 MUL
+ffn_gate-9 MUL_MAT
+ffn_gate_s-9 MUL
+ffn_silu-9 UNARY
+ffn_up-9 MUL_MAT
+ffn_up_s-9 MUL
+ffn_sub_out-9 MUL
+norm-9 RMS_NORM
+ffn_sub_norm-9 MUL
+node_428 MUL_MAT
+ffn_down-9 MUL
+l_out-9 ADD
+norm-10 RMS_NORM
+attn_norm-10 MUL
+node_433 MUL_MAT
+Qcur-10 MUL
+Qcur-10 (reshaped) RESHAPE
+Qcur-10 ROPE
+node_437 MUL_MAT
+Kcur-10 MUL
+Kcur-10 (reshaped) RESHAPE
+Kcur-10 ROPE
+node_441 MUL_MAT
+Vcur-10 MUL
+k_cache_view-10 VIEW
+k_cache_view-10 (copy of Kcur-10) CPY
+Vcur-10 (transposed) TRANSPOSE
+v_cache_view-10 VIEW
+v_cache_view-10 (copy of Vcur-10 (transposed)) CPY
+v-10 VIEW
+k-10 VIEW
+q-10 PERMUTE
+kq-10 MUL_MAT
+kq_soft_max_ext-10 SOFT_MAX
+kqv-10 MUL_MAT
+kqv_merged-10 PERMUTE
+kqv_out-10 CONT
+norm-10 RMS_NORM
+attn_sub_norm-10 MUL
+node_458 MUL_MAT
+attn_o_out-10 MUL
+ffn_inp-10 ADD
+norm-10 RMS_NORM
+ffn_norm-10 MUL
+ffn_gate-10 MUL_MAT
+ffn_gate_s-10 MUL
+ffn_silu-10 UNARY
+ffn_up-10 MUL_MAT
+ffn_up_s-10 MUL
+ffn_sub_out-10 MUL
+norm-10 RMS_NORM
+ffn_sub_norm-10 MUL
+node_471 MUL_MAT
+ffn_down-10 MUL
+l_out-10 ADD
+norm-11 RMS_NORM
+attn_norm-11 MUL
+node_476 MUL_MAT
+Qcur-11 MUL
+Qcur-11 (reshaped) RESHAPE
+Qcur-11 ROPE
+node_480 MUL_MAT
+Kcur-11 MUL
+Kcur-11 (reshaped) RESHAPE
+Kcur-11 ROPE
+node_484 MUL_MAT
+Vcur-11 MUL
+k_cache_view-11 VIEW
+k_cache_view-11 (copy of Kcur-11) CPY
+Vcur-11 (transposed) TRANSPOSE
+v_cache_view-11 VIEW
+v_cache_view-11 (copy of Vcur-11 (transposed)) CPY
+v-11 VIEW
+k-11 VIEW
+q-11 PERMUTE
+kq-11 MUL_MAT
+kq_soft_max_ext-11 SOFT_MAX
+kqv-11 MUL_MAT
+kqv_merged-11 PERMUTE
+kqv_out-11 CONT
+norm-11 RMS_NORM
+attn_sub_norm-11 MUL
+node_501 MUL_MAT
+attn_o_out-11 MUL
+ffn_inp-11 ADD
+norm-11 RMS_NORM
+ffn_norm-11 MUL
+ffn_gate-11 MUL_MAT
+ffn_gate_s-11 MUL
+ffn_silu-11 UNARY
+ffn_up-11 MUL_MAT
+ffn_up_s-11 MUL
+ffn_sub_out-11 MUL
+norm-11 RMS_NORM
+ffn_sub_norm-11 MUL
+node_514 MUL_MAT
+ffn_down-11 MUL
+l_out-11 ADD
+norm-12 RMS_NORM
+attn_norm-12 MUL
+node_519 MUL_MAT
+Qcur-12 MUL
+Qcur-12 (reshaped) RESHAPE
+Qcur-12 ROPE
+node_523 MUL_MAT
+Kcur-12 MUL
+Kcur-12 (reshaped) RESHAPE
+Kcur-12 ROPE
+node_527 MUL_MAT
+Vcur-12 MUL
+k_cache_view-12 VIEW
+k_cache_view-12 (copy of Kcur-12) CPY
+Vcur-12 (transposed) TRANSPOSE
+v_cache_view-12 VIEW
+v_cache_view-12 (copy of Vcur-12 (transposed)) CPY
+v-12 VIEW
+k-12 VIEW
+q-12 PERMUTE
+kq-12 MUL_MAT
+kq_soft_max_ext-12 SOFT_MAX
+kqv-12 MUL_MAT
+kqv_merged-12 PERMUTE
+kqv_out-12 CONT
+norm-12 RMS_NORM
+attn_sub_norm-12 MUL
+node_544 MUL_MAT
+attn_o_out-12 MUL
+ffn_inp-12 ADD
+norm-12 RMS_NORM
+ffn_norm-12 MUL
+ffn_gate-12 MUL_MAT
+ffn_gate_s-12 MUL
+ffn_silu-12 UNARY
+ffn_up-12 MUL_MAT
+ffn_up_s-12 MUL
+ffn_sub_out-12 MUL
+norm-12 RMS_NORM
+ffn_sub_norm-12 MUL
+node_557 MUL_MAT
+ffn_down-12 MUL
+l_out-12 ADD
+norm-13 RMS_NORM
+attn_norm-13 MUL
+node_562 MUL_MAT
+Qcur-13 MUL
+Qcur-13 (reshaped) RESHAPE
+Qcur-13 ROPE
+node_566 MUL_MAT
+Kcur-13 MUL
+Kcur-13 (reshaped) RESHAPE
+Kcur-13 ROPE
+node_570 MUL_MAT
+Vcur-13 MUL
+k_cache_view-13 VIEW
+k_cache_view-13 (copy of Kcur-13) CPY
+Vcur-13 (transposed) TRANSPOSE
+v_cache_view-13 VIEW
+v_cache_view-13 (copy of Vcur-13 (transposed)) CPY
+v-13 VIEW
+k-13 VIEW
+q-13 PERMUTE
+kq-13 MUL_MAT
+kq_soft_max_ext-13 SOFT_MAX
+kqv-13 MUL_MAT
+kqv_merged-13 PERMUTE
+kqv_out-13 CONT
+norm-13 RMS_NORM
+attn_sub_norm-13 MUL
+node_587 MUL_MAT
+attn_o_out-13 MUL
+ffn_inp-13 ADD
+norm-13 RMS_NORM
+ffn_norm-13 MUL
+ffn_gate-13 MUL_MAT
+ffn_gate_s-13 MUL
+ffn_silu-13 UNARY
+ffn_up-13 MUL_MAT
+ffn_up_s-13 MUL
+ffn_sub_out-13 MUL
+norm-13 RMS_NORM
+ffn_sub_norm-13 MUL
+node_600 MUL_MAT
+ffn_down-13 MUL
+l_out-13 ADD
+norm-14 RMS_NORM
+attn_norm-14 MUL
+node_605 MUL_MAT
+Qcur-14 MUL
+Qcur-14 (reshaped) RESHAPE
+Qcur-14 ROPE
+node_609 MUL_MAT
+Kcur-14 MUL
+Kcur-14 (reshaped) RESHAPE
+Kcur-14 ROPE
+node_613 MUL_MAT
+Vcur-14 MUL
+k_cache_view-14 VIEW
+k_cache_view-14 (copy of Kcur-14) CPY
+Vcur-14 (transposed) TRANSPOSE
+v_cache_view-14 VIEW
+v_cache_view-14 (copy of Vcur-14 (transposed)) CPY
+v-14 VIEW
+k-14 VIEW
+q-14 PERMUTE
+kq-14 MUL_MAT
+kq_soft_max_ext-14 SOFT_MAX
+kqv-14 MUL_MAT
+kqv_merged-14 PERMUTE
+kqv_out-14 CONT
+norm-14 RMS_NORM
+attn_sub_norm-14 MUL
+node_630 MUL_MAT
+attn_o_out-14 MUL
+ffn_inp-14 ADD
+norm-14 RMS_NORM
+ffn_norm-14 MUL
+ffn_gate-14 MUL_MAT
+ffn_gate_s-14 MUL
+ffn_silu-14 UNARY
+ffn_up-14 MUL_MAT
+ffn_up_s-14 MUL
+ffn_sub_out-14 MUL
+norm-14 RMS_NORM
+ffn_sub_norm-14 MUL
+node_643 MUL_MAT
+ffn_down-14 MUL
+l_out-14 ADD
+norm-15 RMS_NORM
+attn_norm-15 MUL
+node_648 MUL_MAT
+Qcur-15 MUL
+Qcur-15 (reshaped) RESHAPE
+Qcur-15 ROPE
+node_652 MUL_MAT
+Kcur-15 MUL
+Kcur-15 (reshaped) RESHAPE
+Kcur-15 ROPE
+node_656 MUL_MAT
+Vcur-15 MUL
+k_cache_view-15 VIEW
+k_cache_view-15 (copy of Kcur-15) CPY
+Vcur-15 (transposed) TRANSPOSE
+v_cache_view-15 VIEW
+v_cache_view-15 (copy of Vcur-15 (transposed)) CPY
+v-15 VIEW
+k-15 VIEW
+q-15 PERMUTE
+kq-15 MUL_MAT
+kq_soft_max_ext-15 SOFT_MAX
+kqv-15 MUL_MAT
+kqv_merged-15 PERMUTE
+kqv_out-15 CONT
+norm-15 RMS_NORM
+attn_sub_norm-15 MUL
+node_673 MUL_MAT
+attn_o_out-15 MUL
+ffn_inp-15 ADD
+norm-15 RMS_NORM
+ffn_norm-15 MUL
+ffn_gate-15 MUL_MAT
+ffn_gate_s-15 MUL
+ffn_silu-15 UNARY
+ffn_up-15 MUL_MAT
+ffn_up_s-15 MUL
+ffn_sub_out-15 MUL
+norm-15 RMS_NORM
+ffn_sub_norm-15 MUL
+node_686 MUL_MAT
+ffn_down-15 MUL
+l_out-15 ADD
+norm-16 RMS_NORM
+attn_norm-16 MUL
+node_691 MUL_MAT
+Qcur-16 MUL
+Qcur-16 (reshaped) RESHAPE
+Qcur-16 ROPE
+node_695 MUL_MAT
+Kcur-16 MUL
+Kcur-16 (reshaped) RESHAPE
+Kcur-16 ROPE
+node_699 MUL_MAT
+Vcur-16 MUL
+k_cache_view-16 VIEW
+k_cache_view-16 (copy of Kcur-16) CPY
+Vcur-16 (transposed) TRANSPOSE
+v_cache_view-16 VIEW
+v_cache_view-16 (copy of Vcur-16 (transposed)) CPY
+v-16 VIEW
+k-16 VIEW
+q-16 PERMUTE
+kq-16 MUL_MAT
+kq_soft_max_ext-16 SOFT_MAX
+kqv-16 MUL_MAT
+kqv_merged-16 PERMUTE
+kqv_out-16 CONT
+norm-16 RMS_NORM
+attn_sub_norm-16 MUL
+node_716 MUL_MAT
+attn_o_out-16 MUL
+ffn_inp-16 ADD
+norm-16 RMS_NORM
+ffn_norm-16 MUL
+ffn_gate-16 MUL_MAT
+ffn_gate_s-16 MUL
+ffn_silu-16 UNARY
+ffn_up-16 MUL_MAT
+ffn_up_s-16 MUL
+ffn_sub_out-16 MUL
+norm-16 RMS_NORM
+ffn_sub_norm-16 MUL
+node_729 MUL_MAT
+ffn_down-16 MUL
+l_out-16 ADD
+norm-17 RMS_NORM
+attn_norm-17 MUL
+node_734 MUL_MAT
+Qcur-17 MUL
+Qcur-17 (reshaped) RESHAPE
+Qcur-17 ROPE
+node_738 MUL_MAT
+Kcur-17 MUL
+Kcur-17 (reshaped) RESHAPE
+Kcur-17 ROPE
+node_742 MUL_MAT
+Vcur-17 MUL
+k_cache_view-17 VIEW
+k_cache_view-17 (copy of Kcur-17) CPY
+Vcur-17 (transposed) TRANSPOSE
+v_cache_view-17 VIEW
+v_cache_view-17 (copy of Vcur-17 (transposed)) CPY
+v-17 VIEW
+k-17 VIEW
+q-17 PERMUTE
+kq-17 MUL_MAT
+kq_soft_max_ext-17 SOFT_MAX
+kqv-17 MUL_MAT
+kqv_merged-17 PERMUTE
+kqv_out-17 CONT
+norm-17 RMS_NORM
+attn_sub_norm-17 MUL
+node_759 MUL_MAT
+attn_o_out-17 MUL
+ffn_inp-17 ADD
+norm-17 RMS_NORM
+ffn_norm-17 MUL
+ffn_gate-17 MUL_MAT
+ffn_gate_s-17 MUL
+ffn_silu-17 UNARY
+ffn_up-17 MUL_MAT
+ffn_up_s-17 MUL
+ffn_sub_out-17 MUL
+norm-17 RMS_NORM
+ffn_sub_norm-17 MUL
+node_772 MUL_MAT
+ffn_down-17 MUL
+l_out-17 ADD
+norm-18 RMS_NORM
+attn_norm-18 MUL
+node_777 MUL_MAT
+Qcur-18 MUL
+Qcur-18 (reshaped) RESHAPE
+Qcur-18 ROPE
+node_781 MUL_MAT
+Kcur-18 MUL
+Kcur-18 (reshaped) RESHAPE
+Kcur-18 ROPE
+node_785 MUL_MAT
+Vcur-18 MUL
+k_cache_view-18 VIEW
+k_cache_view-18 (copy of Kcur-18) CPY
+Vcur-18 (transposed) TRANSPOSE
+v_cache_view-18 VIEW
+v_cache_view-18 (copy of Vcur-18 (transposed)) CPY
+v-18 VIEW
+k-18 VIEW
+q-18 PERMUTE
+kq-18 MUL_MAT
+kq_soft_max_ext-18 SOFT_MAX
+kqv-18 MUL_MAT
+kqv_merged-18 PERMUTE
+kqv_out-18 CONT
+norm-18 RMS_NORM
+attn_sub_norm-18 MUL
+node_802 MUL_MAT
+attn_o_out-18 MUL
+ffn_inp-18 ADD
+norm-18 RMS_NORM
+ffn_norm-18 MUL
+ffn_gate-18 MUL_MAT
+ffn_gate_s-18 MUL
+ffn_silu-18 UNARY
+ffn_up-18 MUL_MAT
+ffn_up_s-18 MUL
+ffn_sub_out-18 MUL
+norm-18 RMS_NORM
+ffn_sub_norm-18 MUL
+node_815 MUL_MAT
+ffn_down-18 MUL
+l_out-18 ADD
+norm-19 RMS_NORM
+attn_norm-19 MUL
+node_820 MUL_MAT
+Qcur-19 MUL
+Qcur-19 (reshaped) RESHAPE
+Qcur-19 ROPE
+node_824 MUL_MAT
+Kcur-19 MUL
+Kcur-19 (reshaped) RESHAPE
+Kcur-19 ROPE
+node_828 MUL_MAT
+Vcur-19 MUL
+k_cache_view-19 VIEW
+k_cache_view-19 (copy of Kcur-19) CPY
+Vcur-19 (transposed) TRANSPOSE
+v_cache_view-19 VIEW
+v_cache_view-19 (copy of Vcur-19 (transposed)) CPY
+v-19 VIEW
+k-19 VIEW
+q-19 PERMUTE
+kq-19 MUL_MAT
+kq_soft_max_ext-19 SOFT_MAX
+kqv-19 MUL_MAT
+kqv_merged-19 PERMUTE
+kqv_out-19 CONT
+norm-19 RMS_NORM
+attn_sub_norm-19 MUL
+node_845 MUL_MAT
+attn_o_out-19 MUL
+ffn_inp-19 ADD
+norm-19 RMS_NORM
+ffn_norm-19 MUL
+ffn_gate-19 MUL_MAT
+ffn_gate_s-19 MUL
+ffn_silu-19 UNARY
+ffn_up-19 MUL_MAT
+ffn_up_s-19 MUL
+ffn_sub_out-19 MUL
+norm-19 RMS_NORM
+ffn_sub_norm-19 MUL
+node_858 MUL_MAT
+ffn_down-19 MUL
+l_out-19 ADD
+norm-20 RMS_NORM
+attn_norm-20 MUL
+node_863 MUL_MAT
+Qcur-20 MUL
+Qcur-20 (reshaped) RESHAPE
+Qcur-20 ROPE
+node_867 MUL_MAT
+Kcur-20 MUL
+Kcur-20 (reshaped) RESHAPE
+Kcur-20 ROPE
+node_871 MUL_MAT
+Vcur-20 MUL
+k_cache_view-20 VIEW
+k_cache_view-20 (copy of Kcur-20) CPY
+Vcur-20 (transposed) TRANSPOSE
+v_cache_view-20 VIEW
+v_cache_view-20 (copy of Vcur-20 (transposed)) CPY
+v-20 VIEW
+k-20 VIEW
+q-20 PERMUTE
+kq-20 MUL_MAT
+kq_soft_max_ext-20 SOFT_MAX
+kqv-20 MUL_MAT
+kqv_merged-20 PERMUTE
+kqv_out-20 CONT
+norm-20 RMS_NORM
+attn_sub_norm-20 MUL
+node_888 MUL_MAT
+attn_o_out-20 MUL
+ffn_inp-20 ADD
+norm-20 RMS_NORM
+ffn_norm-20 MUL
+ffn_gate-20 MUL_MAT
+ffn_gate_s-20 MUL
+ffn_silu-20 UNARY
+ffn_up-20 MUL_MAT
+ffn_up_s-20 MUL
+ffn_sub_out-20 MUL
+norm-20 RMS_NORM
+ffn_sub_norm-20 MUL
+node_901 MUL_MAT
+ffn_down-20 MUL
+l_out-20 ADD
+norm-21 RMS_NORM
+attn_norm-21 MUL
+node_906 MUL_MAT
+Qcur-21 MUL
+Qcur-21 (reshaped) RESHAPE
+Qcur-21 ROPE
+node_910 MUL_MAT
+Kcur-21 MUL
+Kcur-21 (reshaped) RESHAPE
+Kcur-21 ROPE
+node_914 MUL_MAT
+Vcur-21 MUL
+k_cache_view-21 VIEW
+k_cache_view-21 (copy of Kcur-21) CPY
+Vcur-21 (transposed) TRANSPOSE
+v_cache_view-21 VIEW
+v_cache_view-21 (copy of Vcur-21 (transposed)) CPY
+v-21 VIEW
+k-21 VIEW
+q-21 PERMUTE
+kq-21 MUL_MAT
+kq_soft_max_ext-21 SOFT_MAX
+kqv-21 MUL_MAT
+kqv_merged-21 PERMUTE
+kqv_out-21 CONT
+norm-21 RMS_NORM
+attn_sub_norm-21 MUL
+node_931 MUL_MAT
+attn_o_out-21 MUL
+ffn_inp-21 ADD
+norm-21 RMS_NORM
+ffn_norm-21 MUL
+ffn_gate-21 MUL_MAT
+ffn_gate_s-21 MUL
+ffn_silu-21 UNARY
+ffn_up-21 MUL_MAT
+ffn_up_s-21 MUL
+ffn_sub_out-21 MUL
+norm-21 RMS_NORM
+ffn_sub_norm-21 MUL
+node_944 MUL_MAT
+ffn_down-21 MUL
+l_out-21 ADD
+norm-22 RMS_NORM
+attn_norm-22 MUL
+node_949 MUL_MAT
+Qcur-22 MUL
+Qcur-22 (reshaped) RESHAPE
+Qcur-22 ROPE
+node_953 MUL_MAT
+Kcur-22 MUL
+Kcur-22 (reshaped) RESHAPE
+Kcur-22 ROPE
+node_957 MUL_MAT
+Vcur-22 MUL
+k_cache_view-22 VIEW
+k_cache_view-22 (copy of Kcur-22) CPY
+Vcur-22 (transposed) TRANSPOSE
+v_cache_view-22 VIEW
+v_cache_view-22 (copy of Vcur-22 (transposed)) CPY
+v-22 VIEW
+k-22 VIEW
+q-22 PERMUTE
+kq-22 MUL_MAT
+kq_soft_max_ext-22 SOFT_MAX
+kqv-22 MUL_MAT
+kqv_merged-22 PERMUTE
+kqv_out-22 CONT
+norm-22 RMS_NORM
+attn_sub_norm-22 MUL
+node_974 MUL_MAT
+attn_o_out-22 MUL
+ffn_inp-22 ADD
+norm-22 RMS_NORM
+ffn_norm-22 MUL
+ffn_gate-22 MUL_MAT
+ffn_gate_s-22 MUL
+ffn_silu-22 UNARY
+ffn_up-22 MUL_MAT
+ffn_up_s-22 MUL
+ffn_sub_out-22 MUL
+norm-22 RMS_NORM
+ffn_sub_norm-22 MUL
+node_987 MUL_MAT
+ffn_down-22 MUL
+l_out-22 ADD
+norm-23 RMS_NORM
+attn_norm-23 MUL
+node_992 MUL_MAT
+Qcur-23 MUL
+Qcur-23 (reshaped) RESHAPE
+Qcur-23 ROPE
+node_996 MUL_MAT
+Kcur-23 MUL
+Kcur-23 (reshaped) RESHAPE
+Kcur-23 ROPE
+node_1000 MUL_MAT
+Vcur-23 MUL
+k_cache_view-23 VIEW
+k_cache_view-23 (copy of Kcur-23) CPY
+Vcur-23 (transposed) TRANSPOSE
+v_cache_view-23 VIEW
+v_cache_view-23 (copy of Vcur-23 (transposed)) CPY
+v-23 VIEW
+k-23 VIEW
+q-23 PERMUTE
+kq-23 MUL_MAT
+kq_soft_max_ext-23 SOFT_MAX
+kqv-23 MUL_MAT
+kqv_merged-23 PERMUTE
+kqv_out-23 CONT
+norm-23 RMS_NORM
+attn_sub_norm-23 MUL
+node_1017 MUL_MAT
+attn_o_out-23 MUL
+node_1019 GET_ROWS
+node_1020 GET_ROWS
+ffn_inp-23 ADD
+norm-23 RMS_NORM
+ffn_norm-23 MUL
+ffn_gate-23 MUL_MAT
+ffn_gate_s-23 MUL
+ffn_silu-23 UNARY
+ffn_up-23 MUL_MAT
+ffn_up_s-23 MUL
+ffn_sub_out-23 MUL
+norm-23 RMS_NORM
+ffn_sub_norm-23 MUL
+node_1032 MUL_MAT
+ffn_down-23 MUL
+l_out-23 ADD
+norm RMS_NORM
+result_norm MUL
+result_output MUL_MAT
+inp_embd GET_ROWS
+norm-0 RMS_NORM
+attn_norm-0 MUL
+node_3 MUL_MAT
+Qcur-0 MUL
+Qcur-0 (reshaped) RESHAPE
+Qcur-0 ROPE
+node_7 MUL_MAT
+Kcur-0 MUL
+Kcur-0 (reshaped) RESHAPE
+Kcur-0 ROPE
+node_11 MUL_MAT
+Vcur-0 MUL
+k_cache_view-0 VIEW
+k_cache_view-0 (copy of Kcur-0) CPY
+Vcur-0 (transposed) TRANSPOSE
+v_cache_view-0 VIEW
+v_cache_view-0 (copy of Vcur-0 (transposed)) CPY
+v-0 VIEW
+k-0 VIEW
+q-0 PERMUTE
+kq-0 MUL_MAT
+kq_soft_max_ext-0 SOFT_MAX
+kqv-0 MUL_MAT
+kqv_merged-0 PERMUTE
+kqv_out-0 CONT
+norm-0 RMS_NORM
+attn_sub_norm-0 MUL
+node_28 MUL_MAT
+attn_o_out-0 MUL
+ffn_inp-0 ADD
+norm-0 RMS_NORM
+ffn_norm-0 MUL
+ffn_gate-0 MUL_MAT
+ffn_gate_s-0 MUL
+ffn_silu-0 UNARY
+ffn_up-0 MUL_MAT
+ffn_up_s-0 MUL
+ffn_sub_out-0 MUL
+norm-0 RMS_NORM
+ffn_sub_norm-0 MUL
+node_41 MUL_MAT
+ffn_down-0 MUL
+l_out-0 ADD
+norm-1 RMS_NORM
+attn_norm-1 MUL
+node_46 MUL_MAT
+Qcur-1 MUL
+Qcur-1 (reshaped) RESHAPE
+Qcur-1 ROPE
+node_50 MUL_MAT
+Kcur-1 MUL
+Kcur-1 (reshaped) RESHAPE
+Kcur-1 ROPE
+node_54 MUL_MAT
+Vcur-1 MUL
+k_cache_view-1 VIEW
+k_cache_view-1 (copy of Kcur-1) CPY
+Vcur-1 (transposed) TRANSPOSE
+v_cache_view-1 VIEW
+v_cache_view-1 (copy of Vcur-1 (transposed)) CPY
+v-1 VIEW
+k-1 VIEW
+q-1 PERMUTE
+kq-1 MUL_MAT
+kq_soft_max_ext-1 SOFT_MAX
+kqv-1 MUL_MAT
+kqv_merged-1 PERMUTE
+kqv_out-1 CONT
+norm-1 RMS_NORM
+attn_sub_norm-1 MUL
+node_71 MUL_MAT
+attn_o_out-1 MUL
+ffn_inp-1 ADD
+norm-1 RMS_NORM
+ffn_norm-1 MUL
+ffn_gate-1 MUL_MAT
+ffn_gate_s-1 MUL
+ffn_silu-1 UNARY
+ffn_up-1 MUL_MAT
+ffn_up_s-1 MUL
+ffn_sub_out-1 MUL
+norm-1 RMS_NORM
+ffn_sub_norm-1 MUL
+node_84 MUL_MAT
+ffn_down-1 MUL
+l_out-1 ADD
+norm-2 RMS_NORM
+attn_norm-2 MUL
+node_89 MUL_MAT
+Qcur-2 MUL
+Qcur-2 (reshaped) RESHAPE
+Qcur-2 ROPE
+node_93 MUL_MAT
+Kcur-2 MUL
+Kcur-2 (reshaped) RESHAPE
+Kcur-2 ROPE
+node_97 MUL_MAT
+Vcur-2 MUL
+k_cache_view-2 VIEW
+k_cache_view-2 (copy of Kcur-2) CPY
+Vcur-2 (transposed) TRANSPOSE
+v_cache_view-2 VIEW
+v_cache_view-2 (copy of Vcur-2 (transposed)) CPY
+v-2 VIEW
+k-2 VIEW
+q-2 PERMUTE
+kq-2 MUL_MAT
+kq_soft_max_ext-2 SOFT_MAX
+kqv-2 MUL_MAT
+kqv_merged-2 PERMUTE
+kqv_out-2 CONT
+norm-2 RMS_NORM
+attn_sub_norm-2 MUL
+node_114 MUL_MAT
+attn_o_out-2 MUL
+ffn_inp-2 ADD
+norm-2 RMS_NORM
+ffn_norm-2 MUL
+ffn_gate-2 MUL_MAT
+ffn_gate_s-2 MUL
+ffn_silu-2 UNARY
+ffn_up-2 MUL_MAT
+ffn_up_s-2 MUL
+ffn_sub_out-2 MUL
+norm-2 RMS_NORM
+ffn_sub_norm-2 MUL
+node_127 MUL_MAT
+ffn_down-2 MUL
+l_out-2 ADD
+norm-3 RMS_NORM
+attn_norm-3 MUL
+node_132 MUL_MAT
+Qcur-3 MUL
+Qcur-3 (reshaped) RESHAPE
+Qcur-3 ROPE
+node_136 MUL_MAT
+Kcur-3 MUL
+Kcur-3 (reshaped) RESHAPE
+Kcur-3 ROPE
+node_140 MUL_MAT
+Vcur-3 MUL
+k_cache_view-3 VIEW
+k_cache_view-3 (copy of Kcur-3) CPY
+Vcur-3 (transposed) TRANSPOSE
+v_cache_view-3 VIEW
+v_cache_view-3 (copy of Vcur-3 (transposed)) CPY
+v-3 VIEW
+k-3 VIEW
+q-3 PERMUTE
+kq-3 MUL_MAT
+kq_soft_max_ext-3 SOFT_MAX
+kqv-3 MUL_MAT
+kqv_merged-3 PERMUTE
+kqv_out-3 CONT
+norm-3 RMS_NORM
+attn_sub_norm-3 MUL
+node_157 MUL_MAT
+attn_o_out-3 MUL
+ffn_inp-3 ADD
+norm-3 RMS_NORM
+ffn_norm-3 MUL
+ffn_gate-3 MUL_MAT
+ffn_gate_s-3 MUL
+ffn_silu-3 UNARY
+ffn_up-3 MUL_MAT
+ffn_up_s-3 MUL
+ffn_sub_out-3 MUL
+norm-3 RMS_NORM
+ffn_sub_norm-3 MUL
+node_170 MUL_MAT
+ffn_down-3 MUL
+l_out-3 ADD
+norm-4 RMS_NORM
+attn_norm-4 MUL
+node_175 MUL_MAT
+Qcur-4 MUL
+Qcur-4 (reshaped) RESHAPE
+Qcur-4 ROPE
+node_179 MUL_MAT
+Kcur-4 MUL
+Kcur-4 (reshaped) RESHAPE
+Kcur-4 ROPE
+node_183 MUL_MAT
+Vcur-4 MUL
+k_cache_view-4 VIEW
+k_cache_view-4 (copy of Kcur-4) CPY
+Vcur-4 (transposed) TRANSPOSE
+v_cache_view-4 VIEW
+v_cache_view-4 (copy of Vcur-4 (transposed)) CPY
+v-4 VIEW
+k-4 VIEW
+q-4 PERMUTE
+kq-4 MUL_MAT
+kq_soft_max_ext-4 SOFT_MAX
+kqv-4 MUL_MAT
+kqv_merged-4 PERMUTE
+kqv_out-4 CONT
+norm-4 RMS_NORM
+attn_sub_norm-4 MUL
+node_200 MUL_MAT
+attn_o_out-4 MUL
+ffn_inp-4 ADD
+norm-4 RMS_NORM
+ffn_norm-4 MUL
+ffn_gate-4 MUL_MAT
+ffn_gate_s-4 MUL
+ffn_silu-4 UNARY
+ffn_up-4 MUL_MAT
+ffn_up_s-4 MUL
+ffn_sub_out-4 MUL
+norm-4 RMS_NORM
+ffn_sub_norm-4 MUL
+node_213 MUL_MAT
+ffn_down-4 MUL
+l_out-4 ADD
+norm-5 RMS_NORM
+attn_norm-5 MUL
+node_218 MUL_MAT
+Qcur-5 MUL
+Qcur-5 (reshaped) RESHAPE
+Qcur-5 ROPE
+node_222 MUL_MAT
+Kcur-5 MUL
+Kcur-5 (reshaped) RESHAPE
+Kcur-5 ROPE
+node_226 MUL_MAT
+Vcur-5 MUL
+k_cache_view-5 VIEW
+k_cache_view-5 (copy of Kcur-5) CPY
+Vcur-5 (transposed) TRANSPOSE
+v_cache_view-5 VIEW
+v_cache_view-5 (copy of Vcur-5 (transposed)) CPY
+v-5 VIEW
+k-5 VIEW
+q-5 PERMUTE
+kq-5 MUL_MAT
+kq_soft_max_ext-5 SOFT_MAX
+kqv-5 MUL_MAT
+kqv_merged-5 PERMUTE
+kqv_out-5 CONT
+norm-5 RMS_NORM
+attn_sub_norm-5 MUL
+node_243 MUL_MAT
+attn_o_out-5 MUL
+ffn_inp-5 ADD
+norm-5 RMS_NORM
+ffn_norm-5 MUL
+ffn_gate-5 MUL_MAT
+ffn_gate_s-5 MUL
+ffn_silu-5 UNARY
+ffn_up-5 MUL_MAT
+ffn_up_s-5 MUL
+ffn_sub_out-5 MUL
+norm-5 RMS_NORM
+ffn_sub_norm-5 MUL
+node_256 MUL_MAT
+ffn_down-5 MUL
+l_out-5 ADD
+norm-6 RMS_NORM
+attn_norm-6 MUL
+node_261 MUL_MAT
+Qcur-6 MUL
+Qcur-6 (reshaped) RESHAPE
+Qcur-6 ROPE
+node_265 MUL_MAT
+Kcur-6 MUL
+Kcur-6 (reshaped) RESHAPE
+Kcur-6 ROPE
+node_269 MUL_MAT
+Vcur-6 MUL
+k_cache_view-6 VIEW
+k_cache_view-6 (copy of Kcur-6) CPY
+Vcur-6 (transposed) TRANSPOSE
+v_cache_view-6 VIEW
+v_cache_view-6 (copy of Vcur-6 (transposed)) CPY
+v-6 VIEW
+k-6 VIEW
+q-6 PERMUTE
+kq-6 MUL_MAT
+kq_soft_max_ext-6 SOFT_MAX
+kqv-6 MUL_MAT
+kqv_merged-6 PERMUTE
+kqv_out-6 CONT
+norm-6 RMS_NORM
+attn_sub_norm-6 MUL
+node_286 MUL_MAT
+attn_o_out-6 MUL
+ffn_inp-6 ADD
+norm-6 RMS_NORM
+ffn_norm-6 MUL
+ffn_gate-6 MUL_MAT
+ffn_gate_s-6 MUL
+ffn_silu-6 UNARY
+ffn_up-6 MUL_MAT
+ffn_up_s-6 MUL
+ffn_sub_out-6 MUL
+norm-6 RMS_NORM
+ffn_sub_norm-6 MUL
+node_299 MUL_MAT
+ffn_down-6 MUL
+l_out-6 ADD
+norm-7 RMS_NORM
+attn_norm-7 MUL
+node_304 MUL_MAT
+Qcur-7 MUL
+Qcur-7 (reshaped) RESHAPE
+Qcur-7 ROPE
+node_308 MUL_MAT
+Kcur-7 MUL
+Kcur-7 (reshaped) RESHAPE
+Kcur-7 ROPE
+node_312 MUL_MAT
+Vcur-7 MUL
+k_cache_view-7 VIEW
+k_cache_view-7 (copy of Kcur-7) CPY
+Vcur-7 (transposed) TRANSPOSE
+v_cache_view-7 VIEW
+v_cache_view-7 (copy of Vcur-7 (transposed)) CPY
+v-7 VIEW
+k-7 VIEW
+q-7 PERMUTE
+kq-7 MUL_MAT
+kq_soft_max_ext-7 SOFT_MAX
+kqv-7 MUL_MAT
+kqv_merged-7 PERMUTE
+kqv_out-7 CONT
+norm-7 RMS_NORM
+attn_sub_norm-7 MUL
+node_329 MUL_MAT
+attn_o_out-7 MUL
+ffn_inp-7 ADD
+norm-7 RMS_NORM
+ffn_norm-7 MUL
+ffn_gate-7 MUL_MAT
+ffn_gate_s-7 MUL
+ffn_silu-7 UNARY
+ffn_up-7 MUL_MAT
+ffn_up_s-7 MUL
+ffn_sub_out-7 MUL
+norm-7 RMS_NORM
+ffn_sub_norm-7 MUL
+node_342 MUL_MAT
+ffn_down-7 MUL
+l_out-7 ADD
+norm-8 RMS_NORM
+attn_norm-8 MUL
+node_347 MUL_MAT
+Qcur-8 MUL
+Qcur-8 (reshaped) RESHAPE
+Qcur-8 ROPE
+node_351 MUL_MAT
+Kcur-8 MUL
+Kcur-8 (reshaped) RESHAPE
+Kcur-8 ROPE
+node_355 MUL_MAT
+Vcur-8 MUL
+k_cache_view-8 VIEW
+k_cache_view-8 (copy of Kcur-8) CPY
+Vcur-8 (transposed) TRANSPOSE
+v_cache_view-8 VIEW
+v_cache_view-8 (copy of Vcur-8 (transposed)) CPY
+v-8 VIEW
+k-8 VIEW
+q-8 PERMUTE
+kq-8 MUL_MAT
+kq_soft_max_ext-8 SOFT_MAX
+kqv-8 MUL_MAT
+kqv_merged-8 PERMUTE
+kqv_out-8 CONT
+norm-8 RMS_NORM
+attn_sub_norm-8 MUL
+node_372 MUL_MAT
+attn_o_out-8 MUL
+ffn_inp-8 ADD
+norm-8 RMS_NORM
+ffn_norm-8 MUL
+ffn_gate-8 MUL_MAT
+ffn_gate_s-8 MUL
+ffn_silu-8 UNARY
+ffn_up-8 MUL_MAT
+ffn_up_s-8 MUL
+ffn_sub_out-8 MUL
+norm-8 RMS_NORM
+ffn_sub_norm-8 MUL
+node_385 MUL_MAT
+ffn_down-8 MUL
+l_out-8 ADD
+norm-9 RMS_NORM
+attn_norm-9 MUL
+node_390 MUL_MAT
+Qcur-9 MUL
+Qcur-9 (reshaped) RESHAPE
+Qcur-9 ROPE
+node_394 MUL_MAT
+Kcur-9 MUL
+Kcur-9 (reshaped) RESHAPE
+Kcur-9 ROPE
+node_398 MUL_MAT
+Vcur-9 MUL
+k_cache_view-9 VIEW
+k_cache_view-9 (copy of Kcur-9) CPY
+Vcur-9 (transposed) TRANSPOSE
+v_cache_view-9 VIEW
+v_cache_view-9 (copy of Vcur-9 (transposed)) CPY
+v-9 VIEW
+k-9 VIEW
+q-9 PERMUTE
+kq-9 MUL_MAT
+kq_soft_max_ext-9 SOFT_MAX
+kqv-9 MUL_MAT
+kqv_merged-9 PERMUTE
+kqv_out-9 CONT
+norm-9 RMS_NORM
+attn_sub_norm-9 MUL
+node_415 MUL_MAT
+attn_o_out-9 MUL
+ffn_inp-9 ADD
+norm-9 RMS_NORM
+ffn_norm-9 MUL
+ffn_gate-9 MUL_MAT
+ffn_gate_s-9 MUL
+ffn_silu-9 UNARY
+ffn_up-9 MUL_MAT
+ffn_up_s-9 MUL
+ffn_sub_out-9 MUL
+norm-9 RMS_NORM
+ffn_sub_norm-9 MUL
+node_428 MUL_MAT
+ffn_down-9 MUL
+l_out-9 ADD
+norm-10 RMS_NORM
+attn_norm-10 MUL
+node_433 MUL_MAT
+Qcur-10 MUL
+Qcur-10 (reshaped) RESHAPE
+Qcur-10 ROPE
+node_437 MUL_MAT
+Kcur-10 MUL
+Kcur-10 (reshaped) RESHAPE
+Kcur-10 ROPE
+node_441 MUL_MAT
+Vcur-10 MUL
+k_cache_view-10 VIEW
+k_cache_view-10 (copy of Kcur-10) CPY
+Vcur-10 (transposed) TRANSPOSE
+v_cache_view-10 VIEW
+v_cache_view-10 (copy of Vcur-10 (transposed)) CPY
+v-10 VIEW
+k-10 VIEW
+q-10 PERMUTE
+kq-10 MUL_MAT
+kq_soft_max_ext-10 SOFT_MAX
+kqv-10 MUL_MAT
+kqv_merged-10 PERMUTE
+kqv_out-10 CONT
+norm-10 RMS_NORM
+attn_sub_norm-10 MUL
+node_458 MUL_MAT
+attn_o_out-10 MUL
+ffn_inp-10 ADD
+norm-10 RMS_NORM
+ffn_norm-10 MUL
+ffn_gate-10 MUL_MAT
+ffn_gate_s-10 MUL
+ffn_silu-10 UNARY
+ffn_up-10 MUL_MAT
+ffn_up_s-10 MUL
+ffn_sub_out-10 MUL
+norm-10 RMS_NORM
+ffn_sub_norm-10 MUL
+node_471 MUL_MAT
+ffn_down-10 MUL
+l_out-10 ADD
+norm-11 RMS_NORM
+attn_norm-11 MUL
+node_476 MUL_MAT
+Qcur-11 MUL
+Qcur-11 (reshaped) RESHAPE
+Qcur-11 ROPE
+node_480 MUL_MAT
+Kcur-11 MUL
+Kcur-11 (reshaped) RESHAPE
+Kcur-11 ROPE
+node_484 MUL_MAT
+Vcur-11 MUL
+k_cache_view-11 VIEW
+k_cache_view-11 (copy of Kcur-11) CPY
+Vcur-11 (transposed) TRANSPOSE
+v_cache_view-11 VIEW
+v_cache_view-11 (copy of Vcur-11 (transposed)) CPY
+v-11 VIEW
+k-11 VIEW
+q-11 PERMUTE
+kq-11 MUL_MAT
+kq_soft_max_ext-11 SOFT_MAX
+kqv-11 MUL_MAT
+kqv_merged-11 PERMUTE
+kqv_out-11 CONT
+norm-11 RMS_NORM
+attn_sub_norm-11 MUL
+node_501 MUL_MAT
+attn_o_out-11 MUL
+ffn_inp-11 ADD
+norm-11 RMS_NORM
+ffn_norm-11 MUL
+ffn_gate-11 MUL_MAT
+ffn_gate_s-11 MUL
+ffn_silu-11 UNARY
+ffn_up-11 MUL_MAT
+ffn_up_s-11 MUL
+ffn_sub_out-11 MUL
+norm-11 RMS_NORM
+ffn_sub_norm-11 MUL
+node_514 MUL_MAT
+ffn_down-11 MUL
+l_out-11 ADD
+norm-12 RMS_NORM
+attn_norm-12 MUL
+node_519 MUL_MAT
+Qcur-12 MUL
+Qcur-12 (reshaped) RESHAPE
+Qcur-12 ROPE
+node_523 MUL_MAT
+Kcur-12 MUL
+Kcur-12 (reshaped) RESHAPE
+Kcur-12 ROPE
+node_527 MUL_MAT
+Vcur-12 MUL
+k_cache_view-12 VIEW
+k_cache_view-12 (copy of Kcur-12) CPY
+Vcur-12 (transposed) TRANSPOSE
+v_cache_view-12 VIEW
+v_cache_view-12 (copy of Vcur-12 (transposed)) CPY
+v-12 VIEW
+k-12 VIEW
+q-12 PERMUTE
+kq-12 MUL_MAT
+kq_soft_max_ext-12 SOFT_MAX
+kqv-12 MUL_MAT
+kqv_merged-12 PERMUTE
+kqv_out-12 CONT
+norm-12 RMS_NORM
+attn_sub_norm-12 MUL
+node_544 MUL_MAT
+attn_o_out-12 MUL
+ffn_inp-12 ADD
+norm-12 RMS_NORM
+ffn_norm-12 MUL
+ffn_gate-12 MUL_MAT
+ffn_gate_s-12 MUL
+ffn_silu-12 UNARY
+ffn_up-12 MUL_MAT
+ffn_up_s-12 MUL
+ffn_sub_out-12 MUL
+norm-12 RMS_NORM
+ffn_sub_norm-12 MUL
+node_557 MUL_MAT
+ffn_down-12 MUL
+l_out-12 ADD
+norm-13 RMS_NORM
+attn_norm-13 MUL
+node_562 MUL_MAT
+Qcur-13 MUL
+Qcur-13 (reshaped) RESHAPE
+Qcur-13 ROPE
+node_566 MUL_MAT
+Kcur-13 MUL
+Kcur-13 (reshaped) RESHAPE
+Kcur-13 ROPE
+node_570 MUL_MAT
+Vcur-13 MUL
+k_cache_view-13 VIEW
+k_cache_view-13 (copy of Kcur-13) CPY
+Vcur-13 (transposed) TRANSPOSE
+v_cache_view-13 VIEW
+v_cache_view-13 (copy of Vcur-13 (transposed)) CPY
+v-13 VIEW
+k-13 VIEW
+q-13 PERMUTE
+kq-13 MUL_MAT
+kq_soft_max_ext-13 SOFT_MAX
+kqv-13 MUL_MAT
+kqv_merged-13 PERMUTE
+kqv_out-13 CONT
+norm-13 RMS_NORM
+attn_sub_norm-13 MUL
+node_587 MUL_MAT
+attn_o_out-13 MUL
+ffn_inp-13 ADD
+norm-13 RMS_NORM
+ffn_norm-13 MUL
+ffn_gate-13 MUL_MAT
+ffn_gate_s-13 MUL
+ffn_silu-13 UNARY
+ffn_up-13 MUL_MAT
+ffn_up_s-13 MUL
+ffn_sub_out-13 MUL
+norm-13 RMS_NORM
+ffn_sub_norm-13 MUL
+node_600 MUL_MAT
+ffn_down-13 MUL
+l_out-13 ADD
+norm-14 RMS_NORM
+attn_norm-14 MUL
+node_605 MUL_MAT
+Qcur-14 MUL
+Qcur-14 (reshaped) RESHAPE
+Qcur-14 ROPE
+node_609 MUL_MAT
+Kcur-14 MUL
+Kcur-14 (reshaped) RESHAPE
+Kcur-14 ROPE
+node_613 MUL_MAT
+Vcur-14 MUL
+k_cache_view-14 VIEW
+k_cache_view-14 (copy of Kcur-14) CPY
+Vcur-14 (transposed) TRANSPOSE
+v_cache_view-14 VIEW
+v_cache_view-14 (copy of Vcur-14 (transposed)) CPY
+v-14 VIEW
+k-14 VIEW
+q-14 PERMUTE
+kq-14 MUL_MAT
+kq_soft_max_ext-14 SOFT_MAX
+kqv-14 MUL_MAT
+kqv_merged-14 PERMUTE
+kqv_out-14 CONT
+norm-14 RMS_NORM
+attn_sub_norm-14 MUL
+node_630 MUL_MAT
+attn_o_out-14 MUL
+ffn_inp-14 ADD
+norm-14 RMS_NORM
+ffn_norm-14 MUL
+ffn_gate-14 MUL_MAT
+ffn_gate_s-14 MUL
+ffn_silu-14 UNARY
+ffn_up-14 MUL_MAT
+ffn_up_s-14 MUL
+ffn_sub_out-14 MUL
+norm-14 RMS_NORM
+ffn_sub_norm-14 MUL
+node_643 MUL_MAT
+ffn_down-14 MUL
+l_out-14 ADD
+norm-15 RMS_NORM
+attn_norm-15 MUL
+node_648 MUL_MAT
+Qcur-15 MUL
+Qcur-15 (reshaped) RESHAPE
+Qcur-15 ROPE
+node_652 MUL_MAT
+Kcur-15 MUL
+Kcur-15 (reshaped) RESHAPE
+Kcur-15 ROPE
+node_656 MUL_MAT
+Vcur-15 MUL
+k_cache_view-15 VIEW
+k_cache_view-15 (copy of Kcur-15) CPY
+Vcur-15 (transposed) TRANSPOSE
+v_cache_view-15 VIEW
+v_cache_view-15 (copy of Vcur-15 (transposed)) CPY
+v-15 VIEW
+k-15 VIEW
+q-15 PERMUTE
+kq-15 MUL_MAT
+kq_soft_max_ext-15 SOFT_MAX
+kqv-15 MUL_MAT
+kqv_merged-15 PERMUTE
+kqv_out-15 CONT
+norm-15 RMS_NORM
+attn_sub_norm-15 MUL
+node_673 MUL_MAT
+attn_o_out-15 MUL
+ffn_inp-15 ADD
+norm-15 RMS_NORM
+ffn_norm-15 MUL
+ffn_gate-15 MUL_MAT
+ffn_gate_s-15 MUL
+ffn_silu-15 UNARY
+ffn_up-15 MUL_MAT
+ffn_up_s-15 MUL
+ffn_sub_out-15 MUL
+norm-15 RMS_NORM
+ffn_sub_norm-15 MUL
+node_686 MUL_MAT
+ffn_down-15 MUL
+l_out-15 ADD
+norm-16 RMS_NORM
+attn_norm-16 MUL
+node_691 MUL_MAT
+Qcur-16 MUL
+Qcur-16 (reshaped) RESHAPE
+Qcur-16 ROPE
+node_695 MUL_MAT
+Kcur-16 MUL
+Kcur-16 (reshaped) RESHAPE
+Kcur-16 ROPE
+node_699 MUL_MAT
+Vcur-16 MUL
+k_cache_view-16 VIEW
+k_cache_view-16 (copy of Kcur-16) CPY
+Vcur-16 (transposed) TRANSPOSE
+v_cache_view-16 VIEW
+v_cache_view-16 (copy of Vcur-16 (transposed)) CPY
+v-16 VIEW
+k-16 VIEW
+q-16 PERMUTE
+kq-16 MUL_MAT
+kq_soft_max_ext-16 SOFT_MAX
+kqv-16 MUL_MAT
+kqv_merged-16 PERMUTE
+kqv_out-16 CONT
+norm-16 RMS_NORM
+attn_sub_norm-16 MUL
+node_716 MUL_MAT
+attn_o_out-16 MUL
+ffn_inp-16 ADD
+norm-16 RMS_NORM
+ffn_norm-16 MUL
+ffn_gate-16 MUL_MAT
+ffn_gate_s-16 MUL
+ffn_silu-16 UNARY
+ffn_up-16 MUL_MAT
+ffn_up_s-16 MUL
+ffn_sub_out-16 MUL
+norm-16 RMS_NORM
+ffn_sub_norm-16 MUL
+node_729 MUL_MAT
+ffn_down-16 MUL
+l_out-16 ADD
+norm-17 RMS_NORM
+attn_norm-17 MUL
+node_734 MUL_MAT
+Qcur-17 MUL
+Qcur-17 (reshaped) RESHAPE
+Qcur-17 ROPE
+node_738 MUL_MAT
+Kcur-17 MUL
+Kcur-17 (reshaped) RESHAPE
+Kcur-17 ROPE
+node_742 MUL_MAT
+Vcur-17 MUL
+k_cache_view-17 VIEW
+k_cache_view-17 (copy of Kcur-17) CPY
+Vcur-17 (transposed) TRANSPOSE
+v_cache_view-17 VIEW
+v_cache_view-17 (copy of Vcur-17 (transposed)) CPY
+v-17 VIEW
+k-17 VIEW
+q-17 PERMUTE
+kq-17 MUL_MAT
+kq_soft_max_ext-17 SOFT_MAX
+kqv-17 MUL_MAT
+kqv_merged-17 PERMUTE
+kqv_out-17 CONT
+norm-17 RMS_NORM
+attn_sub_norm-17 MUL
+node_759 MUL_MAT
+attn_o_out-17 MUL
+ffn_inp-17 ADD
+norm-17 RMS_NORM
+ffn_norm-17 MUL
+ffn_gate-17 MUL_MAT
+ffn_gate_s-17 MUL
+ffn_silu-17 UNARY
+ffn_up-17 MUL_MAT
+ffn_up_s-17 MUL
+ffn_sub_out-17 MUL
+norm-17 RMS_NORM
+ffn_sub_norm-17 MUL
+node_772 MUL_MAT
+ffn_down-17 MUL
+l_out-17 ADD
+norm-18 RMS_NORM
+attn_norm-18 MUL
+node_777 MUL_MAT
+Qcur-18 MUL
+Qcur-18 (reshaped) RESHAPE
+Qcur-18 ROPE
+node_781 MUL_MAT
+Kcur-18 MUL
+Kcur-18 (reshaped) RESHAPE
+Kcur-18 ROPE
+node_785 MUL_MAT
+Vcur-18 MUL
+k_cache_view-18 VIEW
+k_cache_view-18 (copy of Kcur-18) CPY
+Vcur-18 (transposed) TRANSPOSE
+v_cache_view-18 VIEW
+v_cache_view-18 (copy of Vcur-18 (transposed)) CPY
+v-18 VIEW
+k-18 VIEW
+q-18 PERMUTE
+kq-18 MUL_MAT
+kq_soft_max_ext-18 SOFT_MAX
+kqv-18 MUL_MAT
+kqv_merged-18 PERMUTE
+kqv_out-18 CONT
+norm-18 RMS_NORM
+attn_sub_norm-18 MUL
+node_802 MUL_MAT
+attn_o_out-18 MUL
+ffn_inp-18 ADD
+norm-18 RMS_NORM
+ffn_norm-18 MUL
+ffn_gate-18 MUL_MAT
+ffn_gate_s-18 MUL
+ffn_silu-18 UNARY
+ffn_up-18 MUL_MAT
+ffn_up_s-18 MUL
+ffn_sub_out-18 MUL
+norm-18 RMS_NORM
+ffn_sub_norm-18 MUL
+node_815 MUL_MAT
+ffn_down-18 MUL
+l_out-18 ADD
+norm-19 RMS_NORM
+attn_norm-19 MUL
+node_820 MUL_MAT
+Qcur-19 MUL
+Qcur-19 (reshaped) RESHAPE
+Qcur-19 ROPE
+node_824 MUL_MAT
+Kcur-19 MUL
+Kcur-19 (reshaped) RESHAPE
+Kcur-19 ROPE
+node_828 MUL_MAT
+Vcur-19 MUL
+k_cache_view-19 VIEW
+k_cache_view-19 (copy of Kcur-19) CPY
+Vcur-19 (transposed) TRANSPOSE
+v_cache_view-19 VIEW
+v_cache_view-19 (copy of Vcur-19 (transposed)) CPY
+v-19 VIEW
+k-19 VIEW
+q-19 PERMUTE
+kq-19 MUL_MAT
+kq_soft_max_ext-19 SOFT_MAX
+kqv-19 MUL_MAT
+kqv_merged-19 PERMUTE
+kqv_out-19 CONT
+norm-19 RMS_NORM
+attn_sub_norm-19 MUL
+node_845 MUL_MAT
+attn_o_out-19 MUL
+ffn_inp-19 ADD
+norm-19 RMS_NORM
+ffn_norm-19 MUL
+ffn_gate-19 MUL_MAT
+ffn_gate_s-19 MUL
+ffn_silu-19 UNARY
+ffn_up-19 MUL_MAT
+ffn_up_s-19 MUL
+ffn_sub_out-19 MUL
+norm-19 RMS_NORM
+ffn_sub_norm-19 MUL
+node_858 MUL_MAT
+ffn_down-19 MUL
+l_out-19 ADD
+norm-20 RMS_NORM
+attn_norm-20 MUL
+node_863 MUL_MAT
+Qcur-20 MUL
+Qcur-20 (reshaped) RESHAPE
+Qcur-20 ROPE
+node_867 MUL_MAT
+Kcur-20 MUL
+Kcur-20 (reshaped) RESHAPE
+Kcur-20 ROPE
+node_871 MUL_MAT
+Vcur-20 MUL
+k_cache_view-20 VIEW
+k_cache_view-20 (copy of Kcur-20) CPY
+Vcur-20 (transposed) TRANSPOSE
+v_cache_view-20 VIEW
+v_cache_view-20 (copy of Vcur-20 (transposed)) CPY
+v-20 VIEW
+k-20 VIEW
+q-20 PERMUTE
+kq-20 MUL_MAT
+kq_soft_max_ext-20 SOFT_MAX
+kqv-20 MUL_MAT
+kqv_merged-20 PERMUTE
+kqv_out-20 CONT
+norm-20 RMS_NORM
+attn_sub_norm-20 MUL
+node_888 MUL_MAT
+attn_o_out-20 MUL
+ffn_inp-20 ADD
+norm-20 RMS_NORM
+ffn_norm-20 MUL
+ffn_gate-20 MUL_MAT
+ffn_gate_s-20 MUL
+ffn_silu-20 UNARY
+ffn_up-20 MUL_MAT
+ffn_up_s-20 MUL
+ffn_sub_out-20 MUL
+norm-20 RMS_NORM
+ffn_sub_norm-20 MUL
+node_901 MUL_MAT
+ffn_down-20 MUL
+l_out-20 ADD
+norm-21 RMS_NORM
+attn_norm-21 MUL
+node_906 MUL_MAT
+Qcur-21 MUL
+Qcur-21 (reshaped) RESHAPE
+Qcur-21 ROPE
+node_910 MUL_MAT
+Kcur-21 MUL
+Kcur-21 (reshaped) RESHAPE
+Kcur-21 ROPE
+node_914 MUL_MAT
+Vcur-21 MUL
+k_cache_view-21 VIEW
+k_cache_view-21 (copy of Kcur-21) CPY
+Vcur-21 (transposed) TRANSPOSE
+v_cache_view-21 VIEW
+v_cache_view-21 (copy of Vcur-21 (transposed)) CPY
+v-21 VIEW
+k-21 VIEW
+q-21 PERMUTE
+kq-21 MUL_MAT
+kq_soft_max_ext-21 SOFT_MAX
+kqv-21 MUL_MAT
+kqv_merged-21 PERMUTE
+kqv_out-21 CONT
+norm-21 RMS_NORM
+attn_sub_norm-21 MUL
+node_931 MUL_MAT
+attn_o_out-21 MUL
+ffn_inp-21 ADD
+norm-21 RMS_NORM
+ffn_norm-21 MUL
+ffn_gate-21 MUL_MAT
+ffn_gate_s-21 MUL
+ffn_silu-21 UNARY
+ffn_up-21 MUL_MAT
+ffn_up_s-21 MUL
+ffn_sub_out-21 MUL
+norm-21 RMS_NORM
+ffn_sub_norm-21 MUL
+node_944 MUL_MAT
+ffn_down-21 MUL
+l_out-21 ADD
+norm-22 RMS_NORM
+attn_norm-22 MUL
+node_949 MUL_MAT
+Qcur-22 MUL
+Qcur-22 (reshaped) RESHAPE
+Qcur-22 ROPE
+node_953 MUL_MAT
+Kcur-22 MUL
+Kcur-22 (reshaped) RESHAPE
+Kcur-22 ROPE
+node_957 MUL_MAT
+Vcur-22 MUL
+k_cache_view-22 VIEW
+k_cache_view-22 (copy of Kcur-22) CPY
+Vcur-22 (transposed) TRANSPOSE
+v_cache_view-22 VIEW
+v_cache_view-22 (copy of Vcur-22 (transposed)) CPY
+v-22 VIEW
+k-22 VIEW
+q-22 PERMUTE
+kq-22 MUL_MAT
+kq_soft_max_ext-22 SOFT_MAX
+kqv-22 MUL_MAT
+kqv_merged-22 PERMUTE
+kqv_out-22 CONT
+norm-22 RMS_NORM
+attn_sub_norm-22 MUL
+node_974 MUL_MAT
+attn_o_out-22 MUL
+ffn_inp-22 ADD
+norm-22 RMS_NORM
+ffn_norm-22 MUL
+ffn_gate-22 MUL_MAT
+ffn_gate_s-22 MUL
+ffn_silu-22 UNARY
+ffn_up-22 MUL_MAT
+ffn_up_s-22 MUL
+ffn_sub_out-22 MUL
+norm-22 RMS_NORM
+ffn_sub_norm-22 MUL
+node_987 MUL_MAT
+ffn_down-22 MUL
+l_out-22 ADD
+norm-23 RMS_NORM
+attn_norm-23 MUL
+node_992 MUL_MAT
+Qcur-23 MUL
+Qcur-23 (reshaped) RESHAPE
+Qcur-23 ROPE
+node_996 MUL_MAT
+Kcur-23 MUL
+Kcur-23 (reshaped) RESHAPE
+Kcur-23 ROPE
+node_1000 MUL_MAT
+Vcur-23 MUL
+k_cache_view-23 VIEW
+k_cache_view-23 (copy of Kcur-23) CPY
+Vcur-23 (transposed) TRANSPOSE
+v_cache_view-23 VIEW
+v_cache_view-23 (copy of Vcur-23 (transposed)) CPY
+v-23 VIEW
+k-23 VIEW
+q-23 PERMUTE
+kq-23 MUL_MAT
+kq_soft_max_ext-23 SOFT_MAX
+kqv-23 MUL_MAT
+kqv_merged-23 PERMUTE
+kqv_out-23 CONT
+norm-23 RMS_NORM
+attn_sub_norm-23 MUL
+node_1017 MUL_MAT
+attn_o_out-23 MUL
+node_1019 GET_ROWS
+node_1020 GET_ROWS
+ffn_inp-23 ADD
+norm-23 RMS_NORM
+ffn_norm-23 MUL
+ffn_gate-23 MUL_MAT
+ffn_gate_s-23 MUL
+ffn_silu-23 UNARY
+ffn_up-23 MUL_MAT
+ffn_up_s-23 MUL
+ffn_sub_out-23 MUL
+norm-23 RMS_NORM
+ffn_sub_norm-23 MUL
+node_1032 MUL_MAT
+ffn_down-23 MUL
+l_out-23 ADD
+norm RMS_NORM
+result_norm MUL
+result_output MUL_MAT
+inp_embd GET_ROWS
+norm-0 RMS_NORM
+attn_norm-0 MUL
+node_3 MUL_MAT
+Qcur-0 MUL
+Qcur-0 (reshaped) RESHAPE
+Qcur-0 ROPE
+node_7 MUL_MAT
+Kcur-0 MUL
+Kcur-0 (reshaped) RESHAPE
+Kcur-0 ROPE
+node_11 MUL_MAT
+Vcur-0 MUL
+k_cache_view-0 VIEW
+k_cache_view-0 (copy of Kcur-0) CPY
+Vcur-0 (transposed) TRANSPOSE
+v_cache_view-0 VIEW
+v_cache_view-0 (copy of Vcur-0 (transposed)) CPY
+v-0 VIEW
+k-0 VIEW
+q-0 PERMUTE
+kq-0 MUL_MAT
+kq_soft_max_ext-0 SOFT_MAX
+kqv-0 MUL_MAT
+kqv_merged-0 PERMUTE
+kqv_out-0 CONT
+norm-0 RMS_NORM
+attn_sub_norm-0 MUL
+node_28 MUL_MAT
+attn_o_out-0 MUL
+ffn_inp-0 ADD
+norm-0 RMS_NORM
+ffn_norm-0 MUL
+ffn_gate-0 MUL_MAT
+ffn_gate_s-0 MUL
+ffn_silu-0 UNARY
+ffn_up-0 MUL_MAT
+ffn_up_s-0 MUL
+ffn_sub_out-0 MUL
+norm-0 RMS_NORM
+ffn_sub_norm-0 MUL
+node_41 MUL_MAT
+ffn_down-0 MUL
+l_out-0 ADD
+norm-1 RMS_NORM
+attn_norm-1 MUL
+node_46 MUL_MAT
+Qcur-1 MUL
+Qcur-1 (reshaped) RESHAPE
+Qcur-1 ROPE
+node_50 MUL_MAT
+Kcur-1 MUL
+Kcur-1 (reshaped) RESHAPE
+Kcur-1 ROPE
+node_54 MUL_MAT
+Vcur-1 MUL
+k_cache_view-1 VIEW
+k_cache_view-1 (copy of Kcur-1) CPY
+Vcur-1 (transposed) TRANSPOSE
+v_cache_view-1 VIEW
+v_cache_view-1 (copy of Vcur-1 (transposed)) CPY
+v-1 VIEW
+k-1 VIEW
+q-1 PERMUTE
+kq-1 MUL_MAT
+kq_soft_max_ext-1 SOFT_MAX
+kqv-1 MUL_MAT
+kqv_merged-1 PERMUTE
+kqv_out-1 CONT
+norm-1 RMS_NORM
+attn_sub_norm-1 MUL
+node_71 MUL_MAT
+attn_o_out-1 MUL
+ffn_inp-1 ADD
+norm-1 RMS_NORM
+ffn_norm-1 MUL
+ffn_gate-1 MUL_MAT
+ffn_gate_s-1 MUL
+ffn_silu-1 UNARY
+ffn_up-1 MUL_MAT
+ffn_up_s-1 MUL
+ffn_sub_out-1 MUL
+norm-1 RMS_NORM
+ffn_sub_norm-1 MUL
+node_84 MUL_MAT
+ffn_down-1 MUL
+l_out-1 ADD
+norm-2 RMS_NORM
+attn_norm-2 MUL
+node_89 MUL_MAT
+Qcur-2 MUL
+Qcur-2 (reshaped) RESHAPE
+Qcur-2 ROPE
+node_93 MUL_MAT
+Kcur-2 MUL
+Kcur-2 (reshaped) RESHAPE
+Kcur-2 ROPE
+node_97 MUL_MAT
+Vcur-2 MUL
+k_cache_view-2 VIEW
+k_cache_view-2 (copy of Kcur-2) CPY
+Vcur-2 (transposed) TRANSPOSE
+v_cache_view-2 VIEW
+v_cache_view-2 (copy of Vcur-2 (transposed)) CPY
+v-2 VIEW
+k-2 VIEW
+q-2 PERMUTE
+kq-2 MUL_MAT
+kq_soft_max_ext-2 SOFT_MAX
+kqv-2 MUL_MAT
+kqv_merged-2 PERMUTE
+kqv_out-2 CONT
+norm-2 RMS_NORM
+attn_sub_norm-2 MUL
+node_114 MUL_MAT
+attn_o_out-2 MUL
+ffn_inp-2 ADD
+norm-2 RMS_NORM
+ffn_norm-2 MUL
+ffn_gate-2 MUL_MAT
+ffn_gate_s-2 MUL
+ffn_silu-2 UNARY
+ffn_up-2 MUL_MAT
+ffn_up_s-2 MUL
+ffn_sub_out-2 MUL
+norm-2 RMS_NORM
+ffn_sub_norm-2 MUL
+node_127 MUL_MAT
+ffn_down-2 MUL
+l_out-2 ADD
+norm-3 RMS_NORM
+attn_norm-3 MUL
+node_132 MUL_MAT
+Qcur-3 MUL
+Qcur-3 (reshaped) RESHAPE
+Qcur-3 ROPE
+node_136 MUL_MAT
+Kcur-3 MUL
+Kcur-3 (reshaped) RESHAPE
+Kcur-3 ROPE
+node_140 MUL_MAT
+Vcur-3 MUL
+k_cache_view-3 VIEW
+k_cache_view-3 (copy of Kcur-3) CPY
+Vcur-3 (transposed) TRANSPOSE
+v_cache_view-3 VIEW
+v_cache_view-3 (copy of Vcur-3 (transposed)) CPY
+v-3 VIEW
+k-3 VIEW
+q-3 PERMUTE
+kq-3 MUL_MAT
+kq_soft_max_ext-3 SOFT_MAX
+kqv-3 MUL_MAT
+kqv_merged-3 PERMUTE
+kqv_out-3 CONT
+norm-3 RMS_NORM
+attn_sub_norm-3 MUL
+node_157 MUL_MAT
+attn_o_out-3 MUL
+ffn_inp-3 ADD
+norm-3 RMS_NORM
+ffn_norm-3 MUL
+ffn_gate-3 MUL_MAT
+ffn_gate_s-3 MUL
+ffn_silu-3 UNARY
+ffn_up-3 MUL_MAT
+ffn_up_s-3 MUL
+ffn_sub_out-3 MUL
+norm-3 RMS_NORM
+ffn_sub_norm-3 MUL
+node_170 MUL_MAT
+ffn_down-3 MUL
+l_out-3 ADD
+norm-4 RMS_NORM
+attn_norm-4 MUL
+node_175 MUL_MAT
+Qcur-4 MUL
+Qcur-4 (reshaped) RESHAPE
+Qcur-4 ROPE
+node_179 MUL_MAT
+Kcur-4 MUL
+Kcur-4 (reshaped) RESHAPE
+Kcur-4 ROPE
+node_183 MUL_MAT
+Vcur-4 MUL
+k_cache_view-4 VIEW
+k_cache_view-4 (copy of Kcur-4) CPY
+Vcur-4 (transposed) TRANSPOSE
+v_cache_view-4 VIEW
+v_cache_view-4 (copy of Vcur-4 (transposed)) CPY
+v-4 VIEW
+k-4 VIEW
+q-4 PERMUTE
+kq-4 MUL_MAT
+kq_soft_max_ext-4 SOFT_MAX
+kqv-4 MUL_MAT
+kqv_merged-4 PERMUTE
+kqv_out-4 CONT
+norm-4 RMS_NORM
+attn_sub_norm-4 MUL
+node_200 MUL_MAT
+attn_o_out-4 MUL
+ffn_inp-4 ADD
+norm-4 RMS_NORM
+ffn_norm-4 MUL
+ffn_gate-4 MUL_MAT
+ffn_gate_s-4 MUL
+ffn_silu-4 UNARY
+ffn_up-4 MUL_MAT
+ffn_up_s-4 MUL
+ffn_sub_out-4 MUL
+norm-4 RMS_NORM
+ffn_sub_norm-4 MUL
+node_213 MUL_MAT
+ffn_down-4 MUL
+l_out-4 ADD
+norm-5 RMS_NORM
+attn_norm-5 MUL
+node_218 MUL_MAT
+Qcur-5 MUL
+Qcur-5 (reshaped) RESHAPE
+Qcur-5 ROPE
+node_222 MUL_MAT
+Kcur-5 MUL
+Kcur-5 (reshaped) RESHAPE
+Kcur-5 ROPE
+node_226 MUL_MAT
+Vcur-5 MUL
+k_cache_view-5 VIEW
+k_cache_view-5 (copy of Kcur-5) CPY
+Vcur-5 (transposed) TRANSPOSE
+v_cache_view-5 VIEW
+v_cache_view-5 (copy of Vcur-5 (transposed)) CPY
+v-5 VIEW
+k-5 VIEW
+q-5 PERMUTE
+kq-5 MUL_MAT
+kq_soft_max_ext-5 SOFT_MAX
+kqv-5 MUL_MAT
+kqv_merged-5 PERMUTE
+kqv_out-5 CONT
+norm-5 RMS_NORM
+attn_sub_norm-5 MUL
+node_243 MUL_MAT
+attn_o_out-5 MUL
+ffn_inp-5 ADD
+norm-5 RMS_NORM
+ffn_norm-5 MUL
+ffn_gate-5 MUL_MAT
+ffn_gate_s-5 MUL
+ffn_silu-5 UNARY
+ffn_up-5 MUL_MAT
+ffn_up_s-5 MUL
+ffn_sub_out-5 MUL
+norm-5 RMS_NORM
+ffn_sub_norm-5 MUL
+node_256 MUL_MAT
+ffn_down-5 MUL
+l_out-5 ADD
+norm-6 RMS_NORM
+attn_norm-6 MUL
+node_261 MUL_MAT
+Qcur-6 MUL
+Qcur-6 (reshaped) RESHAPE
+Qcur-6 ROPE
+node_265 MUL_MAT
+Kcur-6 MUL
+Kcur-6 (reshaped) RESHAPE
+Kcur-6 ROPE
+node_269 MUL_MAT
+Vcur-6 MUL
+k_cache_view-6 VIEW
+k_cache_view-6 (copy of Kcur-6) CPY
+Vcur-6 (transposed) TRANSPOSE
+v_cache_view-6 VIEW
+v_cache_view-6 (copy of Vcur-6 (transposed)) CPY
+v-6 VIEW
+k-6 VIEW
+q-6 PERMUTE
+kq-6 MUL_MAT
+kq_soft_max_ext-6 SOFT_MAX
+kqv-6 MUL_MAT
+kqv_merged-6 PERMUTE
+kqv_out-6 CONT
+norm-6 RMS_NORM
+attn_sub_norm-6 MUL
+node_286 MUL_MAT
+attn_o_out-6 MUL
+ffn_inp-6 ADD
+norm-6 RMS_NORM
+ffn_norm-6 MUL
+ffn_gate-6 MUL_MAT
+ffn_gate_s-6 MUL
+ffn_silu-6 UNARY
+ffn_up-6 MUL_MAT
+ffn_up_s-6 MUL
+ffn_sub_out-6 MUL
+norm-6 RMS_NORM
+ffn_sub_norm-6 MUL
+node_299 MUL_MAT
+ffn_down-6 MUL
+l_out-6 ADD
+norm-7 RMS_NORM
+attn_norm-7 MUL
+node_304 MUL_MAT
+Qcur-7 MUL
+Qcur-7 (reshaped) RESHAPE
+Qcur-7 ROPE
+node_308 MUL_MAT
+Kcur-7 MUL
+Kcur-7 (reshaped) RESHAPE
+Kcur-7 ROPE
+node_312 MUL_MAT
+Vcur-7 MUL
+k_cache_view-7 VIEW
+k_cache_view-7 (copy of Kcur-7) CPY
+Vcur-7 (transposed) TRANSPOSE
+v_cache_view-7 VIEW
+v_cache_view-7 (copy of Vcur-7 (transposed)) CPY
+v-7 VIEW
+k-7 VIEW
+q-7 PERMUTE
+kq-7 MUL_MAT
+kq_soft_max_ext-7 SOFT_MAX
+kqv-7 MUL_MAT
+kqv_merged-7 PERMUTE
+kqv_out-7 CONT
+norm-7 RMS_NORM
+attn_sub_norm-7 MUL
+node_329 MUL_MAT
+attn_o_out-7 MUL
+ffn_inp-7 ADD
+norm-7 RMS_NORM
+ffn_norm-7 MUL
+ffn_gate-7 MUL_MAT
+ffn_gate_s-7 MUL
+ffn_silu-7 UNARY
+ffn_up-7 MUL_MAT
+ffn_up_s-7 MUL
+ffn_sub_out-7 MUL
+norm-7 RMS_NORM
+ffn_sub_norm-7 MUL
+node_342 MUL_MAT
+ffn_down-7 MUL
+l_out-7 ADD
+norm-8 RMS_NORM
+attn_norm-8 MUL
+node_347 MUL_MAT
+Qcur-8 MUL
+Qcur-8 (reshaped) RESHAPE
+Qcur-8 ROPE
+node_351 MUL_MAT
+Kcur-8 MUL
+Kcur-8 (reshaped) RESHAPE
+Kcur-8 ROPE
+node_355 MUL_MAT
+Vcur-8 MUL
+k_cache_view-8 VIEW
+k_cache_view-8 (copy of Kcur-8) CPY
+Vcur-8 (transposed) TRANSPOSE
+v_cache_view-8 VIEW
+v_cache_view-8 (copy of Vcur-8 (transposed)) CPY
+v-8 VIEW
+k-8 VIEW
+q-8 PERMUTE
+kq-8 MUL_MAT
+kq_soft_max_ext-8 SOFT_MAX
+kqv-8 MUL_MAT
+kqv_merged-8 PERMUTE
+kqv_out-8 CONT
+norm-8 RMS_NORM
+attn_sub_norm-8 MUL
+node_372 MUL_MAT
+attn_o_out-8 MUL
+ffn_inp-8 ADD
+norm-8 RMS_NORM
+ffn_norm-8 MUL
+ffn_gate-8 MUL_MAT
+ffn_gate_s-8 MUL
+ffn_silu-8 UNARY
+ffn_up-8 MUL_MAT
+ffn_up_s-8 MUL
+ffn_sub_out-8 MUL
+norm-8 RMS_NORM
+ffn_sub_norm-8 MUL
+node_385 MUL_MAT
+ffn_down-8 MUL
+l_out-8 ADD
+norm-9 RMS_NORM
+attn_norm-9 MUL
+node_390 MUL_MAT
+Qcur-9 MUL
+Qcur-9 (reshaped) RESHAPE
+Qcur-9 ROPE
+node_394 MUL_MAT
+Kcur-9 MUL
+Kcur-9 (reshaped) RESHAPE
+Kcur-9 ROPE
+node_398 MUL_MAT
+Vcur-9 MUL
+k_cache_view-9 VIEW
+k_cache_view-9 (copy of Kcur-9) CPY
+Vcur-9 (transposed) TRANSPOSE
+v_cache_view-9 VIEW
+v_cache_view-9 (copy of Vcur-9 (transposed)) CPY
+v-9 VIEW
+k-9 VIEW
+q-9 PERMUTE
+kq-9 MUL_MAT
+kq_soft_max_ext-9 SOFT_MAX
+kqv-9 MUL_MAT
+kqv_merged-9 PERMUTE
+kqv_out-9 CONT
+norm-9 RMS_NORM
+attn_sub_norm-9 MUL
+node_415 MUL_MAT
+attn_o_out-9 MUL
+ffn_inp-9 ADD
+norm-9 RMS_NORM
+ffn_norm-9 MUL
+ffn_gate-9 MUL_MAT
+ffn_gate_s-9 MUL
+ffn_silu-9 UNARY
+ffn_up-9 MUL_MAT
+ffn_up_s-9 MUL
+ffn_sub_out-9 MUL
+norm-9 RMS_NORM
+ffn_sub_norm-9 MUL
+node_428 MUL_MAT
+ffn_down-9 MUL
+l_out-9 ADD
+norm-10 RMS_NORM
+attn_norm-10 MUL
+node_433 MUL_MAT
+Qcur-10 MUL
+Qcur-10 (reshaped) RESHAPE
+Qcur-10 ROPE
+node_437 MUL_MAT
+Kcur-10 MUL
+Kcur-10 (reshaped) RESHAPE
+Kcur-10 ROPE
+node_441 MUL_MAT
+Vcur-10 MUL
+k_cache_view-10 VIEW
+k_cache_view-10 (copy of Kcur-10) CPY
+Vcur-10 (transposed) TRANSPOSE
+v_cache_view-10 VIEW
+v_cache_view-10 (copy of Vcur-10 (transposed)) CPY
+v-10 VIEW
+k-10 VIEW
+q-10 PERMUTE
+kq-10 MUL_MAT
+kq_soft_max_ext-10 SOFT_MAX
+kqv-10 MUL_MAT
+kqv_merged-10 PERMUTE
+kqv_out-10 CONT
+norm-10 RMS_NORM
+attn_sub_norm-10 MUL
+node_458 MUL_MAT
+attn_o_out-10 MUL
+ffn_inp-10 ADD
+norm-10 RMS_NORM
+ffn_norm-10 MUL
+ffn_gate-10 MUL_MAT
+ffn_gate_s-10 MUL
+ffn_silu-10 UNARY
+ffn_up-10 MUL_MAT
+ffn_up_s-10 MUL
+ffn_sub_out-10 MUL
+norm-10 RMS_NORM
+ffn_sub_norm-10 MUL
+node_471 MUL_MAT
+ffn_down-10 MUL
+l_out-10 ADD
+norm-11 RMS_NORM
+attn_norm-11 MUL
+node_476 MUL_MAT
+Qcur-11 MUL
+Qcur-11 (reshaped) RESHAPE
+Qcur-11 ROPE
+node_480 MUL_MAT
+Kcur-11 MUL
+Kcur-11 (reshaped) RESHAPE
+Kcur-11 ROPE
+node_484 MUL_MAT
+Vcur-11 MUL
+k_cache_view-11 VIEW
+k_cache_view-11 (copy of Kcur-11) CPY
+Vcur-11 (transposed) TRANSPOSE
+v_cache_view-11 VIEW
+v_cache_view-11 (copy of Vcur-11 (transposed)) CPY
+v-11 VIEW
+k-11 VIEW
+q-11 PERMUTE
+kq-11 MUL_MAT
+kq_soft_max_ext-11 SOFT_MAX
+kqv-11 MUL_MAT
+kqv_merged-11 PERMUTE
+kqv_out-11 CONT
+norm-11 RMS_NORM
+attn_sub_norm-11 MUL
+node_501 MUL_MAT
+attn_o_out-11 MUL
+ffn_inp-11 ADD
+norm-11 RMS_NORM
+ffn_norm-11 MUL
+ffn_gate-11 MUL_MAT
+ffn_gate_s-11 MUL
+ffn_silu-11 UNARY
+ffn_up-11 MUL_MAT
+ffn_up_s-11 MUL
+ffn_sub_out-11 MUL
+norm-11 RMS_NORM
+ffn_sub_norm-11 MUL
+node_514 MUL_MAT
+ffn_down-11 MUL
+l_out-11 ADD
+norm-12 RMS_NORM
+attn_norm-12 MUL
+node_519 MUL_MAT
+Qcur-12 MUL
+Qcur-12 (reshaped) RESHAPE
+Qcur-12 ROPE
+node_523 MUL_MAT
+Kcur-12 MUL
+Kcur-12 (reshaped) RESHAPE
+Kcur-12 ROPE
+node_527 MUL_MAT
+Vcur-12 MUL
+k_cache_view-12 VIEW
+k_cache_view-12 (copy of Kcur-12) CPY
+Vcur-12 (transposed) TRANSPOSE
+v_cache_view-12 VIEW
+v_cache_view-12 (copy of Vcur-12 (transposed)) CPY
+v-12 VIEW
+k-12 VIEW
+q-12 PERMUTE
+kq-12 MUL_MAT
+kq_soft_max_ext-12 SOFT_MAX
+kqv-12 MUL_MAT
+kqv_merged-12 PERMUTE
+kqv_out-12 CONT
+norm-12 RMS_NORM
+attn_sub_norm-12 MUL
+node_544 MUL_MAT
+attn_o_out-12 MUL
+ffn_inp-12 ADD
+norm-12 RMS_NORM
+ffn_norm-12 MUL
+ffn_gate-12 MUL_MAT
+ffn_gate_s-12 MUL
+ffn_silu-12 UNARY
+ffn_up-12 MUL_MAT
+ffn_up_s-12 MUL
+ffn_sub_out-12 MUL
+norm-12 RMS_NORM
+ffn_sub_norm-12 MUL
+node_557 MUL_MAT
+ffn_down-12 MUL
+l_out-12 ADD
+norm-13 RMS_NORM
+attn_norm-13 MUL
+node_562 MUL_MAT
+Qcur-13 MUL
+Qcur-13 (reshaped) RESHAPE
+Qcur-13 ROPE
+node_566 MUL_MAT
+Kcur-13 MUL
+Kcur-13 (reshaped) RESHAPE
+Kcur-13 ROPE
+node_570 MUL_MAT
+Vcur-13 MUL
+k_cache_view-13 VIEW
+k_cache_view-13 (copy of Kcur-13) CPY
+Vcur-13 (transposed) TRANSPOSE
+v_cache_view-13 VIEW
+v_cache_view-13 (copy of Vcur-13 (transposed)) CPY
+v-13 VIEW
+k-13 VIEW
+q-13 PERMUTE
+kq-13 MUL_MAT
+kq_soft_max_ext-13 SOFT_MAX
+kqv-13 MUL_MAT
+kqv_merged-13 PERMUTE
+kqv_out-13 CONT
+norm-13 RMS_NORM
+attn_sub_norm-13 MUL
+node_587 MUL_MAT
+attn_o_out-13 MUL
+ffn_inp-13 ADD
+norm-13 RMS_NORM
+ffn_norm-13 MUL
+ffn_gate-13 MUL_MAT
+ffn_gate_s-13 MUL
+ffn_silu-13 UNARY
+ffn_up-13 MUL_MAT
+ffn_up_s-13 MUL
+ffn_sub_out-13 MUL
+norm-13 RMS_NORM
+ffn_sub_norm-13 MUL
+node_600 MUL_MAT
+ffn_down-13 MUL
+l_out-13 ADD
+norm-14 RMS_NORM
+attn_norm-14 MUL
+node_605 MUL_MAT
+Qcur-14 MUL
+Qcur-14 (reshaped) RESHAPE
+Qcur-14 ROPE
+node_609 MUL_MAT
+Kcur-14 MUL
+Kcur-14 (reshaped) RESHAPE
+Kcur-14 ROPE
+node_613 MUL_MAT
+Vcur-14 MUL
+k_cache_view-14 VIEW
+k_cache_view-14 (copy of Kcur-14) CPY
+Vcur-14 (transposed) TRANSPOSE
+v_cache_view-14 VIEW
+v_cache_view-14 (copy of Vcur-14 (transposed)) CPY
+v-14 VIEW
+k-14 VIEW
+q-14 PERMUTE
+kq-14 MUL_MAT
+kq_soft_max_ext-14 SOFT_MAX
+kqv-14 MUL_MAT
+kqv_merged-14 PERMUTE
+kqv_out-14 CONT
+norm-14 RMS_NORM
+attn_sub_norm-14 MUL
+node_630 MUL_MAT
+attn_o_out-14 MUL
+ffn_inp-14 ADD
+norm-14 RMS_NORM
+ffn_norm-14 MUL
+ffn_gate-14 MUL_MAT
+ffn_gate_s-14 MUL
+ffn_silu-14 UNARY
+ffn_up-14 MUL_MAT
+ffn_up_s-14 MUL
+ffn_sub_out-14 MUL
+norm-14 RMS_NORM
+ffn_sub_norm-14 MUL
+node_643 MUL_MAT
+ffn_down-14 MUL
+l_out-14 ADD
+norm-15 RMS_NORM
+attn_norm-15 MUL
+node_648 MUL_MAT
+Qcur-15 MUL
+Qcur-15 (reshaped) RESHAPE
+Qcur-15 ROPE
+node_652 MUL_MAT
+Kcur-15 MUL
+Kcur-15 (reshaped) RESHAPE
+Kcur-15 ROPE
+node_656 MUL_MAT
+Vcur-15 MUL
+k_cache_view-15 VIEW
+k_cache_view-15 (copy of Kcur-15) CPY
+Vcur-15 (transposed) TRANSPOSE
+v_cache_view-15 VIEW
+v_cache_view-15 (copy of Vcur-15 (transposed)) CPY
+v-15 VIEW
+k-15 VIEW
+q-15 PERMUTE
+kq-15 MUL_MAT
+kq_soft_max_ext-15 SOFT_MAX
+kqv-15 MUL_MAT
+kqv_merged-15 PERMUTE
+kqv_out-15 CONT
+norm-15 RMS_NORM
+attn_sub_norm-15 MUL
+node_673 MUL_MAT
+attn_o_out-15 MUL
+ffn_inp-15 ADD
+norm-15 RMS_NORM
+ffn_norm-15 MUL
+ffn_gate-15 MUL_MAT
+ffn_gate_s-15 MUL
+ffn_silu-15 UNARY
+ffn_up-15 MUL_MAT
+ffn_up_s-15 MUL
+ffn_sub_out-15 MUL
+norm-15 RMS_NORM
+ffn_sub_norm-15 MUL
+node_686 MUL_MAT
+ffn_down-15 MUL
+l_out-15 ADD
+norm-16 RMS_NORM
+attn_norm-16 MUL
+node_691 MUL_MAT
+Qcur-16 MUL
+Qcur-16 (reshaped) RESHAPE
+Qcur-16 ROPE
+node_695 MUL_MAT
+Kcur-16 MUL
+Kcur-16 (reshaped) RESHAPE
+Kcur-16 ROPE
+node_699 MUL_MAT
+Vcur-16 MUL
+k_cache_view-16 VIEW
+k_cache_view-16 (copy of Kcur-16) CPY
+Vcur-16 (transposed) TRANSPOSE
+v_cache_view-16 VIEW
+v_cache_view-16 (copy of Vcur-16 (transposed)) CPY
+v-16 VIEW
+k-16 VIEW
+q-16 PERMUTE
+kq-16 MUL_MAT
+kq_soft_max_ext-16 SOFT_MAX
+kqv-16 MUL_MAT
+kqv_merged-16 PERMUTE
+kqv_out-16 CONT
+norm-16 RMS_NORM
+attn_sub_norm-16 MUL
+node_716 MUL_MAT
+attn_o_out-16 MUL
+ffn_inp-16 ADD
+norm-16 RMS_NORM
+ffn_norm-16 MUL
+ffn_gate-16 MUL_MAT
+ffn_gate_s-16 MUL
+ffn_silu-16 UNARY
+ffn_up-16 MUL_MAT
+ffn_up_s-16 MUL
+ffn_sub_out-16 MUL
+norm-16 RMS_NORM
+ffn_sub_norm-16 MUL
+node_729 MUL_MAT
+ffn_down-16 MUL
+l_out-16 ADD
+norm-17 RMS_NORM
+attn_norm-17 MUL
+node_734 MUL_MAT
+Qcur-17 MUL
+Qcur-17 (reshaped) RESHAPE
+Qcur-17 ROPE
+node_738 MUL_MAT
+Kcur-17 MUL
+Kcur-17 (reshaped) RESHAPE
+Kcur-17 ROPE
+node_742 MUL_MAT
+Vcur-17 MUL
+k_cache_view-17 VIEW
+k_cache_view-17 (copy of Kcur-17) CPY
+Vcur-17 (transposed) TRANSPOSE
+v_cache_view-17 VIEW
+v_cache_view-17 (copy of Vcur-17 (transposed)) CPY
+v-17 VIEW
+k-17 VIEW
+q-17 PERMUTE
+kq-17 MUL_MAT
+kq_soft_max_ext-17 SOFT_MAX
+kqv-17 MUL_MAT
+kqv_merged-17 PERMUTE
+kqv_out-17 CONT
+norm-17 RMS_NORM
+attn_sub_norm-17 MUL
+node_759 MUL_MAT
+attn_o_out-17 MUL
+ffn_inp-17 ADD
+norm-17 RMS_NORM
+ffn_norm-17 MUL
+ffn_gate-17 MUL_MAT
+ffn_gate_s-17 MUL
+ffn_silu-17 UNARY
+ffn_up-17 MUL_MAT
+ffn_up_s-17 MUL
+ffn_sub_out-17 MUL
+norm-17 RMS_NORM
+ffn_sub_norm-17 MUL
+node_772 MUL_MAT
+ffn_down-17 MUL
+l_out-17 ADD
+norm-18 RMS_NORM
+attn_norm-18 MUL
+node_777 MUL_MAT
+Qcur-18 MUL
+Qcur-18 (reshaped) RESHAPE
+Qcur-18 ROPE
+node_781 MUL_MAT
+Kcur-18 MUL
+Kcur-18 (reshaped) RESHAPE
+Kcur-18 ROPE
+node_785 MUL_MAT
+Vcur-18 MUL
+k_cache_view-18 VIEW
+k_cache_view-18 (copy of Kcur-18) CPY
+Vcur-18 (transposed) TRANSPOSE
+v_cache_view-18 VIEW
+v_cache_view-18 (copy of Vcur-18 (transposed)) CPY
+v-18 VIEW
+k-18 VIEW
+q-18 PERMUTE
+kq-18 MUL_MAT
+kq_soft_max_ext-18 SOFT_MAX
+kqv-18 MUL_MAT
+kqv_merged-18 PERMUTE
+kqv_out-18 CONT
+norm-18 RMS_NORM
+attn_sub_norm-18 MUL
+node_802 MUL_MAT
+attn_o_out-18 MUL
+ffn_inp-18 ADD
+norm-18 RMS_NORM
+ffn_norm-18 MUL
+ffn_gate-18 MUL_MAT
+ffn_gate_s-18 MUL
+ffn_silu-18 UNARY
+ffn_up-18 MUL_MAT
+ffn_up_s-18 MUL
+ffn_sub_out-18 MUL
+norm-18 RMS_NORM
+ffn_sub_norm-18 MUL
+node_815 MUL_MAT
+ffn_down-18 MUL
+l_out-18 ADD
+norm-19 RMS_NORM
+attn_norm-19 MUL
+node_820 MUL_MAT
+Qcur-19 MUL
+Qcur-19 (reshaped) RESHAPE
+Qcur-19 ROPE
+node_824 MUL_MAT
+Kcur-19 MUL
+Kcur-19 (reshaped) RESHAPE
+Kcur-19 ROPE
+node_828 MUL_MAT
+Vcur-19 MUL
+k_cache_view-19 VIEW
+k_cache_view-19 (copy of Kcur-19) CPY
+Vcur-19 (transposed) TRANSPOSE
+v_cache_view-19 VIEW
+v_cache_view-19 (copy of Vcur-19 (transposed)) CPY
+v-19 VIEW
+k-19 VIEW
+q-19 PERMUTE
+kq-19 MUL_MAT
+kq_soft_max_ext-19 SOFT_MAX
+kqv-19 MUL_MAT
+kqv_merged-19 PERMUTE
+kqv_out-19 CONT
+norm-19 RMS_NORM
+attn_sub_norm-19 MUL
+node_845 MUL_MAT
+attn_o_out-19 MUL
+ffn_inp-19 ADD
+norm-19 RMS_NORM
+ffn_norm-19 MUL
+ffn_gate-19 MUL_MAT
+ffn_gate_s-19 MUL
+ffn_silu-19 UNARY
+ffn_up-19 MUL_MAT
+ffn_up_s-19 MUL
+ffn_sub_out-19 MUL
+norm-19 RMS_NORM
+ffn_sub_norm-19 MUL
+node_858 MUL_MAT
+ffn_down-19 MUL
+l_out-19 ADD
+norm-20 RMS_NORM
+attn_norm-20 MUL
+node_863 MUL_MAT
+Qcur-20 MUL
+Qcur-20 (reshaped) RESHAPE
+Qcur-20 ROPE
+node_867 MUL_MAT
+Kcur-20 MUL
+Kcur-20 (reshaped) RESHAPE
+Kcur-20 ROPE
+node_871 MUL_MAT
+Vcur-20 MUL
+k_cache_view-20 VIEW
+k_cache_view-20 (copy of Kcur-20) CPY
+Vcur-20 (transposed) TRANSPOSE
+v_cache_view-20 VIEW
+v_cache_view-20 (copy of Vcur-20 (transposed)) CPY
+v-20 VIEW
+k-20 VIEW
+q-20 PERMUTE
+kq-20 MUL_MAT
+kq_soft_max_ext-20 SOFT_MAX
+kqv-20 MUL_MAT
+kqv_merged-20 PERMUTE
+kqv_out-20 CONT
+norm-20 RMS_NORM
+attn_sub_norm-20 MUL
+node_888 MUL_MAT
+attn_o_out-20 MUL
+ffn_inp-20 ADD
+norm-20 RMS_NORM
+ffn_norm-20 MUL
+ffn_gate-20 MUL_MAT
+ffn_gate_s-20 MUL
+ffn_silu-20 UNARY
+ffn_up-20 MUL_MAT
+ffn_up_s-20 MUL
+ffn_sub_out-20 MUL
+norm-20 RMS_NORM
+ffn_sub_norm-20 MUL
+node_901 MUL_MAT
+ffn_down-20 MUL
+l_out-20 ADD
+norm-21 RMS_NORM
+attn_norm-21 MUL
+node_906 MUL_MAT
+Qcur-21 MUL
+Qcur-21 (reshaped) RESHAPE
+Qcur-21 ROPE
+node_910 MUL_MAT
+Kcur-21 MUL
+Kcur-21 (reshaped) RESHAPE
+Kcur-21 ROPE
+node_914 MUL_MAT
+Vcur-21 MUL
+k_cache_view-21 VIEW
+k_cache_view-21 (copy of Kcur-21) CPY
+Vcur-21 (transposed) TRANSPOSE
+v_cache_view-21 VIEW
+v_cache_view-21 (copy of Vcur-21 (transposed)) CPY
+v-21 VIEW
+k-21 VIEW
+q-21 PERMUTE
+kq-21 MUL_MAT
+kq_soft_max_ext-21 SOFT_MAX
+kqv-21 MUL_MAT
+kqv_merged-21 PERMUTE
+kqv_out-21 CONT
+norm-21 RMS_NORM
+attn_sub_norm-21 MUL
+node_931 MUL_MAT
+attn_o_out-21 MUL
+ffn_inp-21 ADD
+norm-21 RMS_NORM
+ffn_norm-21 MUL
+ffn_gate-21 MUL_MAT
+ffn_gate_s-21 MUL
+ffn_silu-21 UNARY
+ffn_up-21 MUL_MAT
+ffn_up_s-21 MUL
+ffn_sub_out-21 MUL
+norm-21 RMS_NORM
+ffn_sub_norm-21 MUL
+node_944 MUL_MAT
+ffn_down-21 MUL
+l_out-21 ADD
+norm-22 RMS_NORM
+attn_norm-22 MUL
+node_949 MUL_MAT
+Qcur-22 MUL
+Qcur-22 (reshaped) RESHAPE
+Qcur-22 ROPE
+node_953 MUL_MAT
+Kcur-22 MUL
+Kcur-22 (reshaped) RESHAPE
+Kcur-22 ROPE
+node_957 MUL_MAT
+Vcur-22 MUL
+k_cache_view-22 VIEW
+k_cache_view-22 (copy of Kcur-22) CPY
+Vcur-22 (transposed) TRANSPOSE
+v_cache_view-22 VIEW
+v_cache_view-22 (copy of Vcur-22 (transposed)) CPY
+v-22 VIEW
+k-22 VIEW
+q-22 PERMUTE
+kq-22 MUL_MAT
+kq_soft_max_ext-22 SOFT_MAX
+kqv-22 MUL_MAT
+kqv_merged-22 PERMUTE
+kqv_out-22 CONT
+norm-22 RMS_NORM
+attn_sub_norm-22 MUL
+node_974 MUL_MAT
+attn_o_out-22 MUL
+ffn_inp-22 ADD
+norm-22 RMS_NORM
+ffn_norm-22 MUL
+ffn_gate-22 MUL_MAT
+ffn_gate_s-22 MUL
+ffn_silu-22 UNARY
+ffn_up-22 MUL_MAT
+ffn_up_s-22 MUL
+ffn_sub_out-22 MUL
+norm-22 RMS_NORM
+ffn_sub_norm-22 MUL
+node_987 MUL_MAT
+ffn_down-22 MUL
+l_out-22 ADD
+norm-23 RMS_NORM
+attn_norm-23 MUL
+node_992 MUL_MAT
+Qcur-23 MUL
+Qcur-23 (reshaped) RESHAPE
+Qcur-23 ROPE
+node_996 MUL_MAT
+Kcur-23 MUL
+Kcur-23 (reshaped) RESHAPE
+Kcur-23 ROPE
+node_1000 MUL_MAT
+Vcur-23 MUL
+k_cache_view-23 VIEW
+k_cache_view-23 (copy of Kcur-23) CPY
+Vcur-23 (transposed) TRANSPOSE
+v_cache_view-23 VIEW
+v_cache_view-23 (copy of Vcur-23 (transposed)) CPY
+v-23 VIEW
+k-23 VIEW
+q-23 PERMUTE
+kq-23 MUL_MAT
+kq_soft_max_ext-23 SOFT_MAX
+kqv-23 MUL_MAT
+kqv_merged-23 PERMUTE
+kqv_out-23 CONT
+norm-23 RMS_NORM
+attn_sub_norm-23 MUL
+node_1017 MUL_MAT
+attn_o_out-23 MUL
+node_1019 GET_ROWS
+node_1020 GET_ROWS
+ffn_inp-23 ADD
+norm-23 RMS_NORM
+ffn_norm-23 MUL
+ffn_gate-23 MUL_MAT
+ffn_gate_s-23 MUL
+ffn_silu-23 UNARY
+ffn_up-23 MUL_MAT
+ffn_up_s-23 MUL
+ffn_sub_out-23 MUL
+norm-23 RMS_NORM
+ffn_sub_norm-23 MUL
+node_1032 MUL_MAT
+ffn_down-23 MUL
+l_out-23 ADD
+norm RMS_NORM
+result_norm MUL
+result_output MUL_MAT
+inp_embd GET_ROWS
+norm-0 RMS_NORM
+attn_norm-0 MUL
+node_3 MUL_MAT
+Qcur-0 MUL
+Qcur-0 (reshaped) RESHAPE
+Qcur-0 ROPE
+node_7 MUL_MAT
+Kcur-0 MUL
+Kcur-0 (reshaped) RESHAPE
+Kcur-0 ROPE
+node_11 MUL_MAT
+Vcur-0 MUL
+k_cache_view-0 VIEW
+k_cache_view-0 (copy of Kcur-0) CPY
+Vcur-0 (transposed) TRANSPOSE
+v_cache_view-0 VIEW
+v_cache_view-0 (copy of Vcur-0 (transposed)) CPY
+v-0 VIEW
+k-0 VIEW
+q-0 PERMUTE
+kq-0 MUL_MAT
+kq_soft_max_ext-0 SOFT_MAX
+kqv-0 MUL_MAT
+kqv_merged-0 PERMUTE
+kqv_out-0 CONT
+norm-0 RMS_NORM
+attn_sub_norm-0 MUL
+node_28 MUL_MAT
+attn_o_out-0 MUL
+ffn_inp-0 ADD
+norm-0 RMS_NORM
+ffn_norm-0 MUL
+ffn_gate-0 MUL_MAT
+ffn_gate_s-0 MUL
+ffn_silu-0 UNARY
+ffn_up-0 MUL_MAT
+ffn_up_s-0 MUL
+ffn_sub_out-0 MUL
+norm-0 RMS_NORM
+ffn_sub_norm-0 MUL
+node_41 MUL_MAT
+ffn_down-0 MUL
+l_out-0 ADD
+norm-1 RMS_NORM
+attn_norm-1 MUL
+node_46 MUL_MAT
+Qcur-1 MUL
+Qcur-1 (reshaped) RESHAPE
+Qcur-1 ROPE
+node_50 MUL_MAT
+Kcur-1 MUL
+Kcur-1 (reshaped) RESHAPE
+Kcur-1 ROPE
+node_54 MUL_MAT
+Vcur-1 MUL
+k_cache_view-1 VIEW
+k_cache_view-1 (copy of Kcur-1) CPY
+Vcur-1 (transposed) TRANSPOSE
+v_cache_view-1 VIEW
+v_cache_view-1 (copy of Vcur-1 (transposed)) CPY
+v-1 VIEW
+k-1 VIEW
+q-1 PERMUTE
+kq-1 MUL_MAT
+kq_soft_max_ext-1 SOFT_MAX
+kqv-1 MUL_MAT
+kqv_merged-1 PERMUTE
+kqv_out-1 CONT
+norm-1 RMS_NORM
+attn_sub_norm-1 MUL
+node_71 MUL_MAT
+attn_o_out-1 MUL
+ffn_inp-1 ADD
+norm-1 RMS_NORM
+ffn_norm-1 MUL
+ffn_gate-1 MUL_MAT
+ffn_gate_s-1 MUL
+ffn_silu-1 UNARY
+ffn_up-1 MUL_MAT
+ffn_up_s-1 MUL
+ffn_sub_out-1 MUL
+norm-1 RMS_NORM
+ffn_sub_norm-1 MUL
+node_84 MUL_MAT
+ffn_down-1 MUL
+l_out-1 ADD
+norm-2 RMS_NORM
+attn_norm-2 MUL
+node_89 MUL_MAT
+Qcur-2 MUL
+Qcur-2 (reshaped) RESHAPE
+Qcur-2 ROPE
+node_93 MUL_MAT
+Kcur-2 MUL
+Kcur-2 (reshaped) RESHAPE
+Kcur-2 ROPE
+node_97 MUL_MAT
+Vcur-2 MUL
+k_cache_view-2 VIEW
+k_cache_view-2 (copy of Kcur-2) CPY
+Vcur-2 (transposed) TRANSPOSE
+v_cache_view-2 VIEW
+v_cache_view-2 (copy of Vcur-2 (transposed)) CPY
+v-2 VIEW
+k-2 VIEW
+q-2 PERMUTE
+kq-2 MUL_MAT
+kq_soft_max_ext-2 SOFT_MAX
+kqv-2 MUL_MAT
+kqv_merged-2 PERMUTE
+kqv_out-2 CONT
+norm-2 RMS_NORM
+attn_sub_norm-2 MUL
+node_114 MUL_MAT
+attn_o_out-2 MUL
+ffn_inp-2 ADD
+norm-2 RMS_NORM
+ffn_norm-2 MUL
+ffn_gate-2 MUL_MAT
+ffn_gate_s-2 MUL
+ffn_silu-2 UNARY
+ffn_up-2 MUL_MAT
+ffn_up_s-2 MUL
+ffn_sub_out-2 MUL
+norm-2 RMS_NORM
+ffn_sub_norm-2 MUL
+node_127 MUL_MAT
+ffn_down-2 MUL
+l_out-2 ADD
+norm-3 RMS_NORM
+attn_norm-3 MUL
+node_132 MUL_MAT
+Qcur-3 MUL
+Qcur-3 (reshaped) RESHAPE
+Qcur-3 ROPE
+node_136 MUL_MAT
+Kcur-3 MUL
+Kcur-3 (reshaped) RESHAPE
+Kcur-3 ROPE
+node_140 MUL_MAT
+Vcur-3 MUL
+k_cache_view-3 VIEW
+k_cache_view-3 (copy of Kcur-3) CPY
+Vcur-3 (transposed) TRANSPOSE
+v_cache_view-3 VIEW
+v_cache_view-3 (copy of Vcur-3 (transposed)) CPY
+v-3 VIEW
+k-3 VIEW
+q-3 PERMUTE
+kq-3 MUL_MAT
+kq_soft_max_ext-3 SOFT_MAX
+kqv-3 MUL_MAT
+kqv_merged-3 PERMUTE
+kqv_out-3 CONT
+norm-3 RMS_NORM
+attn_sub_norm-3 MUL
+node_157 MUL_MAT
+attn_o_out-3 MUL
+ffn_inp-3 ADD
+norm-3 RMS_NORM
+ffn_norm-3 MUL
+ffn_gate-3 MUL_MAT
+ffn_gate_s-3 MUL
+ffn_silu-3 UNARY
+ffn_up-3 MUL_MAT
+ffn_up_s-3 MUL
+ffn_sub_out-3 MUL
+norm-3 RMS_NORM
+ffn_sub_norm-3 MUL
+node_170 MUL_MAT
+ffn_down-3 MUL
+l_out-3 ADD
+norm-4 RMS_NORM
+attn_norm-4 MUL
+node_175 MUL_MAT
+Qcur-4 MUL
+Qcur-4 (reshaped) RESHAPE
+Qcur-4 ROPE
+node_179 MUL_MAT
+Kcur-4 MUL
+Kcur-4 (reshaped) RESHAPE
+Kcur-4 ROPE
+node_183 MUL_MAT
+Vcur-4 MUL
+k_cache_view-4 VIEW
+k_cache_view-4 (copy of Kcur-4) CPY
+Vcur-4 (transposed) TRANSPOSE
+v_cache_view-4 VIEW
+v_cache_view-4 (copy of Vcur-4 (transposed)) CPY
+v-4 VIEW
+k-4 VIEW
+q-4 PERMUTE
+kq-4 MUL_MAT
+kq_soft_max_ext-4 SOFT_MAX
+kqv-4 MUL_MAT
+kqv_merged-4 PERMUTE
+kqv_out-4 CONT
+norm-4 RMS_NORM
+attn_sub_norm-4 MUL
+node_200 MUL_MAT
+attn_o_out-4 MUL
+ffn_inp-4 ADD
+norm-4 RMS_NORM
+ffn_norm-4 MUL
+ffn_gate-4 MUL_MAT
+ffn_gate_s-4 MUL
+ffn_silu-4 UNARY
+ffn_up-4 MUL_MAT
+ffn_up_s-4 MUL
+ffn_sub_out-4 MUL
+norm-4 RMS_NORM
+ffn_sub_norm-4 MUL
+node_213 MUL_MAT
+ffn_down-4 MUL
+l_out-4 ADD
+norm-5 RMS_NORM
+attn_norm-5 MUL
+node_218 MUL_MAT
+Qcur-5 MUL
+Qcur-5 (reshaped) RESHAPE
+Qcur-5 ROPE
+node_222 MUL_MAT
+Kcur-5 MUL
+Kcur-5 (reshaped) RESHAPE
+Kcur-5 ROPE
+node_226 MUL_MAT
+Vcur-5 MUL
+k_cache_view-5 VIEW
+k_cache_view-5 (copy of Kcur-5) CPY
+Vcur-5 (transposed) TRANSPOSE
+v_cache_view-5 VIEW
+v_cache_view-5 (copy of Vcur-5 (transposed)) CPY
+v-5 VIEW
+k-5 VIEW
+q-5 PERMUTE
+kq-5 MUL_MAT
+kq_soft_max_ext-5 SOFT_MAX
+kqv-5 MUL_MAT
+kqv_merged-5 PERMUTE
+kqv_out-5 CONT
+norm-5 RMS_NORM
+attn_sub_norm-5 MUL
+node_243 MUL_MAT
+attn_o_out-5 MUL
+ffn_inp-5 ADD
+norm-5 RMS_NORM
+ffn_norm-5 MUL
+ffn_gate-5 MUL_MAT
+ffn_gate_s-5 MUL
+ffn_silu-5 UNARY
+ffn_up-5 MUL_MAT
+ffn_up_s-5 MUL
+ffn_sub_out-5 MUL
+norm-5 RMS_NORM
+ffn_sub_norm-5 MUL
+node_256 MUL_MAT
+ffn_down-5 MUL
+l_out-5 ADD
+norm-6 RMS_NORM
+attn_norm-6 MUL
+node_261 MUL_MAT
+Qcur-6 MUL
+Qcur-6 (reshaped) RESHAPE
+Qcur-6 ROPE
+node_265 MUL_MAT
+Kcur-6 MUL
+Kcur-6 (reshaped) RESHAPE
+Kcur-6 ROPE
+node_269 MUL_MAT
+Vcur-6 MUL
+k_cache_view-6 VIEW
+k_cache_view-6 (copy of Kcur-6) CPY
+Vcur-6 (transposed) TRANSPOSE
+v_cache_view-6 VIEW
+v_cache_view-6 (copy of Vcur-6 (transposed)) CPY
+v-6 VIEW
+k-6 VIEW
+q-6 PERMUTE
+kq-6 MUL_MAT
+kq_soft_max_ext-6 SOFT_MAX
+kqv-6 MUL_MAT
+kqv_merged-6 PERMUTE
+kqv_out-6 CONT
+norm-6 RMS_NORM
+attn_sub_norm-6 MUL
+node_286 MUL_MAT
+attn_o_out-6 MUL
+ffn_inp-6 ADD
+norm-6 RMS_NORM
+ffn_norm-6 MUL
+ffn_gate-6 MUL_MAT
+ffn_gate_s-6 MUL
+ffn_silu-6 UNARY
+ffn_up-6 MUL_MAT
+ffn_up_s-6 MUL
+ffn_sub_out-6 MUL
+norm-6 RMS_NORM
+ffn_sub_norm-6 MUL
+node_299 MUL_MAT
+ffn_down-6 MUL
+l_out-6 ADD
+norm-7 RMS_NORM
+attn_norm-7 MUL
+node_304 MUL_MAT
+Qcur-7 MUL
+Qcur-7 (reshaped) RESHAPE
+Qcur-7 ROPE
+node_308 MUL_MAT
+Kcur-7 MUL
+Kcur-7 (reshaped) RESHAPE
+Kcur-7 ROPE
+node_312 MUL_MAT
+Vcur-7 MUL
+k_cache_view-7 VIEW
+k_cache_view-7 (copy of Kcur-7) CPY
+Vcur-7 (transposed) TRANSPOSE
+v_cache_view-7 VIEW
+v_cache_view-7 (copy of Vcur-7 (transposed)) CPY
+v-7 VIEW
+k-7 VIEW
+q-7 PERMUTE
+kq-7 MUL_MAT
+kq_soft_max_ext-7 SOFT_MAX
+kqv-7 MUL_MAT
+kqv_merged-7 PERMUTE
+kqv_out-7 CONT
+norm-7 RMS_NORM
+attn_sub_norm-7 MUL
+node_329 MUL_MAT
+attn_o_out-7 MUL
+ffn_inp-7 ADD
+norm-7 RMS_NORM
+ffn_norm-7 MUL
+ffn_gate-7 MUL_MAT
+ffn_gate_s-7 MUL
+ffn_silu-7 UNARY
+ffn_up-7 MUL_MAT
+ffn_up_s-7 MUL
+ffn_sub_out-7 MUL
+norm-7 RMS_NORM
+ffn_sub_norm-7 MUL
+node_342 MUL_MAT
+ffn_down-7 MUL
+l_out-7 ADD
+norm-8 RMS_NORM
+attn_norm-8 MUL
+node_347 MUL_MAT
+Qcur-8 MUL
+Qcur-8 (reshaped) RESHAPE
+Qcur-8 ROPE
+node_351 MUL_MAT
+Kcur-8 MUL
+Kcur-8 (reshaped) RESHAPE
+Kcur-8 ROPE
+node_355 MUL_MAT
+Vcur-8 MUL
+k_cache_view-8 VIEW
+k_cache_view-8 (copy of Kcur-8) CPY
+Vcur-8 (transposed) TRANSPOSE
+v_cache_view-8 VIEW
+v_cache_view-8 (copy of Vcur-8 (transposed)) CPY
+v-8 VIEW
+k-8 VIEW
+q-8 PERMUTE
+kq-8 MUL_MAT
+kq_soft_max_ext-8 SOFT_MAX
+kqv-8 MUL_MAT
+kqv_merged-8 PERMUTE
+kqv_out-8 CONT
+norm-8 RMS_NORM
+attn_sub_norm-8 MUL
+node_372 MUL_MAT
+attn_o_out-8 MUL
+ffn_inp-8 ADD
+norm-8 RMS_NORM
+ffn_norm-8 MUL
+ffn_gate-8 MUL_MAT
+ffn_gate_s-8 MUL
+ffn_silu-8 UNARY
+ffn_up-8 MUL_MAT
+ffn_up_s-8 MUL
+ffn_sub_out-8 MUL
+norm-8 RMS_NORM
+ffn_sub_norm-8 MUL
+node_385 MUL_MAT
+ffn_down-8 MUL
+l_out-8 ADD
+norm-9 RMS_NORM
+attn_norm-9 MUL
+node_390 MUL_MAT
+Qcur-9 MUL
+Qcur-9 (reshaped) RESHAPE
+Qcur-9 ROPE
+node_394 MUL_MAT
+Kcur-9 MUL
+Kcur-9 (reshaped) RESHAPE
+Kcur-9 ROPE
+node_398 MUL_MAT
+Vcur-9 MUL
+k_cache_view-9 VIEW
+k_cache_view-9 (copy of Kcur-9) CPY
+Vcur-9 (transposed) TRANSPOSE
+v_cache_view-9 VIEW
+v_cache_view-9 (copy of Vcur-9 (transposed)) CPY
+v-9 VIEW
+k-9 VIEW
+q-9 PERMUTE
+kq-9 MUL_MAT
+kq_soft_max_ext-9 SOFT_MAX
+kqv-9 MUL_MAT
+kqv_merged-9 PERMUTE
+kqv_out-9 CONT
+norm-9 RMS_NORM
+attn_sub_norm-9 MUL
+node_415 MUL_MAT
+attn_o_out-9 MUL
+ffn_inp-9 ADD
+norm-9 RMS_NORM
+ffn_norm-9 MUL
+ffn_gate-9 MUL_MAT
+ffn_gate_s-9 MUL
+ffn_silu-9 UNARY
+ffn_up-9 MUL_MAT
+ffn_up_s-9 MUL
+ffn_sub_out-9 MUL
+norm-9 RMS_NORM
+ffn_sub_norm-9 MUL
+node_428 MUL_MAT
+ffn_down-9 MUL
+l_out-9 ADD
+norm-10 RMS_NORM
+attn_norm-10 MUL
+node_433 MUL_MAT
+Qcur-10 MUL
+Qcur-10 (reshaped) RESHAPE
+Qcur-10 ROPE
+node_437 MUL_MAT
+Kcur-10 MUL
+Kcur-10 (reshaped) RESHAPE
+Kcur-10 ROPE
+node_441 MUL_MAT
+Vcur-10 MUL
+k_cache_view-10 VIEW
+k_cache_view-10 (copy of Kcur-10) CPY
+Vcur-10 (transposed) TRANSPOSE
+v_cache_view-10 VIEW
+v_cache_view-10 (copy of Vcur-10 (transposed)) CPY
+v-10 VIEW
+k-10 VIEW
+q-10 PERMUTE
+kq-10 MUL_MAT
+kq_soft_max_ext-10 SOFT_MAX
+kqv-10 MUL_MAT
+kqv_merged-10 PERMUTE
+kqv_out-10 CONT
+norm-10 RMS_NORM
+attn_sub_norm-10 MUL
+node_458 MUL_MAT
+attn_o_out-10 MUL
+ffn_inp-10 ADD
+norm-10 RMS_NORM
+ffn_norm-10 MUL
+ffn_gate-10 MUL_MAT
+ffn_gate_s-10 MUL
+ffn_silu-10 UNARY
+ffn_up-10 MUL_MAT
+ffn_up_s-10 MUL
+ffn_sub_out-10 MUL
+norm-10 RMS_NORM
+ffn_sub_norm-10 MUL
+node_471 MUL_MAT
+ffn_down-10 MUL
+l_out-10 ADD
+norm-11 RMS_NORM
+attn_norm-11 MUL
+node_476 MUL_MAT
+Qcur-11 MUL
+Qcur-11 (reshaped) RESHAPE
+Qcur-11 ROPE
+node_480 MUL_MAT
+Kcur-11 MUL
+Kcur-11 (reshaped) RESHAPE
+Kcur-11 ROPE
+node_484 MUL_MAT
+Vcur-11 MUL
+k_cache_view-11 VIEW
+k_cache_view-11 (copy of Kcur-11) CPY
+Vcur-11 (transposed) TRANSPOSE
+v_cache_view-11 VIEW
+v_cache_view-11 (copy of Vcur-11 (transposed)) CPY
+v-11 VIEW
+k-11 VIEW
+q-11 PERMUTE
+kq-11 MUL_MAT
+kq_soft_max_ext-11 SOFT_MAX
+kqv-11 MUL_MAT
+kqv_merged-11 PERMUTE
+kqv_out-11 CONT
+norm-11 RMS_NORM
+attn_sub_norm-11 MUL
+node_501 MUL_MAT
+attn_o_out-11 MUL
+ffn_inp-11 ADD
+norm-11 RMS_NORM
+ffn_norm-11 MUL
+ffn_gate-11 MUL_MAT
+ffn_gate_s-11 MUL
+ffn_silu-11 UNARY
+ffn_up-11 MUL_MAT
+ffn_up_s-11 MUL
+ffn_sub_out-11 MUL
+norm-11 RMS_NORM
+ffn_sub_norm-11 MUL
+node_514 MUL_MAT
+ffn_down-11 MUL
+l_out-11 ADD
+norm-12 RMS_NORM
+attn_norm-12 MUL
+node_519 MUL_MAT
+Qcur-12 MUL
+Qcur-12 (reshaped) RESHAPE
+Qcur-12 ROPE
+node_523 MUL_MAT
+Kcur-12 MUL
+Kcur-12 (reshaped) RESHAPE
+Kcur-12 ROPE
+node_527 MUL_MAT
+Vcur-12 MUL
+k_cache_view-12 VIEW
+k_cache_view-12 (copy of Kcur-12) CPY
+Vcur-12 (transposed) TRANSPOSE
+v_cache_view-12 VIEW
+v_cache_view-12 (copy of Vcur-12 (transposed)) CPY
+v-12 VIEW
+k-12 VIEW
+q-12 PERMUTE
+kq-12 MUL_MAT
+kq_soft_max_ext-12 SOFT_MAX
+kqv-12 MUL_MAT
+kqv_merged-12 PERMUTE
+kqv_out-12 CONT
+norm-12 RMS_NORM
+attn_sub_norm-12 MUL
+node_544 MUL_MAT
+attn_o_out-12 MUL
+ffn_inp-12 ADD
+norm-12 RMS_NORM
+ffn_norm-12 MUL
+ffn_gate-12 MUL_MAT
+ffn_gate_s-12 MUL
+ffn_silu-12 UNARY
+ffn_up-12 MUL_MAT
+ffn_up_s-12 MUL
+ffn_sub_out-12 MUL
+norm-12 RMS_NORM
+ffn_sub_norm-12 MUL
+node_557 MUL_MAT
+ffn_down-12 MUL
+l_out-12 ADD
+norm-13 RMS_NORM
+attn_norm-13 MUL
+node_562 MUL_MAT
+Qcur-13 MUL
+Qcur-13 (reshaped) RESHAPE
+Qcur-13 ROPE
+node_566 MUL_MAT
+Kcur-13 MUL
+Kcur-13 (reshaped) RESHAPE
+Kcur-13 ROPE
+node_570 MUL_MAT
+Vcur-13 MUL
+k_cache_view-13 VIEW
+k_cache_view-13 (copy of Kcur-13) CPY
+Vcur-13 (transposed) TRANSPOSE
+v_cache_view-13 VIEW
+v_cache_view-13 (copy of Vcur-13 (transposed)) CPY
+v-13 VIEW
+k-13 VIEW
+q-13 PERMUTE
+kq-13 MUL_MAT
+kq_soft_max_ext-13 SOFT_MAX
+kqv-13 MUL_MAT
+kqv_merged-13 PERMUTE
+kqv_out-13 CONT
+norm-13 RMS_NORM
+attn_sub_norm-13 MUL
+node_587 MUL_MAT
+attn_o_out-13 MUL
+ffn_inp-13 ADD
+norm-13 RMS_NORM
+ffn_norm-13 MUL
+ffn_gate-13 MUL_MAT
+ffn_gate_s-13 MUL
+ffn_silu-13 UNARY
+ffn_up-13 MUL_MAT
+ffn_up_s-13 MUL
+ffn_sub_out-13 MUL
+norm-13 RMS_NORM
+ffn_sub_norm-13 MUL
+node_600 MUL_MAT
+ffn_down-13 MUL
+l_out-13 ADD
+norm-14 RMS_NORM
+attn_norm-14 MUL
+node_605 MUL_MAT
+Qcur-14 MUL
+Qcur-14 (reshaped) RESHAPE
+Qcur-14 ROPE
+node_609 MUL_MAT
+Kcur-14 MUL
+Kcur-14 (reshaped) RESHAPE
+Kcur-14 ROPE
+node_613 MUL_MAT
+Vcur-14 MUL
+k_cache_view-14 VIEW
+k_cache_view-14 (copy of Kcur-14) CPY
+Vcur-14 (transposed) TRANSPOSE
+v_cache_view-14 VIEW
+v_cache_view-14 (copy of Vcur-14 (transposed)) CPY
+v-14 VIEW
+k-14 VIEW
+q-14 PERMUTE
+kq-14 MUL_MAT
+kq_soft_max_ext-14 SOFT_MAX
+kqv-14 MUL_MAT
+kqv_merged-14 PERMUTE
+kqv_out-14 CONT
+norm-14 RMS_NORM
+attn_sub_norm-14 MUL
+node_630 MUL_MAT
+attn_o_out-14 MUL
+ffn_inp-14 ADD
+norm-14 RMS_NORM
+ffn_norm-14 MUL
+ffn_gate-14 MUL_MAT
+ffn_gate_s-14 MUL
+ffn_silu-14 UNARY
+ffn_up-14 MUL_MAT
+ffn_up_s-14 MUL
+ffn_sub_out-14 MUL
+norm-14 RMS_NORM
+ffn_sub_norm-14 MUL
+node_643 MUL_MAT
+ffn_down-14 MUL
+l_out-14 ADD
+norm-15 RMS_NORM
+attn_norm-15 MUL
+node_648 MUL_MAT
+Qcur-15 MUL
+Qcur-15 (reshaped) RESHAPE
+Qcur-15 ROPE
+node_652 MUL_MAT
+Kcur-15 MUL
+Kcur-15 (reshaped) RESHAPE
+Kcur-15 ROPE
+node_656 MUL_MAT
+Vcur-15 MUL
+k_cache_view-15 VIEW
+k_cache_view-15 (copy of Kcur-15) CPY
+Vcur-15 (transposed) TRANSPOSE
+v_cache_view-15 VIEW
+v_cache_view-15 (copy of Vcur-15 (transposed)) CPY
+v-15 VIEW
+k-15 VIEW
+q-15 PERMUTE
+kq-15 MUL_MAT
+kq_soft_max_ext-15 SOFT_MAX
+kqv-15 MUL_MAT
+kqv_merged-15 PERMUTE
+kqv_out-15 CONT
+norm-15 RMS_NORM
+attn_sub_norm-15 MUL
+node_673 MUL_MAT
+attn_o_out-15 MUL
+ffn_inp-15 ADD
+norm-15 RMS_NORM
+ffn_norm-15 MUL
+ffn_gate-15 MUL_MAT
+ffn_gate_s-15 MUL
+ffn_silu-15 UNARY
+ffn_up-15 MUL_MAT
+ffn_up_s-15 MUL
+ffn_sub_out-15 MUL
+norm-15 RMS_NORM
+ffn_sub_norm-15 MUL
+node_686 MUL_MAT
+ffn_down-15 MUL
+l_out-15 ADD
+norm-16 RMS_NORM
+attn_norm-16 MUL
+node_691 MUL_MAT
+Qcur-16 MUL
+Qcur-16 (reshaped) RESHAPE
+Qcur-16 ROPE
+node_695 MUL_MAT
+Kcur-16 MUL
+Kcur-16 (reshaped) RESHAPE
+Kcur-16 ROPE
+node_699 MUL_MAT
+Vcur-16 MUL
+k_cache_view-16 VIEW
+k_cache_view-16 (copy of Kcur-16) CPY
+Vcur-16 (transposed) TRANSPOSE
+v_cache_view-16 VIEW
+v_cache_view-16 (copy of Vcur-16 (transposed)) CPY
+v-16 VIEW
+k-16 VIEW
+q-16 PERMUTE
+kq-16 MUL_MAT
+kq_soft_max_ext-16 SOFT_MAX
+kqv-16 MUL_MAT
+kqv_merged-16 PERMUTE
+kqv_out-16 CONT
+norm-16 RMS_NORM
+attn_sub_norm-16 MUL
+node_716 MUL_MAT
+attn_o_out-16 MUL
+ffn_inp-16 ADD
+norm-16 RMS_NORM
+ffn_norm-16 MUL
+ffn_gate-16 MUL_MAT
+ffn_gate_s-16 MUL
+ffn_silu-16 UNARY
+ffn_up-16 MUL_MAT
+ffn_up_s-16 MUL
+ffn_sub_out-16 MUL
+norm-16 RMS_NORM
+ffn_sub_norm-16 MUL
+node_729 MUL_MAT
+ffn_down-16 MUL
+l_out-16 ADD
+norm-17 RMS_NORM
+attn_norm-17 MUL
+node_734 MUL_MAT
+Qcur-17 MUL
+Qcur-17 (reshaped) RESHAPE
+Qcur-17 ROPE
+node_738 MUL_MAT
+Kcur-17 MUL
+Kcur-17 (reshaped) RESHAPE
+Kcur-17 ROPE
+node_742 MUL_MAT
+Vcur-17 MUL
+k_cache_view-17 VIEW
+k_cache_view-17 (copy of Kcur-17) CPY
+Vcur-17 (transposed) TRANSPOSE
+v_cache_view-17 VIEW
+v_cache_view-17 (copy of Vcur-17 (transposed)) CPY
+v-17 VIEW
+k-17 VIEW
+q-17 PERMUTE
+kq-17 MUL_MAT
+kq_soft_max_ext-17 SOFT_MAX
+kqv-17 MUL_MAT
+kqv_merged-17 PERMUTE
+kqv_out-17 CONT
+norm-17 RMS_NORM
+attn_sub_norm-17 MUL
+node_759 MUL_MAT
+attn_o_out-17 MUL
+ffn_inp-17 ADD
+norm-17 RMS_NORM
+ffn_norm-17 MUL
+ffn_gate-17 MUL_MAT
+ffn_gate_s-17 MUL
+ffn_silu-17 UNARY
+ffn_up-17 MUL_MAT
+ffn_up_s-17 MUL
+ffn_sub_out-17 MUL
+norm-17 RMS_NORM
+ffn_sub_norm-17 MUL
+node_772 MUL_MAT
+ffn_down-17 MUL
+l_out-17 ADD
+norm-18 RMS_NORM
+attn_norm-18 MUL
+node_777 MUL_MAT
+Qcur-18 MUL
+Qcur-18 (reshaped) RESHAPE
+Qcur-18 ROPE
+node_781 MUL_MAT
+Kcur-18 MUL
+Kcur-18 (reshaped) RESHAPE
+Kcur-18 ROPE
+node_785 MUL_MAT
+Vcur-18 MUL
+k_cache_view-18 VIEW
+k_cache_view-18 (copy of Kcur-18) CPY
+Vcur-18 (transposed) TRANSPOSE
+v_cache_view-18 VIEW
+v_cache_view-18 (copy of Vcur-18 (transposed)) CPY
+v-18 VIEW
+k-18 VIEW
+q-18 PERMUTE
+kq-18 MUL_MAT
+kq_soft_max_ext-18 SOFT_MAX
+kqv-18 MUL_MAT
+kqv_merged-18 PERMUTE
+kqv_out-18 CONT
+norm-18 RMS_NORM
+attn_sub_norm-18 MUL
+node_802 MUL_MAT
+attn_o_out-18 MUL
+ffn_inp-18 ADD
+norm-18 RMS_NORM
+ffn_norm-18 MUL
+ffn_gate-18 MUL_MAT
+ffn_gate_s-18 MUL
+ffn_silu-18 UNARY
+ffn_up-18 MUL_MAT
+ffn_up_s-18 MUL
+ffn_sub_out-18 MUL
+norm-18 RMS_NORM
+ffn_sub_norm-18 MUL
+node_815 MUL_MAT
+ffn_down-18 MUL
+l_out-18 ADD
+norm-19 RMS_NORM
+attn_norm-19 MUL
+node_820 MUL_MAT
+Qcur-19 MUL
+Qcur-19 (reshaped) RESHAPE
+Qcur-19 ROPE
+node_824 MUL_MAT
+Kcur-19 MUL
+Kcur-19 (reshaped) RESHAPE
+Kcur-19 ROPE
+node_828 MUL_MAT
+Vcur-19 MUL
+k_cache_view-19 VIEW
+k_cache_view-19 (copy of Kcur-19) CPY
+Vcur-19 (transposed) TRANSPOSE
+v_cache_view-19 VIEW
+v_cache_view-19 (copy of Vcur-19 (transposed)) CPY
+v-19 VIEW
+k-19 VIEW
+q-19 PERMUTE
+kq-19 MUL_MAT
+kq_soft_max_ext-19 SOFT_MAX
+kqv-19 MUL_MAT
+kqv_merged-19 PERMUTE
+kqv_out-19 CONT
+norm-19 RMS_NORM
+attn_sub_norm-19 MUL
+node_845 MUL_MAT
+attn_o_out-19 MUL
+ffn_inp-19 ADD
+norm-19 RMS_NORM
+ffn_norm-19 MUL
+ffn_gate-19 MUL_MAT
+ffn_gate_s-19 MUL
+ffn_silu-19 UNARY
+ffn_up-19 MUL_MAT
+ffn_up_s-19 MUL
+ffn_sub_out-19 MUL
+norm-19 RMS_NORM
+ffn_sub_norm-19 MUL
+node_858 MUL_MAT
+ffn_down-19 MUL
+l_out-19 ADD
+norm-20 RMS_NORM
+attn_norm-20 MUL
+node_863 MUL_MAT
+Qcur-20 MUL
+Qcur-20 (reshaped) RESHAPE
+Qcur-20 ROPE
+node_867 MUL_MAT
+Kcur-20 MUL
+Kcur-20 (reshaped) RESHAPE
+Kcur-20 ROPE
+node_871 MUL_MAT
+Vcur-20 MUL
+k_cache_view-20 VIEW
+k_cache_view-20 (copy of Kcur-20) CPY
+Vcur-20 (transposed) TRANSPOSE
+v_cache_view-20 VIEW
+v_cache_view-20 (copy of Vcur-20 (transposed)) CPY
+v-20 VIEW
+k-20 VIEW
+q-20 PERMUTE
+kq-20 MUL_MAT
+kq_soft_max_ext-20 SOFT_MAX
+kqv-20 MUL_MAT
+kqv_merged-20 PERMUTE
+kqv_out-20 CONT
+norm-20 RMS_NORM
+attn_sub_norm-20 MUL
+node_888 MUL_MAT
+attn_o_out-20 MUL
+ffn_inp-20 ADD
+norm-20 RMS_NORM
+ffn_norm-20 MUL
+ffn_gate-20 MUL_MAT
+ffn_gate_s-20 MUL
+ffn_silu-20 UNARY
+ffn_up-20 MUL_MAT
+ffn_up_s-20 MUL
+ffn_sub_out-20 MUL
+norm-20 RMS_NORM
+ffn_sub_norm-20 MUL
+node_901 MUL_MAT
+ffn_down-20 MUL
+l_out-20 ADD
+norm-21 RMS_NORM
+attn_norm-21 MUL
+node_906 MUL_MAT
+Qcur-21 MUL
+Qcur-21 (reshaped) RESHAPE
+Qcur-21 ROPE
+node_910 MUL_MAT
+Kcur-21 MUL
+Kcur-21 (reshaped) RESHAPE
+Kcur-21 ROPE
+node_914 MUL_MAT
+Vcur-21 MUL
+k_cache_view-21 VIEW
+k_cache_view-21 (copy of Kcur-21) CPY
+Vcur-21 (transposed) TRANSPOSE
+v_cache_view-21 VIEW
+v_cache_view-21 (copy of Vcur-21 (transposed)) CPY
+v-21 VIEW
+k-21 VIEW
+q-21 PERMUTE
+kq-21 MUL_MAT
+kq_soft_max_ext-21 SOFT_MAX
+kqv-21 MUL_MAT
+kqv_merged-21 PERMUTE
+kqv_out-21 CONT
+norm-21 RMS_NORM
+attn_sub_norm-21 MUL
+node_931 MUL_MAT
+attn_o_out-21 MUL
+ffn_inp-21 ADD
+norm-21 RMS_NORM
+ffn_norm-21 MUL
+ffn_gate-21 MUL_MAT
+ffn_gate_s-21 MUL
+ffn_silu-21 UNARY
+ffn_up-21 MUL_MAT
+ffn_up_s-21 MUL
+ffn_sub_out-21 MUL
+norm-21 RMS_NORM
+ffn_sub_norm-21 MUL
+node_944 MUL_MAT
+ffn_down-21 MUL
+l_out-21 ADD
+norm-22 RMS_NORM
+attn_norm-22 MUL
+node_949 MUL_MAT
+Qcur-22 MUL
+Qcur-22 (reshaped) RESHAPE
+Qcur-22 ROPE
+node_953 MUL_MAT
+Kcur-22 MUL
+Kcur-22 (reshaped) RESHAPE
+Kcur-22 ROPE
+node_957 MUL_MAT
+Vcur-22 MUL
+k_cache_view-22 VIEW
+k_cache_view-22 (copy of Kcur-22) CPY
+Vcur-22 (transposed) TRANSPOSE
+v_cache_view-22 VIEW
+v_cache_view-22 (copy of Vcur-22 (transposed)) CPY
+v-22 VIEW
+k-22 VIEW
+q-22 PERMUTE
+kq-22 MUL_MAT
+kq_soft_max_ext-22 SOFT_MAX
+kqv-22 MUL_MAT
+kqv_merged-22 PERMUTE
+kqv_out-22 CONT
+norm-22 RMS_NORM
+attn_sub_norm-22 MUL
+node_974 MUL_MAT
+attn_o_out-22 MUL
+ffn_inp-22 ADD
+norm-22 RMS_NORM
+ffn_norm-22 MUL
+ffn_gate-22 MUL_MAT
+ffn_gate_s-22 MUL
+ffn_silu-22 UNARY
+ffn_up-22 MUL_MAT
+ffn_up_s-22 MUL
+ffn_sub_out-22 MUL
+norm-22 RMS_NORM
+ffn_sub_norm-22 MUL
+node_987 MUL_MAT
+ffn_down-22 MUL
+l_out-22 ADD
+norm-23 RMS_NORM
+attn_norm-23 MUL
+node_992 MUL_MAT
+Qcur-23 MUL
+Qcur-23 (reshaped) RESHAPE
+Qcur-23 ROPE
+node_996 MUL_MAT
+Kcur-23 MUL
+Kcur-23 (reshaped) RESHAPE
+Kcur-23 ROPE
+node_1000 MUL_MAT
+Vcur-23 MUL
+k_cache_view-23 VIEW
+k_cache_view-23 (copy of Kcur-23) CPY
+Vcur-23 (transposed) TRANSPOSE
+v_cache_view-23 VIEW
+v_cache_view-23 (copy of Vcur-23 (transposed)) CPY
+v-23 VIEW
+k-23 VIEW
+q-23 PERMUTE
+kq-23 MUL_MAT
+kq_soft_max_ext-23 SOFT_MAX
+kqv-23 MUL_MAT
+kqv_merged-23 PERMUTE
+kqv_out-23 CONT
+norm-23 RMS_NORM
+attn_sub_norm-23 MUL
+node_1017 MUL_MAT
+attn_o_out-23 MUL
+node_1019 GET_ROWS
+node_1020 GET_ROWS
+ffn_inp-23 ADD
+norm-23 RMS_NORM
+ffn_norm-23 MUL
+ffn_gate-23 MUL_MAT
+ffn_gate_s-23 MUL
+ffn_silu-23 UNARY
+ffn_up-23 MUL_MAT
+ffn_up_s-23 MUL
+ffn_sub_out-23 MUL
+norm-23 RMS_NORM
+ffn_sub_norm-23 MUL
+node_1032 MUL_MAT
+ffn_down-23 MUL
+l_out-23 ADD
+norm RMS_NORM
+result_norm MUL
+result_output MUL_MAT
+inp_embd GET_ROWS
+norm-0 RMS_NORM
+attn_norm-0 MUL
+node_3 MUL_MAT
+Qcur-0 MUL
+Qcur-0 (reshaped) RESHAPE
+Qcur-0 ROPE
+node_7 MUL_MAT
+Kcur-0 MUL
+Kcur-0 (reshaped) RESHAPE
+Kcur-0 ROPE
+node_11 MUL_MAT
+Vcur-0 MUL
+k_cache_view-0 VIEW
+k_cache_view-0 (copy of Kcur-0) CPY
+Vcur-0 (transposed) TRANSPOSE
+v_cache_view-0 VIEW
+v_cache_view-0 (copy of Vcur-0 (transposed)) CPY
+v-0 VIEW
+k-0 VIEW
+q-0 PERMUTE
+kq-0 MUL_MAT
+kq_soft_max_ext-0 SOFT_MAX
+kqv-0 MUL_MAT
+kqv_merged-0 PERMUTE
+kqv_out-0 CONT
+norm-0 RMS_NORM
+attn_sub_norm-0 MUL
+node_28 MUL_MAT
+attn_o_out-0 MUL
+ffn_inp-0 ADD
+norm-0 RMS_NORM
+ffn_norm-0 MUL
+ffn_gate-0 MUL_MAT
+ffn_gate_s-0 MUL
+ffn_silu-0 UNARY
+ffn_up-0 MUL_MAT
+ffn_up_s-0 MUL
+ffn_sub_out-0 MUL
+norm-0 RMS_NORM
+ffn_sub_norm-0 MUL
+node_41 MUL_MAT
+ffn_down-0 MUL
+l_out-0 ADD
+norm-1 RMS_NORM
+attn_norm-1 MUL
+node_46 MUL_MAT
+Qcur-1 MUL
+Qcur-1 (reshaped) RESHAPE
+Qcur-1 ROPE
+node_50 MUL_MAT
+Kcur-1 MUL
+Kcur-1 (reshaped) RESHAPE
+Kcur-1 ROPE
+node_54 MUL_MAT
+Vcur-1 MUL
+k_cache_view-1 VIEW
+k_cache_view-1 (copy of Kcur-1) CPY
+Vcur-1 (transposed) TRANSPOSE
+v_cache_view-1 VIEW
+v_cache_view-1 (copy of Vcur-1 (transposed)) CPY
+v-1 VIEW
+k-1 VIEW
+q-1 PERMUTE
+kq-1 MUL_MAT
+kq_soft_max_ext-1 SOFT_MAX
+kqv-1 MUL_MAT
+kqv_merged-1 PERMUTE
+kqv_out-1 CONT
+norm-1 RMS_NORM
+attn_sub_norm-1 MUL
+node_71 MUL_MAT
+attn_o_out-1 MUL
+ffn_inp-1 ADD
+norm-1 RMS_NORM
+ffn_norm-1 MUL
+ffn_gate-1 MUL_MAT
+ffn_gate_s-1 MUL
+ffn_silu-1 UNARY
+ffn_up-1 MUL_MAT
+ffn_up_s-1 MUL
+ffn_sub_out-1 MUL
+norm-1 RMS_NORM
+ffn_sub_norm-1 MUL
+node_84 MUL_MAT
+ffn_down-1 MUL
+l_out-1 ADD
+norm-2 RMS_NORM
+attn_norm-2 MUL
+node_89 MUL_MAT
+Qcur-2 MUL
+Qcur-2 (reshaped) RESHAPE
+Qcur-2 ROPE
+node_93 MUL_MAT
+Kcur-2 MUL
+Kcur-2 (reshaped) RESHAPE
+Kcur-2 ROPE
+node_97 MUL_MAT
+Vcur-2 MUL
+k_cache_view-2 VIEW
+k_cache_view-2 (copy of Kcur-2) CPY
+Vcur-2 (transposed) TRANSPOSE
+v_cache_view-2 VIEW
+v_cache_view-2 (copy of Vcur-2 (transposed)) CPY
+v-2 VIEW
+k-2 VIEW
+q-2 PERMUTE
+kq-2 MUL_MAT
+kq_soft_max_ext-2 SOFT_MAX
+kqv-2 MUL_MAT
+kqv_merged-2 PERMUTE
+kqv_out-2 CONT
+norm-2 RMS_NORM
+attn_sub_norm-2 MUL
+node_114 MUL_MAT
+attn_o_out-2 MUL
+ffn_inp-2 ADD
+norm-2 RMS_NORM
+ffn_norm-2 MUL
+ffn_gate-2 MUL_MAT
+ffn_gate_s-2 MUL
+ffn_silu-2 UNARY
+ffn_up-2 MUL_MAT
+ffn_up_s-2 MUL
+ffn_sub_out-2 MUL
+norm-2 RMS_NORM
+ffn_sub_norm-2 MUL
+node_127 MUL_MAT
+ffn_down-2 MUL
+l_out-2 ADD
+norm-3 RMS_NORM
+attn_norm-3 MUL
+node_132 MUL_MAT
+Qcur-3 MUL
+Qcur-3 (reshaped) RESHAPE
+Qcur-3 ROPE
+node_136 MUL_MAT
+Kcur-3 MUL
+Kcur-3 (reshaped) RESHAPE
+Kcur-3 ROPE
+node_140 MUL_MAT
+Vcur-3 MUL
+k_cache_view-3 VIEW
+k_cache_view-3 (copy of Kcur-3) CPY
+Vcur-3 (transposed) TRANSPOSE
+v_cache_view-3 VIEW
+v_cache_view-3 (copy of Vcur-3 (transposed)) CPY
+v-3 VIEW
+k-3 VIEW
+q-3 PERMUTE
+kq-3 MUL_MAT
+kq_soft_max_ext-3 SOFT_MAX
+kqv-3 MUL_MAT
+kqv_merged-3 PERMUTE
+kqv_out-3 CONT
+norm-3 RMS_NORM
+attn_sub_norm-3 MUL
+node_157 MUL_MAT
+attn_o_out-3 MUL
+ffn_inp-3 ADD
+norm-3 RMS_NORM
+ffn_norm-3 MUL
+ffn_gate-3 MUL_MAT
+ffn_gate_s-3 MUL
+ffn_silu-3 UNARY
+ffn_up-3 MUL_MAT
+ffn_up_s-3 MUL
+ffn_sub_out-3 MUL
+norm-3 RMS_NORM
+ffn_sub_norm-3 MUL
+node_170 MUL_MAT
+ffn_down-3 MUL
+l_out-3 ADD
+norm-4 RMS_NORM
+attn_norm-4 MUL
+node_175 MUL_MAT
+Qcur-4 MUL
+Qcur-4 (reshaped) RESHAPE
+Qcur-4 ROPE
+node_179 MUL_MAT
+Kcur-4 MUL
+Kcur-4 (reshaped) RESHAPE
+Kcur-4 ROPE
+node_183 MUL_MAT
+Vcur-4 MUL
+k_cache_view-4 VIEW
+k_cache_view-4 (copy of Kcur-4) CPY
+Vcur-4 (transposed) TRANSPOSE
+v_cache_view-4 VIEW
+v_cache_view-4 (copy of Vcur-4 (transposed)) CPY
+v-4 VIEW
+k-4 VIEW
+q-4 PERMUTE
+kq-4 MUL_MAT
+kq_soft_max_ext-4 SOFT_MAX
+kqv-4 MUL_MAT
+kqv_merged-4 PERMUTE
+kqv_out-4 CONT
+norm-4 RMS_NORM
+attn_sub_norm-4 MUL
+node_200 MUL_MAT
+attn_o_out-4 MUL
+ffn_inp-4 ADD
+norm-4 RMS_NORM
+ffn_norm-4 MUL
+ffn_gate-4 MUL_MAT
+ffn_gate_s-4 MUL
+ffn_silu-4 UNARY
+ffn_up-4 MUL_MAT
+ffn_up_s-4 MUL
+ffn_sub_out-4 MUL
+norm-4 RMS_NORM
+ffn_sub_norm-4 MUL
+node_213 MUL_MAT
+ffn_down-4 MUL
+l_out-4 ADD
+norm-5 RMS_NORM
+attn_norm-5 MUL
+node_218 MUL_MAT
+Qcur-5 MUL
+Qcur-5 (reshaped) RESHAPE
+Qcur-5 ROPE
+node_222 MUL_MAT
+Kcur-5 MUL
+Kcur-5 (reshaped) RESHAPE
+Kcur-5 ROPE
+node_226 MUL_MAT
+Vcur-5 MUL
+k_cache_view-5 VIEW
+k_cache_view-5 (copy of Kcur-5) CPY
+Vcur-5 (transposed) TRANSPOSE
+v_cache_view-5 VIEW
+v_cache_view-5 (copy of Vcur-5 (transposed)) CPY
+v-5 VIEW
+k-5 VIEW
+q-5 PERMUTE
+kq-5 MUL_MAT
+kq_soft_max_ext-5 SOFT_MAX
+kqv-5 MUL_MAT
+kqv_merged-5 PERMUTE
+kqv_out-5 CONT
+norm-5 RMS_NORM
+attn_sub_norm-5 MUL
+node_243 MUL_MAT
+attn_o_out-5 MUL
+ffn_inp-5 ADD
+norm-5 RMS_NORM
+ffn_norm-5 MUL
+ffn_gate-5 MUL_MAT
+ffn_gate_s-5 MUL
+ffn_silu-5 UNARY
+ffn_up-5 MUL_MAT
+ffn_up_s-5 MUL
+ffn_sub_out-5 MUL
+norm-5 RMS_NORM
+ffn_sub_norm-5 MUL
+node_256 MUL_MAT
+ffn_down-5 MUL
+l_out-5 ADD
+norm-6 RMS_NORM
+attn_norm-6 MUL
+node_261 MUL_MAT
+Qcur-6 MUL
+Qcur-6 (reshaped) RESHAPE
+Qcur-6 ROPE
+node_265 MUL_MAT
+Kcur-6 MUL
+Kcur-6 (reshaped) RESHAPE
+Kcur-6 ROPE
+node_269 MUL_MAT
+Vcur-6 MUL
+k_cache_view-6 VIEW
+k_cache_view-6 (copy of Kcur-6) CPY
+Vcur-6 (transposed) TRANSPOSE
+v_cache_view-6 VIEW
+v_cache_view-6 (copy of Vcur-6 (transposed)) CPY
+v-6 VIEW
+k-6 VIEW
+q-6 PERMUTE
+kq-6 MUL_MAT
+kq_soft_max_ext-6 SOFT_MAX
+kqv-6 MUL_MAT
+kqv_merged-6 PERMUTE
+kqv_out-6 CONT
+norm-6 RMS_NORM
+attn_sub_norm-6 MUL
+node_286 MUL_MAT
+attn_o_out-6 MUL
+ffn_inp-6 ADD
+norm-6 RMS_NORM
+ffn_norm-6 MUL
+ffn_gate-6 MUL_MAT
+ffn_gate_s-6 MUL
+ffn_silu-6 UNARY
+ffn_up-6 MUL_MAT
+ffn_up_s-6 MUL
+ffn_sub_out-6 MUL
+norm-6 RMS_NORM
+ffn_sub_norm-6 MUL
+node_299 MUL_MAT
+ffn_down-6 MUL
+l_out-6 ADD
+norm-7 RMS_NORM
+attn_norm-7 MUL
+node_304 MUL_MAT
+Qcur-7 MUL
+Qcur-7 (reshaped) RESHAPE
+Qcur-7 ROPE
+node_308 MUL_MAT
+Kcur-7 MUL
+Kcur-7 (reshaped) RESHAPE
+Kcur-7 ROPE
+node_312 MUL_MAT
+Vcur-7 MUL
+k_cache_view-7 VIEW
+k_cache_view-7 (copy of Kcur-7) CPY
+Vcur-7 (transposed) TRANSPOSE
+v_cache_view-7 VIEW
+v_cache_view-7 (copy of Vcur-7 (transposed)) CPY
+v-7 VIEW
+k-7 VIEW
+q-7 PERMUTE
+kq-7 MUL_MAT
+kq_soft_max_ext-7 SOFT_MAX
+kqv-7 MUL_MAT
+kqv_merged-7 PERMUTE
+kqv_out-7 CONT
+norm-7 RMS_NORM
+attn_sub_norm-7 MUL
+node_329 MUL_MAT
+attn_o_out-7 MUL
+ffn_inp-7 ADD
+norm-7 RMS_NORM
+ffn_norm-7 MUL
+ffn_gate-7 MUL_MAT
+ffn_gate_s-7 MUL
+ffn_silu-7 UNARY
+ffn_up-7 MUL_MAT
+ffn_up_s-7 MUL
+ffn_sub_out-7 MUL
+norm-7 RMS_NORM
+ffn_sub_norm-7 MUL
+node_342 MUL_MAT
+ffn_down-7 MUL
+l_out-7 ADD
+norm-8 RMS_NORM
+attn_norm-8 MUL
+node_347 MUL_MAT
+Qcur-8 MUL
+Qcur-8 (reshaped) RESHAPE
+Qcur-8 ROPE
+node_351 MUL_MAT
+Kcur-8 MUL
+Kcur-8 (reshaped) RESHAPE
+Kcur-8 ROPE
+node_355 MUL_MAT
+Vcur-8 MUL
+k_cache_view-8 VIEW
+k_cache_view-8 (copy of Kcur-8) CPY
+Vcur-8 (transposed) TRANSPOSE
+v_cache_view-8 VIEW
+v_cache_view-8 (copy of Vcur-8 (transposed)) CPY
+v-8 VIEW
+k-8 VIEW
+q-8 PERMUTE
+kq-8 MUL_MAT
+kq_soft_max_ext-8 SOFT_MAX
+kqv-8 MUL_MAT
+kqv_merged-8 PERMUTE
+kqv_out-8 CONT
+norm-8 RMS_NORM
+attn_sub_norm-8 MUL
+node_372 MUL_MAT
+attn_o_out-8 MUL
+ffn_inp-8 ADD
+norm-8 RMS_NORM
+ffn_norm-8 MUL
+ffn_gate-8 MUL_MAT
+ffn_gate_s-8 MUL
+ffn_silu-8 UNARY
+ffn_up-8 MUL_MAT
+ffn_up_s-8 MUL
+ffn_sub_out-8 MUL
+norm-8 RMS_NORM
+ffn_sub_norm-8 MUL
+node_385 MUL_MAT
+ffn_down-8 MUL
+l_out-8 ADD
+norm-9 RMS_NORM
+attn_norm-9 MUL
+node_390 MUL_MAT
+Qcur-9 MUL
+Qcur-9 (reshaped) RESHAPE
+Qcur-9 ROPE
+node_394 MUL_MAT
+Kcur-9 MUL
+Kcur-9 (reshaped) RESHAPE
+Kcur-9 ROPE
+node_398 MUL_MAT
+Vcur-9 MUL
+k_cache_view-9 VIEW
+k_cache_view-9 (copy of Kcur-9) CPY
+Vcur-9 (transposed) TRANSPOSE
+v_cache_view-9 VIEW
+v_cache_view-9 (copy of Vcur-9 (transposed)) CPY
+v-9 VIEW
+k-9 VIEW
+q-9 PERMUTE
+kq-9 MUL_MAT
+kq_soft_max_ext-9 SOFT_MAX
+kqv-9 MUL_MAT
+kqv_merged-9 PERMUTE
+kqv_out-9 CONT
+norm-9 RMS_NORM
+attn_sub_norm-9 MUL
+node_415 MUL_MAT
+attn_o_out-9 MUL
+ffn_inp-9 ADD
+norm-9 RMS_NORM
+ffn_norm-9 MUL
+ffn_gate-9 MUL_MAT
+ffn_gate_s-9 MUL
+ffn_silu-9 UNARY
+ffn_up-9 MUL_MAT
+ffn_up_s-9 MUL
+ffn_sub_out-9 MUL
+norm-9 RMS_NORM
+ffn_sub_norm-9 MUL
+node_428 MUL_MAT
+ffn_down-9 MUL
+l_out-9 ADD
+norm-10 RMS_NORM
+attn_norm-10 MUL
+node_433 MUL_MAT
+Qcur-10 MUL
+Qcur-10 (reshaped) RESHAPE
+Qcur-10 ROPE
+node_437 MUL_MAT
+Kcur-10 MUL
+Kcur-10 (reshaped) RESHAPE
+Kcur-10 ROPE
+node_441 MUL_MAT
+Vcur-10 MUL
+k_cache_view-10 VIEW
+k_cache_view-10 (copy of Kcur-10) CPY
+Vcur-10 (transposed) TRANSPOSE
+v_cache_view-10 VIEW
+v_cache_view-10 (copy of Vcur-10 (transposed)) CPY
+v-10 VIEW
+k-10 VIEW
+q-10 PERMUTE
+kq-10 MUL_MAT
+kq_soft_max_ext-10 SOFT_MAX
+kqv-10 MUL_MAT
+kqv_merged-10 PERMUTE
+kqv_out-10 CONT
+norm-10 RMS_NORM
+attn_sub_norm-10 MUL
+node_458 MUL_MAT
+attn_o_out-10 MUL
+ffn_inp-10 ADD
+norm-10 RMS_NORM
+ffn_norm-10 MUL
+ffn_gate-10 MUL_MAT
+ffn_gate_s-10 MUL
+ffn_silu-10 UNARY
+ffn_up-10 MUL_MAT
+ffn_up_s-10 MUL
+ffn_sub_out-10 MUL
+norm-10 RMS_NORM
+ffn_sub_norm-10 MUL
+node_471 MUL_MAT
+ffn_down-10 MUL
+l_out-10 ADD
+norm-11 RMS_NORM
+attn_norm-11 MUL
+node_476 MUL_MAT
+Qcur-11 MUL
+Qcur-11 (reshaped) RESHAPE
+Qcur-11 ROPE
+node_480 MUL_MAT
+Kcur-11 MUL
+Kcur-11 (reshaped) RESHAPE
+Kcur-11 ROPE
+node_484 MUL_MAT
+Vcur-11 MUL
+k_cache_view-11 VIEW
+k_cache_view-11 (copy of Kcur-11) CPY
+Vcur-11 (transposed) TRANSPOSE
+v_cache_view-11 VIEW
+v_cache_view-11 (copy of Vcur-11 (transposed)) CPY
+v-11 VIEW
+k-11 VIEW
+q-11 PERMUTE
+kq-11 MUL_MAT
+kq_soft_max_ext-11 SOFT_MAX
+kqv-11 MUL_MAT
+kqv_merged-11 PERMUTE
+kqv_out-11 CONT
+norm-11 RMS_NORM
+attn_sub_norm-11 MUL
+node_501 MUL_MAT
+attn_o_out-11 MUL
+ffn_inp-11 ADD
+norm-11 RMS_NORM
+ffn_norm-11 MUL
+ffn_gate-11 MUL_MAT
+ffn_gate_s-11 MUL
+ffn_silu-11 UNARY
+ffn_up-11 MUL_MAT
+ffn_up_s-11 MUL
+ffn_sub_out-11 MUL
+norm-11 RMS_NORM
+ffn_sub_norm-11 MUL
+node_514 MUL_MAT
+ffn_down-11 MUL
+l_out-11 ADD
+norm-12 RMS_NORM
+attn_norm-12 MUL
+node_519 MUL_MAT
+Qcur-12 MUL
+Qcur-12 (reshaped) RESHAPE
+Qcur-12 ROPE
+node_523 MUL_MAT
+Kcur-12 MUL
+Kcur-12 (reshaped) RESHAPE
+Kcur-12 ROPE
+node_527 MUL_MAT
+Vcur-12 MUL
+k_cache_view-12 VIEW
+k_cache_view-12 (copy of Kcur-12) CPY
+Vcur-12 (transposed) TRANSPOSE
+v_cache_view-12 VIEW
+v_cache_view-12 (copy of Vcur-12 (transposed)) CPY
+v-12 VIEW
+k-12 VIEW
+q-12 PERMUTE
+kq-12 MUL_MAT
+kq_soft_max_ext-12 SOFT_MAX
+kqv-12 MUL_MAT
+kqv_merged-12 PERMUTE
+kqv_out-12 CONT
+norm-12 RMS_NORM
+attn_sub_norm-12 MUL
+node_544 MUL_MAT
+attn_o_out-12 MUL
+ffn_inp-12 ADD
+norm-12 RMS_NORM
+ffn_norm-12 MUL
+ffn_gate-12 MUL_MAT
+ffn_gate_s-12 MUL
+ffn_silu-12 UNARY
+ffn_up-12 MUL_MAT
+ffn_up_s-12 MUL
+ffn_sub_out-12 MUL
+norm-12 RMS_NORM
+ffn_sub_norm-12 MUL
+node_557 MUL_MAT
+ffn_down-12 MUL
+l_out-12 ADD
+norm-13 RMS_NORM
+attn_norm-13 MUL
+node_562 MUL_MAT
+Qcur-13 MUL
+Qcur-13 (reshaped) RESHAPE
+Qcur-13 ROPE
+node_566 MUL_MAT
+Kcur-13 MUL
+Kcur-13 (reshaped) RESHAPE
+Kcur-13 ROPE
+node_570 MUL_MAT
+Vcur-13 MUL
+k_cache_view-13 VIEW
+k_cache_view-13 (copy of Kcur-13) CPY
+Vcur-13 (transposed) TRANSPOSE
+v_cache_view-13 VIEW
+v_cache_view-13 (copy of Vcur-13 (transposed)) CPY
+v-13 VIEW
+k-13 VIEW
+q-13 PERMUTE
+kq-13 MUL_MAT
+kq_soft_max_ext-13 SOFT_MAX
+kqv-13 MUL_MAT
+kqv_merged-13 PERMUTE
+kqv_out-13 CONT
+norm-13 RMS_NORM
+attn_sub_norm-13 MUL
+node_587 MUL_MAT
+attn_o_out-13 MUL
+ffn_inp-13 ADD
+norm-13 RMS_NORM
+ffn_norm-13 MUL
+ffn_gate-13 MUL_MAT
+ffn_gate_s-13 MUL
+ffn_silu-13 UNARY
+ffn_up-13 MUL_MAT
+ffn_up_s-13 MUL
+ffn_sub_out-13 MUL
+norm-13 RMS_NORM
+ffn_sub_norm-13 MUL
+node_600 MUL_MAT
+ffn_down-13 MUL
+l_out-13 ADD
+norm-14 RMS_NORM
+attn_norm-14 MUL
+node_605 MUL_MAT
+Qcur-14 MUL
+Qcur-14 (reshaped) RESHAPE
+Qcur-14 ROPE
+node_609 MUL_MAT
+Kcur-14 MUL
+Kcur-14 (reshaped) RESHAPE
+Kcur-14 ROPE
+node_613 MUL_MAT
+Vcur-14 MUL
+k_cache_view-14 VIEW
+k_cache_view-14 (copy of Kcur-14) CPY
+Vcur-14 (transposed) TRANSPOSE
+v_cache_view-14 VIEW
+v_cache_view-14 (copy of Vcur-14 (transposed)) CPY
+v-14 VIEW
+k-14 VIEW
+q-14 PERMUTE
+kq-14 MUL_MAT
+kq_soft_max_ext-14 SOFT_MAX
+kqv-14 MUL_MAT
+kqv_merged-14 PERMUTE
+kqv_out-14 CONT
+norm-14 RMS_NORM
+attn_sub_norm-14 MUL
+node_630 MUL_MAT
+attn_o_out-14 MUL
+ffn_inp-14 ADD
+norm-14 RMS_NORM
+ffn_norm-14 MUL
+ffn_gate-14 MUL_MAT
+ffn_gate_s-14 MUL
+ffn_silu-14 UNARY
+ffn_up-14 MUL_MAT
+ffn_up_s-14 MUL
+ffn_sub_out-14 MUL
+norm-14 RMS_NORM
+ffn_sub_norm-14 MUL
+node_643 MUL_MAT
+ffn_down-14 MUL
+l_out-14 ADD
+norm-15 RMS_NORM
+attn_norm-15 MUL
+node_648 MUL_MAT
+Qcur-15 MUL
+Qcur-15 (reshaped) RESHAPE
+Qcur-15 ROPE
+node_652 MUL_MAT
+Kcur-15 MUL
+Kcur-15 (reshaped) RESHAPE
+Kcur-15 ROPE
+node_656 MUL_MAT
+Vcur-15 MUL
+k_cache_view-15 VIEW
+k_cache_view-15 (copy of Kcur-15) CPY
+Vcur-15 (transposed) TRANSPOSE
+v_cache_view-15 VIEW
+v_cache_view-15 (copy of Vcur-15 (transposed)) CPY
+v-15 VIEW
+k-15 VIEW
+q-15 PERMUTE
+kq-15 MUL_MAT
+kq_soft_max_ext-15 SOFT_MAX
+kqv-15 MUL_MAT
+kqv_merged-15 PERMUTE
+kqv_out-15 CONT
+norm-15 RMS_NORM
+attn_sub_norm-15 MUL
+node_673 MUL_MAT
+attn_o_out-15 MUL
+ffn_inp-15 ADD
+norm-15 RMS_NORM
+ffn_norm-15 MUL
+ffn_gate-15 MUL_MAT
+ffn_gate_s-15 MUL
+ffn_silu-15 UNARY
+ffn_up-15 MUL_MAT
+ffn_up_s-15 MUL
+ffn_sub_out-15 MUL
+norm-15 RMS_NORM
+ffn_sub_norm-15 MUL
+node_686 MUL_MAT
+ffn_down-15 MUL
+l_out-15 ADD
+norm-16 RMS_NORM
+attn_norm-16 MUL
+node_691 MUL_MAT
+Qcur-16 MUL
+Qcur-16 (reshaped) RESHAPE
+Qcur-16 ROPE
+node_695 MUL_MAT
+Kcur-16 MUL
+Kcur-16 (reshaped) RESHAPE
+Kcur-16 ROPE
+node_699 MUL_MAT
+Vcur-16 MUL
+k_cache_view-16 VIEW
+k_cache_view-16 (copy of Kcur-16) CPY
+Vcur-16 (transposed) TRANSPOSE
+v_cache_view-16 VIEW
+v_cache_view-16 (copy of Vcur-16 (transposed)) CPY
+v-16 VIEW
+k-16 VIEW
+q-16 PERMUTE
+kq-16 MUL_MAT
+kq_soft_max_ext-16 SOFT_MAX
+kqv-16 MUL_MAT
+kqv_merged-16 PERMUTE
+kqv_out-16 CONT
+norm-16 RMS_NORM
+attn_sub_norm-16 MUL
+node_716 MUL_MAT
+attn_o_out-16 MUL
+ffn_inp-16 ADD
+norm-16 RMS_NORM
+ffn_norm-16 MUL
+ffn_gate-16 MUL_MAT
+ffn_gate_s-16 MUL
+ffn_silu-16 UNARY
+ffn_up-16 MUL_MAT
+ffn_up_s-16 MUL
+ffn_sub_out-16 MUL
+norm-16 RMS_NORM
+ffn_sub_norm-16 MUL
+node_729 MUL_MAT
+ffn_down-16 MUL
+l_out-16 ADD
+norm-17 RMS_NORM
+attn_norm-17 MUL
+node_734 MUL_MAT
+Qcur-17 MUL
+Qcur-17 (reshaped) RESHAPE
+Qcur-17 ROPE
+node_738 MUL_MAT
+Kcur-17 MUL
+Kcur-17 (reshaped) RESHAPE
+Kcur-17 ROPE
+node_742 MUL_MAT
+Vcur-17 MUL
+k_cache_view-17 VIEW
+k_cache_view-17 (copy of Kcur-17) CPY
+Vcur-17 (transposed) TRANSPOSE
+v_cache_view-17 VIEW
+v_cache_view-17 (copy of Vcur-17 (transposed)) CPY
+v-17 VIEW
+k-17 VIEW
+q-17 PERMUTE
+kq-17 MUL_MAT
+kq_soft_max_ext-17 SOFT_MAX
+kqv-17 MUL_MAT
+kqv_merged-17 PERMUTE
+kqv_out-17 CONT
+norm-17 RMS_NORM
+attn_sub_norm-17 MUL
+node_759 MUL_MAT
+attn_o_out-17 MUL
+ffn_inp-17 ADD
+norm-17 RMS_NORM
+ffn_norm-17 MUL
+ffn_gate-17 MUL_MAT
+ffn_gate_s-17 MUL
+ffn_silu-17 UNARY
+ffn_up-17 MUL_MAT
+ffn_up_s-17 MUL
+ffn_sub_out-17 MUL
+norm-17 RMS_NORM
+ffn_sub_norm-17 MUL
+node_772 MUL_MAT
+ffn_down-17 MUL
+l_out-17 ADD
+norm-18 RMS_NORM
+attn_norm-18 MUL
+node_777 MUL_MAT
+Qcur-18 MUL
+Qcur-18 (reshaped) RESHAPE
+Qcur-18 ROPE
+node_781 MUL_MAT
+Kcur-18 MUL
+Kcur-18 (reshaped) RESHAPE
+Kcur-18 ROPE
+node_785 MUL_MAT
+Vcur-18 MUL
+k_cache_view-18 VIEW
+k_cache_view-18 (copy of Kcur-18) CPY
+Vcur-18 (transposed) TRANSPOSE
+v_cache_view-18 VIEW
+v_cache_view-18 (copy of Vcur-18 (transposed)) CPY
+v-18 VIEW
+k-18 VIEW
+q-18 PERMUTE
+kq-18 MUL_MAT
+kq_soft_max_ext-18 SOFT_MAX
+kqv-18 MUL_MAT
+kqv_merged-18 PERMUTE
+kqv_out-18 CONT
+norm-18 RMS_NORM
+attn_sub_norm-18 MUL
+node_802 MUL_MAT
+attn_o_out-18 MUL
+ffn_inp-18 ADD
+norm-18 RMS_NORM
+ffn_norm-18 MUL
+ffn_gate-18 MUL_MAT
+ffn_gate_s-18 MUL
+ffn_silu-18 UNARY
+ffn_up-18 MUL_MAT
+ffn_up_s-18 MUL
+ffn_sub_out-18 MUL
+norm-18 RMS_NORM
+ffn_sub_norm-18 MUL
+node_815 MUL_MAT
+ffn_down-18 MUL
+l_out-18 ADD
+norm-19 RMS_NORM
+attn_norm-19 MUL
+node_820 MUL_MAT
+Qcur-19 MUL
+Qcur-19 (reshaped) RESHAPE
+Qcur-19 ROPE
+node_824 MUL_MAT
+Kcur-19 MUL
+Kcur-19 (reshaped) RESHAPE
+Kcur-19 ROPE
+node_828 MUL_MAT
+Vcur-19 MUL
+k_cache_view-19 VIEW
+k_cache_view-19 (copy of Kcur-19) CPY
+Vcur-19 (transposed) TRANSPOSE
+v_cache_view-19 VIEW
+v_cache_view-19 (copy of Vcur-19 (transposed)) CPY
+v-19 VIEW
+k-19 VIEW
+q-19 PERMUTE
+kq-19 MUL_MAT
+kq_soft_max_ext-19 SOFT_MAX
+kqv-19 MUL_MAT
+kqv_merged-19 PERMUTE
+kqv_out-19 CONT
+norm-19 RMS_NORM
+attn_sub_norm-19 MUL
+node_845 MUL_MAT
+attn_o_out-19 MUL
+ffn_inp-19 ADD
+norm-19 RMS_NORM
+ffn_norm-19 MUL
+ffn_gate-19 MUL_MAT
+ffn_gate_s-19 MUL
+ffn_silu-19 UNARY
+ffn_up-19 MUL_MAT
+ffn_up_s-19 MUL
+ffn_sub_out-19 MUL
+norm-19 RMS_NORM
+ffn_sub_norm-19 MUL
+node_858 MUL_MAT
+ffn_down-19 MUL
+l_out-19 ADD
+norm-20 RMS_NORM
+attn_norm-20 MUL
+node_863 MUL_MAT
+Qcur-20 MUL
+Qcur-20 (reshaped) RESHAPE
+Qcur-20 ROPE
+node_867 MUL_MAT
+Kcur-20 MUL
+Kcur-20 (reshaped) RESHAPE
+Kcur-20 ROPE
+node_871 MUL_MAT
+Vcur-20 MUL
+k_cache_view-20 VIEW
+k_cache_view-20 (copy of Kcur-20) CPY
+Vcur-20 (transposed) TRANSPOSE
+v_cache_view-20 VIEW
+v_cache_view-20 (copy of Vcur-20 (transposed)) CPY
+v-20 VIEW
+k-20 VIEW
+q-20 PERMUTE
+kq-20 MUL_MAT
+kq_soft_max_ext-20 SOFT_MAX
+kqv-20 MUL_MAT
+kqv_merged-20 PERMUTE
+kqv_out-20 CONT
+norm-20 RMS_NORM
+attn_sub_norm-20 MUL
+node_888 MUL_MAT
+attn_o_out-20 MUL
+ffn_inp-20 ADD
+norm-20 RMS_NORM
+ffn_norm-20 MUL
+ffn_gate-20 MUL_MAT
+ffn_gate_s-20 MUL
+ffn_silu-20 UNARY
+ffn_up-20 MUL_MAT
+ffn_up_s-20 MUL
+ffn_sub_out-20 MUL
+norm-20 RMS_NORM
+ffn_sub_norm-20 MUL
+node_901 MUL_MAT
+ffn_down-20 MUL
+l_out-20 ADD
+norm-21 RMS_NORM
+attn_norm-21 MUL
+node_906 MUL_MAT
+Qcur-21 MUL
+Qcur-21 (reshaped) RESHAPE
+Qcur-21 ROPE
+node_910 MUL_MAT
+Kcur-21 MUL
+Kcur-21 (reshaped) RESHAPE
+Kcur-21 ROPE
+node_914 MUL_MAT
+Vcur-21 MUL
+k_cache_view-21 VIEW
+k_cache_view-21 (copy of Kcur-21) CPY
+Vcur-21 (transposed) TRANSPOSE
+v_cache_view-21 VIEW
+v_cache_view-21 (copy of Vcur-21 (transposed)) CPY
+v-21 VIEW
+k-21 VIEW
+q-21 PERMUTE
+kq-21 MUL_MAT
+kq_soft_max_ext-21 SOFT_MAX
+kqv-21 MUL_MAT
+kqv_merged-21 PERMUTE
+kqv_out-21 CONT
+norm-21 RMS_NORM
+attn_sub_norm-21 MUL
+node_931 MUL_MAT
+attn_o_out-21 MUL
+ffn_inp-21 ADD
+norm-21 RMS_NORM
+ffn_norm-21 MUL
+ffn_gate-21 MUL_MAT
+ffn_gate_s-21 MUL
+ffn_silu-21 UNARY
+ffn_up-21 MUL_MAT
+ffn_up_s-21 MUL
+ffn_sub_out-21 MUL
+norm-21 RMS_NORM
+ffn_sub_norm-21 MUL
+node_944 MUL_MAT
+ffn_down-21 MUL
+l_out-21 ADD
+norm-22 RMS_NORM
+attn_norm-22 MUL
+node_949 MUL_MAT
+Qcur-22 MUL
+Qcur-22 (reshaped) RESHAPE
+Qcur-22 ROPE
+node_953 MUL_MAT
+Kcur-22 MUL
+Kcur-22 (reshaped) RESHAPE
+Kcur-22 ROPE
+node_957 MUL_MAT
+Vcur-22 MUL
+k_cache_view-22 VIEW
+k_cache_view-22 (copy of Kcur-22) CPY
+Vcur-22 (transposed) TRANSPOSE
+v_cache_view-22 VIEW
+v_cache_view-22 (copy of Vcur-22 (transposed)) CPY
+v-22 VIEW
+k-22 VIEW
+q-22 PERMUTE
+kq-22 MUL_MAT
+kq_soft_max_ext-22 SOFT_MAX
+kqv-22 MUL_MAT
+kqv_merged-22 PERMUTE
+kqv_out-22 CONT
+norm-22 RMS_NORM
+attn_sub_norm-22 MUL
+node_974 MUL_MAT
+attn_o_out-22 MUL
+ffn_inp-22 ADD
+norm-22 RMS_NORM
+ffn_norm-22 MUL
+ffn_gate-22 MUL_MAT
+ffn_gate_s-22 MUL
+ffn_silu-22 UNARY
+ffn_up-22 MUL_MAT
+ffn_up_s-22 MUL
+ffn_sub_out-22 MUL
+norm-22 RMS_NORM
+ffn_sub_norm-22 MUL
+node_987 MUL_MAT
+ffn_down-22 MUL
+l_out-22 ADD
+norm-23 RMS_NORM
+attn_norm-23 MUL
+node_992 MUL_MAT
+Qcur-23 MUL
+Qcur-23 (reshaped) RESHAPE
+Qcur-23 ROPE
+node_996 MUL_MAT
+Kcur-23 MUL
+Kcur-23 (reshaped) RESHAPE
+Kcur-23 ROPE
+node_1000 MUL_MAT
+Vcur-23 MUL
+k_cache_view-23 VIEW
+k_cache_view-23 (copy of Kcur-23) CPY
+Vcur-23 (transposed) TRANSPOSE
+v_cache_view-23 VIEW
+v_cache_view-23 (copy of Vcur-23 (transposed)) CPY
+v-23 VIEW
+k-23 VIEW
+q-23 PERMUTE
+kq-23 MUL_MAT
+kq_soft_max_ext-23 SOFT_MAX
+kqv-23 MUL_MAT
+kqv_merged-23 PERMUTE
+kqv_out-23 CONT
+norm-23 RMS_NORM
+attn_sub_norm-23 MUL
+node_1017 MUL_MAT
+attn_o_out-23 MUL
+node_1019 GET_ROWS
+node_1020 GET_ROWS
+ffn_inp-23 ADD
+norm-23 RMS_NORM
+ffn_norm-23 MUL
+ffn_gate-23 MUL_MAT
+ffn_gate_s-23 MUL
+ffn_silu-23 UNARY
+ffn_up-23 MUL_MAT
+ffn_up_s-23 MUL
+ffn_sub_out-23 MUL
+norm-23 RMS_NORM
+ffn_sub_norm-23 MUL
+node_1032 MUL_MAT
+ffn_down-23 MUL
+l_out-23 ADD
+norm RMS_NORM
+result_norm MUL
+result_output MUL_MAT
+inp_embd GET_ROWS
+norm-0 RMS_NORM
+attn_norm-0 MUL
+node_3 MUL_MAT
+Qcur-0 MUL
+Qcur-0 (reshaped) RESHAPE
+Qcur-0 ROPE
+node_7 MUL_MAT
+Kcur-0 MUL
+Kcur-0 (reshaped) RESHAPE
+Kcur-0 ROPE
+node_11 MUL_MAT
+Vcur-0 MUL
+k_cache_view-0 VIEW
+k_cache_view-0 (copy of Kcur-0) CPY
+Vcur-0 (transposed) TRANSPOSE
+v_cache_view-0 VIEW
+v_cache_view-0 (copy of Vcur-0 (transposed)) CPY
+v-0 VIEW
+k-0 VIEW
+q-0 PERMUTE
+kq-0 MUL_MAT
+kq_soft_max_ext-0 SOFT_MAX
+kqv-0 MUL_MAT
+kqv_merged-0 PERMUTE
+kqv_out-0 CONT
+norm-0 RMS_NORM
+attn_sub_norm-0 MUL
+node_28 MUL_MAT
+attn_o_out-0 MUL
+ffn_inp-0 ADD
+norm-0 RMS_NORM
+ffn_norm-0 MUL
+ffn_gate-0 MUL_MAT
+ffn_gate_s-0 MUL
+ffn_silu-0 UNARY
+ffn_up-0 MUL_MAT
+ffn_up_s-0 MUL
+ffn_sub_out-0 MUL
+norm-0 RMS_NORM
+ffn_sub_norm-0 MUL
+node_41 MUL_MAT
+ffn_down-0 MUL
+l_out-0 ADD
+norm-1 RMS_NORM
+attn_norm-1 MUL
+node_46 MUL_MAT
+Qcur-1 MUL
+Qcur-1 (reshaped) RESHAPE
+Qcur-1 ROPE
+node_50 MUL_MAT
+Kcur-1 MUL
+Kcur-1 (reshaped) RESHAPE
+Kcur-1 ROPE
+node_54 MUL_MAT
+Vcur-1 MUL
+k_cache_view-1 VIEW
+k_cache_view-1 (copy of Kcur-1) CPY
+Vcur-1 (transposed) TRANSPOSE
+v_cache_view-1 VIEW
+v_cache_view-1 (copy of Vcur-1 (transposed)) CPY
+v-1 VIEW
+k-1 VIEW
+q-1 PERMUTE
+kq-1 MUL_MAT
+kq_soft_max_ext-1 SOFT_MAX
+kqv-1 MUL_MAT
+kqv_merged-1 PERMUTE
+kqv_out-1 CONT
+norm-1 RMS_NORM
+attn_sub_norm-1 MUL
+node_71 MUL_MAT
+attn_o_out-1 MUL
+ffn_inp-1 ADD
+norm-1 RMS_NORM
+ffn_norm-1 MUL
+ffn_gate-1 MUL_MAT
+ffn_gate_s-1 MUL
+ffn_silu-1 UNARY
+ffn_up-1 MUL_MAT
+ffn_up_s-1 MUL
+ffn_sub_out-1 MUL
+norm-1 RMS_NORM
+ffn_sub_norm-1 MUL
+node_84 MUL_MAT
+ffn_down-1 MUL
+l_out-1 ADD
+norm-2 RMS_NORM
+attn_norm-2 MUL
+node_89 MUL_MAT
+Qcur-2 MUL
+Qcur-2 (reshaped) RESHAPE
+Qcur-2 ROPE
+node_93 MUL_MAT
+Kcur-2 MUL
+Kcur-2 (reshaped) RESHAPE
+Kcur-2 ROPE
+node_97 MUL_MAT
+Vcur-2 MUL
+k_cache_view-2 VIEW
+k_cache_view-2 (copy of Kcur-2) CPY
+Vcur-2 (transposed) TRANSPOSE
+v_cache_view-2 VIEW
+v_cache_view-2 (copy of Vcur-2 (transposed)) CPY
+v-2 VIEW
+k-2 VIEW
+q-2 PERMUTE
+kq-2 MUL_MAT
+kq_soft_max_ext-2 SOFT_MAX
+kqv-2 MUL_MAT
+kqv_merged-2 PERMUTE
+kqv_out-2 CONT
+norm-2 RMS_NORM
+attn_sub_norm-2 MUL
+node_114 MUL_MAT
+attn_o_out-2 MUL
+ffn_inp-2 ADD
+norm-2 RMS_NORM
+ffn_norm-2 MUL
+ffn_gate-2 MUL_MAT
+ffn_gate_s-2 MUL
+ffn_silu-2 UNARY
+ffn_up-2 MUL_MAT
+ffn_up_s-2 MUL
+ffn_sub_out-2 MUL
+norm-2 RMS_NORM
+ffn_sub_norm-2 MUL
+node_127 MUL_MAT
+ffn_down-2 MUL
+l_out-2 ADD
+norm-3 RMS_NORM
+attn_norm-3 MUL
+node_132 MUL_MAT
+Qcur-3 MUL
+Qcur-3 (reshaped) RESHAPE
+Qcur-3 ROPE
+node_136 MUL_MAT
+Kcur-3 MUL
+Kcur-3 (reshaped) RESHAPE
+Kcur-3 ROPE
+node_140 MUL_MAT
+Vcur-3 MUL
+k_cache_view-3 VIEW
+k_cache_view-3 (copy of Kcur-3) CPY
+Vcur-3 (transposed) TRANSPOSE
+v_cache_view-3 VIEW
+v_cache_view-3 (copy of Vcur-3 (transposed)) CPY
+v-3 VIEW
+k-3 VIEW
+q-3 PERMUTE
+kq-3 MUL_MAT
+kq_soft_max_ext-3 SOFT_MAX
+kqv-3 MUL_MAT
+kqv_merged-3 PERMUTE
+kqv_out-3 CONT
+norm-3 RMS_NORM
+attn_sub_norm-3 MUL
+node_157 MUL_MAT
+attn_o_out-3 MUL
+ffn_inp-3 ADD
+norm-3 RMS_NORM
+ffn_norm-3 MUL
+ffn_gate-3 MUL_MAT
+ffn_gate_s-3 MUL
+ffn_silu-3 UNARY
+ffn_up-3 MUL_MAT
+ffn_up_s-3 MUL
+ffn_sub_out-3 MUL
+norm-3 RMS_NORM
+ffn_sub_norm-3 MUL
+node_170 MUL_MAT
+ffn_down-3 MUL
+l_out-3 ADD
+norm-4 RMS_NORM
+attn_norm-4 MUL
+node_175 MUL_MAT
+Qcur-4 MUL
+Qcur-4 (reshaped) RESHAPE
+Qcur-4 ROPE
+node_179 MUL_MAT
+Kcur-4 MUL
+Kcur-4 (reshaped) RESHAPE
+Kcur-4 ROPE
+node_183 MUL_MAT
+Vcur-4 MUL
+k_cache_view-4 VIEW
+k_cache_view-4 (copy of Kcur-4) CPY
+Vcur-4 (transposed) TRANSPOSE
+v_cache_view-4 VIEW
+v_cache_view-4 (copy of Vcur-4 (transposed)) CPY
+v-4 VIEW
+k-4 VIEW
+q-4 PERMUTE
+kq-4 MUL_MAT
+kq_soft_max_ext-4 SOFT_MAX
+kqv-4 MUL_MAT
+kqv_merged-4 PERMUTE
+kqv_out-4 CONT
+norm-4 RMS_NORM
+attn_sub_norm-4 MUL
+node_200 MUL_MAT
+attn_o_out-4 MUL
+ffn_inp-4 ADD
+norm-4 RMS_NORM
+ffn_norm-4 MUL
+ffn_gate-4 MUL_MAT
+ffn_gate_s-4 MUL
+ffn_silu-4 UNARY
+ffn_up-4 MUL_MAT
+ffn_up_s-4 MUL
+ffn_sub_out-4 MUL
+norm-4 RMS_NORM
+ffn_sub_norm-4 MUL
+node_213 MUL_MAT
+ffn_down-4 MUL
+l_out-4 ADD
+norm-5 RMS_NORM
+attn_norm-5 MUL
+node_218 MUL_MAT
+Qcur-5 MUL
+Qcur-5 (reshaped) RESHAPE
+Qcur-5 ROPE
+node_222 MUL_MAT
+Kcur-5 MUL
+Kcur-5 (reshaped) RESHAPE
+Kcur-5 ROPE
+node_226 MUL_MAT
+Vcur-5 MUL
+k_cache_view-5 VIEW
+k_cache_view-5 (copy of Kcur-5) CPY
+Vcur-5 (transposed) TRANSPOSE
+v_cache_view-5 VIEW
+v_cache_view-5 (copy of Vcur-5 (transposed)) CPY
+v-5 VIEW
+k-5 VIEW
+q-5 PERMUTE
+kq-5 MUL_MAT
+kq_soft_max_ext-5 SOFT_MAX
+kqv-5 MUL_MAT
+kqv_merged-5 PERMUTE
+kqv_out-5 CONT
+norm-5 RMS_NORM
+attn_sub_norm-5 MUL
+node_243 MUL_MAT
+attn_o_out-5 MUL
+ffn_inp-5 ADD
+norm-5 RMS_NORM
+ffn_norm-5 MUL
+ffn_gate-5 MUL_MAT
+ffn_gate_s-5 MUL
+ffn_silu-5 UNARY
+ffn_up-5 MUL_MAT
+ffn_up_s-5 MUL
+ffn_sub_out-5 MUL
+norm-5 RMS_NORM
+ffn_sub_norm-5 MUL
+node_256 MUL_MAT
+ffn_down-5 MUL
+l_out-5 ADD
+norm-6 RMS_NORM
+attn_norm-6 MUL
+node_261 MUL_MAT
+Qcur-6 MUL
+Qcur-6 (reshaped) RESHAPE
+Qcur-6 ROPE
+node_265 MUL_MAT
+Kcur-6 MUL
+Kcur-6 (reshaped) RESHAPE
+Kcur-6 ROPE
+node_269 MUL_MAT
+Vcur-6 MUL
+k_cache_view-6 VIEW
+k_cache_view-6 (copy of Kcur-6) CPY
+Vcur-6 (transposed) TRANSPOSE
+v_cache_view-6 VIEW
+v_cache_view-6 (copy of Vcur-6 (transposed)) CPY
+v-6 VIEW
+k-6 VIEW
+q-6 PERMUTE
+kq-6 MUL_MAT
+kq_soft_max_ext-6 SOFT_MAX
+kqv-6 MUL_MAT
+kqv_merged-6 PERMUTE
+kqv_out-6 CONT
+norm-6 RMS_NORM
+attn_sub_norm-6 MUL
+node_286 MUL_MAT
+attn_o_out-6 MUL
+ffn_inp-6 ADD
+norm-6 RMS_NORM
+ffn_norm-6 MUL
+ffn_gate-6 MUL_MAT
+ffn_gate_s-6 MUL
+ffn_silu-6 UNARY
+ffn_up-6 MUL_MAT
+ffn_up_s-6 MUL
+ffn_sub_out-6 MUL
+norm-6 RMS_NORM
+ffn_sub_norm-6 MUL
+node_299 MUL_MAT
+ffn_down-6 MUL
+l_out-6 ADD
+norm-7 RMS_NORM
+attn_norm-7 MUL
+node_304 MUL_MAT
+Qcur-7 MUL
+Qcur-7 (reshaped) RESHAPE
+Qcur-7 ROPE
+node_308 MUL_MAT
+Kcur-7 MUL
+Kcur-7 (reshaped) RESHAPE
+Kcur-7 ROPE
+node_312 MUL_MAT
+Vcur-7 MUL
+k_cache_view-7 VIEW
+k_cache_view-7 (copy of Kcur-7) CPY
+Vcur-7 (transposed) TRANSPOSE
+v_cache_view-7 VIEW
+v_cache_view-7 (copy of Vcur-7 (transposed)) CPY
+v-7 VIEW
+k-7 VIEW
+q-7 PERMUTE
+kq-7 MUL_MAT
+kq_soft_max_ext-7 SOFT_MAX
+kqv-7 MUL_MAT
+kqv_merged-7 PERMUTE
+kqv_out-7 CONT
+norm-7 RMS_NORM
+attn_sub_norm-7 MUL
+node_329 MUL_MAT
+attn_o_out-7 MUL
+ffn_inp-7 ADD
+norm-7 RMS_NORM
+ffn_norm-7 MUL
+ffn_gate-7 MUL_MAT
+ffn_gate_s-7 MUL
+ffn_silu-7 UNARY
+ffn_up-7 MUL_MAT
+ffn_up_s-7 MUL
+ffn_sub_out-7 MUL
+norm-7 RMS_NORM
+ffn_sub_norm-7 MUL
+node_342 MUL_MAT
+ffn_down-7 MUL
+l_out-7 ADD
+norm-8 RMS_NORM
+attn_norm-8 MUL
+node_347 MUL_MAT
+Qcur-8 MUL
+Qcur-8 (reshaped) RESHAPE
+Qcur-8 ROPE
+node_351 MUL_MAT
+Kcur-8 MUL
+Kcur-8 (reshaped) RESHAPE
+Kcur-8 ROPE
+node_355 MUL_MAT
+Vcur-8 MUL
+k_cache_view-8 VIEW
+k_cache_view-8 (copy of Kcur-8) CPY
+Vcur-8 (transposed) TRANSPOSE
+v_cache_view-8 VIEW
+v_cache_view-8 (copy of Vcur-8 (transposed)) CPY
+v-8 VIEW
+k-8 VIEW
+q-8 PERMUTE
+kq-8 MUL_MAT
+kq_soft_max_ext-8 SOFT_MAX
+kqv-8 MUL_MAT
+kqv_merged-8 PERMUTE
+kqv_out-8 CONT
+norm-8 RMS_NORM
+attn_sub_norm-8 MUL
+node_372 MUL_MAT
+attn_o_out-8 MUL
+ffn_inp-8 ADD
+norm-8 RMS_NORM
+ffn_norm-8 MUL
+ffn_gate-8 MUL_MAT
+ffn_gate_s-8 MUL
+ffn_silu-8 UNARY
+ffn_up-8 MUL_MAT
+ffn_up_s-8 MUL
+ffn_sub_out-8 MUL
+norm-8 RMS_NORM
+ffn_sub_norm-8 MUL
+node_385 MUL_MAT
+ffn_down-8 MUL
+l_out-8 ADD
+norm-9 RMS_NORM
+attn_norm-9 MUL
+node_390 MUL_MAT
+Qcur-9 MUL
+Qcur-9 (reshaped) RESHAPE
+Qcur-9 ROPE
+node_394 MUL_MAT
+Kcur-9 MUL
+Kcur-9 (reshaped) RESHAPE
+Kcur-9 ROPE
+node_398 MUL_MAT
+Vcur-9 MUL
+k_cache_view-9 VIEW
+k_cache_view-9 (copy of Kcur-9) CPY
+Vcur-9 (transposed) TRANSPOSE
+v_cache_view-9 VIEW
+v_cache_view-9 (copy of Vcur-9 (transposed)) CPY
+v-9 VIEW
+k-9 VIEW
+q-9 PERMUTE
+kq-9 MUL_MAT
+kq_soft_max_ext-9 SOFT_MAX
+kqv-9 MUL_MAT
+kqv_merged-9 PERMUTE
+kqv_out-9 CONT
+norm-9 RMS_NORM
+attn_sub_norm-9 MUL
+node_415 MUL_MAT
+attn_o_out-9 MUL
+ffn_inp-9 ADD
+norm-9 RMS_NORM
+ffn_norm-9 MUL
+ffn_gate-9 MUL_MAT
+ffn_gate_s-9 MUL
+ffn_silu-9 UNARY
+ffn_up-9 MUL_MAT
+ffn_up_s-9 MUL
+ffn_sub_out-9 MUL
+norm-9 RMS_NORM
+ffn_sub_norm-9 MUL
+node_428 MUL_MAT
+ffn_down-9 MUL
+l_out-9 ADD
+norm-10 RMS_NORM
+attn_norm-10 MUL
+node_433 MUL_MAT
+Qcur-10 MUL
+Qcur-10 (reshaped) RESHAPE
+Qcur-10 ROPE
+node_437 MUL_MAT
+Kcur-10 MUL
+Kcur-10 (reshaped) RESHAPE
+Kcur-10 ROPE
+node_441 MUL_MAT
+Vcur-10 MUL
+k_cache_view-10 VIEW
+k_cache_view-10 (copy of Kcur-10) CPY
+Vcur-10 (transposed) TRANSPOSE
+v_cache_view-10 VIEW
+v_cache_view-10 (copy of Vcur-10 (transposed)) CPY
+v-10 VIEW
+k-10 VIEW
+q-10 PERMUTE
+kq-10 MUL_MAT
+kq_soft_max_ext-10 SOFT_MAX
+kqv-10 MUL_MAT
+kqv_merged-10 PERMUTE
+kqv_out-10 CONT
+norm-10 RMS_NORM
+attn_sub_norm-10 MUL
+node_458 MUL_MAT
+attn_o_out-10 MUL
+ffn_inp-10 ADD
+norm-10 RMS_NORM
+ffn_norm-10 MUL
+ffn_gate-10 MUL_MAT
+ffn_gate_s-10 MUL
+ffn_silu-10 UNARY
+ffn_up-10 MUL_MAT
+ffn_up_s-10 MUL
+ffn_sub_out-10 MUL
+norm-10 RMS_NORM
+ffn_sub_norm-10 MUL
+node_471 MUL_MAT
+ffn_down-10 MUL
+l_out-10 ADD
+norm-11 RMS_NORM
+attn_norm-11 MUL
+node_476 MUL_MAT
+Qcur-11 MUL
+Qcur-11 (reshaped) RESHAPE
+Qcur-11 ROPE
+node_480 MUL_MAT
+Kcur-11 MUL
+Kcur-11 (reshaped) RESHAPE
+Kcur-11 ROPE
+node_484 MUL_MAT
+Vcur-11 MUL
+k_cache_view-11 VIEW
+k_cache_view-11 (copy of Kcur-11) CPY
+Vcur-11 (transposed) TRANSPOSE
+v_cache_view-11 VIEW
+v_cache_view-11 (copy of Vcur-11 (transposed)) CPY
+v-11 VIEW
+k-11 VIEW
+q-11 PERMUTE
+kq-11 MUL_MAT
+kq_soft_max_ext-11 SOFT_MAX
+kqv-11 MUL_MAT
+kqv_merged-11 PERMUTE
+kqv_out-11 CONT
+norm-11 RMS_NORM
+attn_sub_norm-11 MUL
+node_501 MUL_MAT
+attn_o_out-11 MUL
+ffn_inp-11 ADD
+norm-11 RMS_NORM
+ffn_norm-11 MUL
+ffn_gate-11 MUL_MAT
+ffn_gate_s-11 MUL
+ffn_silu-11 UNARY
+ffn_up-11 MUL_MAT
+ffn_up_s-11 MUL
+ffn_sub_out-11 MUL
+norm-11 RMS_NORM
+ffn_sub_norm-11 MUL
+node_514 MUL_MAT
+ffn_down-11 MUL
+l_out-11 ADD
+norm-12 RMS_NORM
+attn_norm-12 MUL
+node_519 MUL_MAT
+Qcur-12 MUL
+Qcur-12 (reshaped) RESHAPE
+Qcur-12 ROPE
+node_523 MUL_MAT
+Kcur-12 MUL
+Kcur-12 (reshaped) RESHAPE
+Kcur-12 ROPE
+node_527 MUL_MAT
+Vcur-12 MUL
+k_cache_view-12 VIEW
+k_cache_view-12 (copy of Kcur-12) CPY
+Vcur-12 (transposed) TRANSPOSE
+v_cache_view-12 VIEW
+v_cache_view-12 (copy of Vcur-12 (transposed)) CPY
+v-12 VIEW
+k-12 VIEW
+q-12 PERMUTE
+kq-12 MUL_MAT
+kq_soft_max_ext-12 SOFT_MAX
+kqv-12 MUL_MAT
+kqv_merged-12 PERMUTE
+kqv_out-12 CONT
+norm-12 RMS_NORM
+attn_sub_norm-12 MUL
+node_544 MUL_MAT
+attn_o_out-12 MUL
+ffn_inp-12 ADD
+norm-12 RMS_NORM
+ffn_norm-12 MUL
+ffn_gate-12 MUL_MAT
+ffn_gate_s-12 MUL
+ffn_silu-12 UNARY
+ffn_up-12 MUL_MAT
+ffn_up_s-12 MUL
+ffn_sub_out-12 MUL
+norm-12 RMS_NORM
+ffn_sub_norm-12 MUL
+node_557 MUL_MAT
+ffn_down-12 MUL
+l_out-12 ADD
+norm-13 RMS_NORM
+attn_norm-13 MUL
+node_562 MUL_MAT
+Qcur-13 MUL
+Qcur-13 (reshaped) RESHAPE
+Qcur-13 ROPE
+node_566 MUL_MAT
+Kcur-13 MUL
+Kcur-13 (reshaped) RESHAPE
+Kcur-13 ROPE
+node_570 MUL_MAT
+Vcur-13 MUL
+k_cache_view-13 VIEW
+k_cache_view-13 (copy of Kcur-13) CPY
+Vcur-13 (transposed) TRANSPOSE
+v_cache_view-13 VIEW
+v_cache_view-13 (copy of Vcur-13 (transposed)) CPY
+v-13 VIEW
+k-13 VIEW
+q-13 PERMUTE
+kq-13 MUL_MAT
+kq_soft_max_ext-13 SOFT_MAX
+kqv-13 MUL_MAT
+kqv_merged-13 PERMUTE
+kqv_out-13 CONT
+norm-13 RMS_NORM
+attn_sub_norm-13 MUL
+node_587 MUL_MAT
+attn_o_out-13 MUL
+ffn_inp-13 ADD
+norm-13 RMS_NORM
+ffn_norm-13 MUL
+ffn_gate-13 MUL_MAT
+ffn_gate_s-13 MUL
+ffn_silu-13 UNARY
+ffn_up-13 MUL_MAT
+ffn_up_s-13 MUL
+ffn_sub_out-13 MUL
+norm-13 RMS_NORM
+ffn_sub_norm-13 MUL
+node_600 MUL_MAT
+ffn_down-13 MUL
+l_out-13 ADD
+norm-14 RMS_NORM
+attn_norm-14 MUL
+node_605 MUL_MAT
+Qcur-14 MUL
+Qcur-14 (reshaped) RESHAPE
+Qcur-14 ROPE
+node_609 MUL_MAT
+Kcur-14 MUL
+Kcur-14 (reshaped) RESHAPE
+Kcur-14 ROPE
+node_613 MUL_MAT
+Vcur-14 MUL
+k_cache_view-14 VIEW
+k_cache_view-14 (copy of Kcur-14) CPY
+Vcur-14 (transposed) TRANSPOSE
+v_cache_view-14 VIEW
+v_cache_view-14 (copy of Vcur-14 (transposed)) CPY
+v-14 VIEW
+k-14 VIEW
+q-14 PERMUTE
+kq-14 MUL_MAT
+kq_soft_max_ext-14 SOFT_MAX
+kqv-14 MUL_MAT
+kqv_merged-14 PERMUTE
+kqv_out-14 CONT
+norm-14 RMS_NORM
+attn_sub_norm-14 MUL
+node_630 MUL_MAT
+attn_o_out-14 MUL
+ffn_inp-14 ADD
+norm-14 RMS_NORM
+ffn_norm-14 MUL
+ffn_gate-14 MUL_MAT
+ffn_gate_s-14 MUL
+ffn_silu-14 UNARY
+ffn_up-14 MUL_MAT
+ffn_up_s-14 MUL
+ffn_sub_out-14 MUL
+norm-14 RMS_NORM
+ffn_sub_norm-14 MUL
+node_643 MUL_MAT
+ffn_down-14 MUL
+l_out-14 ADD
+norm-15 RMS_NORM
+attn_norm-15 MUL
+node_648 MUL_MAT
+Qcur-15 MUL
+Qcur-15 (reshaped) RESHAPE
+Qcur-15 ROPE
+node_652 MUL_MAT
+Kcur-15 MUL
+Kcur-15 (reshaped) RESHAPE
+Kcur-15 ROPE
+node_656 MUL_MAT
+Vcur-15 MUL
+k_cache_view-15 VIEW
+k_cache_view-15 (copy of Kcur-15) CPY
+Vcur-15 (transposed) TRANSPOSE
+v_cache_view-15 VIEW
+v_cache_view-15 (copy of Vcur-15 (transposed)) CPY
+v-15 VIEW
+k-15 VIEW
+q-15 PERMUTE
+kq-15 MUL_MAT
+kq_soft_max_ext-15 SOFT_MAX
+kqv-15 MUL_MAT
+kqv_merged-15 PERMUTE
+kqv_out-15 CONT
+norm-15 RMS_NORM
+attn_sub_norm-15 MUL
+node_673 MUL_MAT
+attn_o_out-15 MUL
+ffn_inp-15 ADD
+norm-15 RMS_NORM
+ffn_norm-15 MUL
+ffn_gate-15 MUL_MAT
+ffn_gate_s-15 MUL
+ffn_silu-15 UNARY
+ffn_up-15 MUL_MAT
+ffn_up_s-15 MUL
+ffn_sub_out-15 MUL
+norm-15 RMS_NORM
+ffn_sub_norm-15 MUL
+node_686 MUL_MAT
+ffn_down-15 MUL
+l_out-15 ADD
+norm-16 RMS_NORM
+attn_norm-16 MUL
+node_691 MUL_MAT
+Qcur-16 MUL
+Qcur-16 (reshaped) RESHAPE
+Qcur-16 ROPE
+node_695 MUL_MAT
+Kcur-16 MUL
+Kcur-16 (reshaped) RESHAPE
+Kcur-16 ROPE
+node_699 MUL_MAT
+Vcur-16 MUL
+k_cache_view-16 VIEW
+k_cache_view-16 (copy of Kcur-16) CPY
+Vcur-16 (transposed) TRANSPOSE
+v_cache_view-16 VIEW
+v_cache_view-16 (copy of Vcur-16 (transposed)) CPY
+v-16 VIEW
+k-16 VIEW
+q-16 PERMUTE
+kq-16 MUL_MAT
+kq_soft_max_ext-16 SOFT_MAX
+kqv-16 MUL_MAT
+kqv_merged-16 PERMUTE
+kqv_out-16 CONT
+norm-16 RMS_NORM
+attn_sub_norm-16 MUL
+node_716 MUL_MAT
+attn_o_out-16 MUL
+ffn_inp-16 ADD
+norm-16 RMS_NORM
+ffn_norm-16 MUL
+ffn_gate-16 MUL_MAT
+ffn_gate_s-16 MUL
+ffn_silu-16 UNARY
+ffn_up-16 MUL_MAT
+ffn_up_s-16 MUL
+ffn_sub_out-16 MUL
+norm-16 RMS_NORM
+ffn_sub_norm-16 MUL
+node_729 MUL_MAT
+ffn_down-16 MUL
+l_out-16 ADD
+norm-17 RMS_NORM
+attn_norm-17 MUL
+node_734 MUL_MAT
+Qcur-17 MUL
+Qcur-17 (reshaped) RESHAPE
+Qcur-17 ROPE
+node_738 MUL_MAT
+Kcur-17 MUL
+Kcur-17 (reshaped) RESHAPE
+Kcur-17 ROPE
+node_742 MUL_MAT
+Vcur-17 MUL
+k_cache_view-17 VIEW
+k_cache_view-17 (copy of Kcur-17) CPY
+Vcur-17 (transposed) TRANSPOSE
+v_cache_view-17 VIEW
+v_cache_view-17 (copy of Vcur-17 (transposed)) CPY
+v-17 VIEW
+k-17 VIEW
+q-17 PERMUTE
+kq-17 MUL_MAT
+kq_soft_max_ext-17 SOFT_MAX
+kqv-17 MUL_MAT
+kqv_merged-17 PERMUTE
+kqv_out-17 CONT
+norm-17 RMS_NORM
+attn_sub_norm-17 MUL
+node_759 MUL_MAT
+attn_o_out-17 MUL
+ffn_inp-17 ADD
+norm-17 RMS_NORM
+ffn_norm-17 MUL
+ffn_gate-17 MUL_MAT
+ffn_gate_s-17 MUL
+ffn_silu-17 UNARY
+ffn_up-17 MUL_MAT
+ffn_up_s-17 MUL
+ffn_sub_out-17 MUL
+norm-17 RMS_NORM
+ffn_sub_norm-17 MUL
+node_772 MUL_MAT
+ffn_down-17 MUL
+l_out-17 ADD
+norm-18 RMS_NORM
+attn_norm-18 MUL
+node_777 MUL_MAT
+Qcur-18 MUL
+Qcur-18 (reshaped) RESHAPE
+Qcur-18 ROPE
+node_781 MUL_MAT
+Kcur-18 MUL
+Kcur-18 (reshaped) RESHAPE
+Kcur-18 ROPE
+node_785 MUL_MAT
+Vcur-18 MUL
+k_cache_view-18 VIEW
+k_cache_view-18 (copy of Kcur-18) CPY
+Vcur-18 (transposed) TRANSPOSE
+v_cache_view-18 VIEW
+v_cache_view-18 (copy of Vcur-18 (transposed)) CPY
+v-18 VIEW
+k-18 VIEW
+q-18 PERMUTE
+kq-18 MUL_MAT
+kq_soft_max_ext-18 SOFT_MAX
+kqv-18 MUL_MAT
+kqv_merged-18 PERMUTE
+kqv_out-18 CONT
+norm-18 RMS_NORM
+attn_sub_norm-18 MUL
+node_802 MUL_MAT
+attn_o_out-18 MUL
+ffn_inp-18 ADD
+norm-18 RMS_NORM
+ffn_norm-18 MUL
+ffn_gate-18 MUL_MAT
+ffn_gate_s-18 MUL
+ffn_silu-18 UNARY
+ffn_up-18 MUL_MAT
+ffn_up_s-18 MUL
+ffn_sub_out-18 MUL
+norm-18 RMS_NORM
+ffn_sub_norm-18 MUL
+node_815 MUL_MAT
+ffn_down-18 MUL
+l_out-18 ADD
+norm-19 RMS_NORM
+attn_norm-19 MUL
+node_820 MUL_MAT
+Qcur-19 MUL
+Qcur-19 (reshaped) RESHAPE
+Qcur-19 ROPE
+node_824 MUL_MAT
+Kcur-19 MUL
+Kcur-19 (reshaped) RESHAPE
+Kcur-19 ROPE
+node_828 MUL_MAT
+Vcur-19 MUL
+k_cache_view-19 VIEW
+k_cache_view-19 (copy of Kcur-19) CPY
+Vcur-19 (transposed) TRANSPOSE
+v_cache_view-19 VIEW
