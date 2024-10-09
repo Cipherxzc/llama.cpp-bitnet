@@ -367,17 +367,11 @@ size_t quantize_q4_0_8x8(const float * restrict src, void * restrict dst, int64_
 }
 
 void generate_table(int *restrict table, const int8_t *restrict x) {
-    // for (int i = 0; i < 4; i++){
-    //     printf("%d ", x[i]);
-    // }
-    // printf("\n");
-
     for (int i0 = 0; i0 < 4; i0++) {
         if (i0 == 2) {
             continue;
         }
         int v0 = x[0] * (i0 == 3 ? -1 : i0);
-        //printf("%d %d\n", i0, v0);
 
         for (int i1 = 0; i1 < 4; i1++) {
             if (i1 == 2) {
@@ -385,7 +379,6 @@ void generate_table(int *restrict table, const int8_t *restrict x) {
             }
             int p1 = i0 | (i1 << 2);
             int v1 = v0 + x[1] * (i1 == 3 ? -1 : i1);
-            //printf("    %d %d\n", p1, v1);
 
             for (int i2 = 0; i2 < 4; i2++) {
                 if (i2 == 2) {
@@ -393,24 +386,13 @@ void generate_table(int *restrict table, const int8_t *restrict x) {
                 }
                 int p2 = p1 | (i2 << 4);
                 int v2 = v1 + x[2] * (i2 == 3 ? -1 : i2);
-                //printf("        %d %d\n", p2, v2);
 
                 table[p2] = v2;
                 table[p2 | (1 << 6)] = v2 + x[3];
                 table[p2 | (3 << 6)] = v2 - x[3];
-                // printf("%d %d\n", p2, v2);
-                // printf("%d %d\n", p2 | (1 << 6), v2 + x[3]);
-                // printf("%d %d\n", p2 | (3 << 6), v2 - x[3]);
             }
         }
     }
-    // for (int i = 0; i < 256; i += 4){
-    //     for (int j = i; j < i + 4; j++){
-    //         printf("%d ", table[j]);
-    //     }
-    //     printf("\n");
-    // }
-    // exit(0);
 }
 
 void ggml_gemv_i2_i8_ss(int n, float *restrict s, size_t bs, const void *restrict vx, const void *restrict vy, int nr,
@@ -429,9 +411,11 @@ void ggml_gemv_i2_i8_ss(int n, float *restrict s, size_t bs, const void *restric
     for (int c = 0; c < nc; c++){
         s[c] = 0;
     }
-    //printf("%d\n", nc);
 
-    int *restrict table = malloc(sizeof(int) << 8);
+    int *restrict table = (int *)malloc(sizeof(int) << 8);
+    int *restrict ss = (int *)malloc(sizeof(int) * nc);
+    memset(ss, 0, sizeof(int) * nc);
+
     for (int i = 0; i < n; i += 4) {
         generate_table(table, y + i);
 
@@ -439,10 +423,20 @@ void ggml_gemv_i2_i8_ss(int n, float *restrict s, size_t bs, const void *restric
             const uint8_t *restrict rx = x + c * (n >> 2);
             int sumr = table[rx[i >> 2]];
 
-            s[c] += (float)sumr * scale;
+            ss[c] += sumr;
         }
+
+        // for (int c = 0; c < nc / 2; c++) {
+        //     ss[c] += table[0];
+        // }
+        // for (int c = nc / 2; c < nc; c++) {
+        //     ss[c] += table[1];
+        // }
     }
-    //exit(0);
+
+    for (int c = 0; c < nc; c++) {
+        s[c] = ss[c] * scale;
+    }
 }
 
 void ggml_gemv_q4_0_4x4_q8_0(int n, float * restrict s, size_t bs, const void * restrict vx, const void * restrict vy, int nr, int nc) {

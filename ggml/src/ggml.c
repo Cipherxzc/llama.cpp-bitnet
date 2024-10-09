@@ -1078,7 +1078,7 @@ static const ggml_type_traits_t type_traits[GGML_TYPE_COUNT] =
          // .vec_dot_type             = GGML_TYPE_F32,
          .nrows = 1,
          .ncols = 1,
-         .gemv = ggml_gemv_i2_i8_ss,
+         //.gemv = ggml_gemv_i2_i8_ss,
      },
      [GGML_TYPE_I8_S] = {
          .type_name = "i8_s",
@@ -16820,54 +16820,20 @@ static void ggml_compute_forward_cross_entropy_loss_back(
     }
 }
 
-/////////////////////////////////
-
-const char pre[] = "l_out-";
+////////////////////////////////////////////////////////////////////////////////
 
 static void ggml_compute_forward(struct ggml_compute_params * params, struct ggml_tensor * tensor) {
     GGML_ASSERT(params);
 
-    // FILE *outfile = fopen("/home/cipherxzc/Projects/tensor", "a");
-    // assert(outfile != NULL);
-    
-    // int flag = 1;
-    // for (int i = 0; i < 6; i++){
-    //     if (tensor->name[i] != pre[i]){
-    //         flag = 0;
-    //     }
-    // }
-
-    // static int ok = 0;
-    // if (flag){
-    //     if (tensor->name[6] == '0'){
-    //         if (!ok){
-    //             ok = 1;
-    //         }else{
-    //             fclose(outfile);
-    //             exit(0);
-    //         }
-    //     }
-
-    //     fprintf(outfile, "%s %s ", tensor->name, ggml_type_name(tensor->type));
-    //     for (int i = 0; i < 4; i++){
-    //         fprintf(outfile, "%d ", tensor->ne[i]);
-    //     }
-    //     fprintf(outfile, "\n");
-
-    //     float *data = (float *)tensor->data;
-    //     for (int i = 0; i < tensor->ne[1]; i++){
-    //         for (int j = 0; j < tensor->ne[0]; j++){
-    //             fprintf(outfile, "%.3f ", data[i * tensor->ne[0] + j]);
-    //         }
-    //         fprintf(outfile, "\n");
-    //     }
-    // }
-
-    // fclose(outfile);
-
     if (tensor->op == GGML_OP_NONE || ggml_is_empty(tensor)) {
         return;
     }
+
+    // clock_t start, end;
+    // double cpu_time_used;
+    // if (tensor->op == GGML_OP_MUL_MAT) {
+    //     start = clock();
+    // }
 
     switch (tensor->op) {
         case GGML_OP_DUP:
@@ -17194,6 +17160,16 @@ static void ggml_compute_forward(struct ggml_compute_params * params, struct ggm
                 GGML_ABORT("fatal error");
             }
     }
+
+    // if (tensor->op == GGML_OP_MUL_MAT && tensor->src[0]->type == GGML_TYPE_I2_S) {
+    //     FILE *outfile = fopen("/home/cipherxzc/Projects/tensor", "a");
+    //     end = clock();
+    //     cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC * 1000;
+    //     fprintf(outfile, "%s %d %d %d %d\n", tensor->name, tensor->src[0]->ne[0], tensor->src[0]->ne[1],
+    //             tensor->src[1]->ne[0], tensor->src[1]->ne[1]);
+    //     fprintf(outfile, "%f ms\n", cpu_time_used);
+    //     fclose(outfile);
+    // }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
